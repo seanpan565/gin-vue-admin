@@ -1,3 +1,4 @@
+// 角色权限 API：角色 CRUD 及角色树管理
 import service from '@/utils/request'
 // @Router /authority/getAuthorityList [post]
 export const getAuthorityList = (data) => {

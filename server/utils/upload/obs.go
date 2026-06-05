@@ -1,5 +1,6 @@
 package upload
 
+// 华为云 OBS 对象存储实现。
 import (
 	"mime/multipart"
 
@@ -8,10 +9,13 @@ import (
 	"github.com/pkg/errors"
 )
 
+// HuaWeiObs 华为 OBS 全局实例
 var HuaWeiObs = new(Obs)
 
+// Obs 华为云 OBS 存储
 type Obs struct{}
 
+// NewHuaWeiObsClient 创建华为 OBS 客户端
 func NewHuaWeiObsClient() (client *obs.ObsClient, err error) {
 	return obs.New(global.GVA_CONFIG.HuaWeiObs.AccessKey, global.GVA_CONFIG.HuaWeiObs.SecretKey, global.GVA_CONFIG.HuaWeiObs.Endpoint)
 }

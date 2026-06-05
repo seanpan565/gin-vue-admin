@@ -1,4 +1,5 @@
-﻿<template>
+﻿<!-- 仪表盘公告组件 -->
+<template>
   <div class="space-y-3">
     <el-scrollbar max-height="320px">
       <div class="space-y-2 pr-1">

@@ -1,3 +1,4 @@
+// 腾讯云 COS 配置，对应 config.yaml 中 tencent-cos 节点。
 package config
 
 type TencentCOS struct {

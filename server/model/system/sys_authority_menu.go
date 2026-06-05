@@ -1,5 +1,6 @@
 package system
 
+// SysMenu 角色菜单视图与 SysAuthorityMenu 角色菜单关联表模型
 type SysMenu struct {
 	SysBaseMenu
 	MenuId      uint                   `json:"menuId" gorm:"comment:菜单ID"`

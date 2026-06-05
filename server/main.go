@@ -1,3 +1,4 @@
+// main 程序入口：负责系统初始化并启动 HTTP 服务。
 package main
 
 import (

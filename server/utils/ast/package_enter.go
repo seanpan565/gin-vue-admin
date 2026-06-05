@@ -1,3 +1,4 @@
+// package_enter.go 向顶层 api/router/service enter 文件注入模块引用。
 package ast
 
 import (
@@ -6,7 +7,7 @@ import (
 	"io"
 )
 
-// PackageEnter 模块化入口
+// PackageEnter 顶层 enter 文件注入器，追加 import 与 Group 结构体字段。
 type PackageEnter struct {
 	Base
 	Type              Type   // 类型

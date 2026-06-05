@@ -1,3 +1,4 @@
+// 静态路由配置：登录、初始化及公共页面
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [

@@ -1,3 +1,4 @@
+<!-- 菜单组件级联选择 -->
 <template>
   <div class="flex justify-between items-center gap-2 w-full">
     <el-cascader

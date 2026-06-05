@@ -1,5 +1,7 @@
 package system
 
+// InitInitRouter 注册数据库初始化相关路由
+
 import (
 	"github.com/gin-gonic/gin"
 )

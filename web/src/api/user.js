@@ -1,3 +1,4 @@
+// 用户 API：登录、注册、用户信息及密码管理
 import service from '@/utils/request'
 // @Summary 用户登录
 // @Produce  application/json

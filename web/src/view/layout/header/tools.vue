@@ -1,3 +1,4 @@
+<!-- 顶栏工具按钮组 -->
 <template>
   <div class="flex items-center mx-4 gap-4">
     <el-tooltip v-if="isDev" class="" effect="dark" content="视频教程" placement="bottom">

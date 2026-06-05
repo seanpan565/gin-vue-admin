@@ -1,3 +1,4 @@
+<!-- 富文本只读预览组件（基于 wangEditor） -->
 <template>
   <div class="richtext-wrapper border border-solid border-gray-100 h-full">
     <Editor

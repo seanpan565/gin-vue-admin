@@ -1,5 +1,6 @@
 package system
 
+// SysVersionApi 版本发布与管理接口
 import (
 	"encoding/json"
 	"fmt"

@@ -1,3 +1,4 @@
+<!-- 仪表盘横幅组件 -->
 <template>
   <el-carousel class="-mt-2">
     <el-carousel-item

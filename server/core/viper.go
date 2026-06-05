@@ -1,3 +1,4 @@
+// viper.go 加载并监听 config.yaml，支持命令行、环境变量与 gin 模式切换。
 package core
 
 import (
@@ -13,7 +14,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-// Viper 配置
+// Viper 读取配置文件并绑定到 global.GVA_CONFIG，支持热更新。
 func Viper() *viper.Viper {
 	config := getConfigPath()
 

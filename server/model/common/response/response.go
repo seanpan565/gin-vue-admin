@@ -1,3 +1,4 @@
+// Package response 定义 Model 层统一 HTTP 响应结构与辅助方法。
 package response
 
 import (
@@ -7,9 +8,9 @@ import (
 )
 
 type Response struct {
-	Code int         `json:"code"`
-	Data interface{} `json:"data"`
-	Msg  string      `json:"msg"`
+	Code int         `json:"code"` // 业务状态码，0 表示成功
+	Data interface{} `json:"data"` // 响应数据载荷
+	Msg  string      `json:"msg"`  // 提示信息
 }
 
 const (

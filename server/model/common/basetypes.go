@@ -1,3 +1,4 @@
+// Package common 提供 Model 层公共类型，如 JSON 字段映射与树形节点接口。
 package common
 
 import (

@@ -1,3 +1,4 @@
+// 系统运行参数配置，对应 config.yaml 中 system 节点。
 package config
 
 type System struct {

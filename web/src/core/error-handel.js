@@ -1,3 +1,4 @@
+// 全局前端错误捕获，上报至系统错误日志接口
 import { createSysError } from '@/api/system/sysError'
 
 function sendErrorTip(errorInfo) {

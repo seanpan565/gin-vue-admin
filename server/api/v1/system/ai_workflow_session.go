@@ -1,5 +1,6 @@
 package system
 
+// AIWorkflowSessionApi AI工作流会话管理接口
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	commonReq "github.com/flipped-aurora/gin-vue-admin/server/model/common/request"

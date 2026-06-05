@@ -1,5 +1,6 @@
 package system
 
+// autoCodePackage 自动化代码包测试
 import (
 	"context"
 	"reflect"

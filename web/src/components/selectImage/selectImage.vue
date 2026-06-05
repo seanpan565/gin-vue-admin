@@ -1,3 +1,4 @@
+<!-- 图片/视频选择组件，支持单选、多选及媒体库弹窗 -->
 <template>
   <div>
     <selectComponent :rounded="rounded" v-if="!props.multiple" :model="model" @chooseItem="openChooseImg" @deleteItem="openChooseImg" />

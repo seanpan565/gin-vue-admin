@@ -1,3 +1,4 @@
+<!-- 外观设置模块 -->
 <template>
   <div class="gva-theme-font">
     <!-- Theme Mode Section -->

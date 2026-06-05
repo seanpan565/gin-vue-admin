@@ -1,3 +1,4 @@
+<!-- 自定义头像/图片/文件展示组件 -->
 <template>
   <span class="headerAvatar">
     <template v-if="picType === 'avatar'">

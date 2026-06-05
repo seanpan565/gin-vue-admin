@@ -1,3 +1,4 @@
+// Package initialize auto 插件安装初始化。
 package initialize
 
 import (
@@ -7,6 +8,9 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/plugin/plugin-tool/utils"
 )
 
+// menu.go 安装时向系统注册 auto 插件后台菜单。
+
+// Menu 注册 auto 插件菜单树。
 func Menu(ctx context.Context) {
 	_ = ctx
 	entities := []model.SysBaseMenu{

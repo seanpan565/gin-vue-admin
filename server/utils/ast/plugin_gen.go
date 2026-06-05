@@ -1,3 +1,4 @@
+// plugin_gen.go 向插件 gen/main.go 的 ApplyBasic 注入模型注册。
 package ast
 
 import (
@@ -6,6 +7,7 @@ import (
 	"io"
 )
 
+// PluginGen 插件 gen/main.go 注入器，向 ApplyBasic 追加模型实例参数。
 type PluginGen struct {
 	Base
 	Type         Type   // 类型

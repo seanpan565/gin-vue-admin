@@ -2,6 +2,7 @@ package system
 
 import "github.com/flipped-aurora/gin-vue-admin/server/global"
 
+// SysBaseMenuBtn 菜单按钮表模型
 type SysBaseMenuBtn struct {
 	global.GVA_MODEL
 	Name          string `json:"name" gorm:"comment:按钮关键key"`

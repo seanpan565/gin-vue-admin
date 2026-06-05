@@ -1,3 +1,4 @@
+<!-- 客户管理示例 -->
 <template>
   <div>
     <warning-bar

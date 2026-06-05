@@ -1,3 +1,4 @@
+// MySQL 数据库配置，对应 config.yaml 中 mysql 节点。
 package config
 
 type Mysql struct {

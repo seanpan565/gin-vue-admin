@@ -1,3 +1,4 @@
+// PostgreSQL 数据库配置，对应 config.yaml 中 pgsql 节点。
 package config
 
 type Pgsql struct {

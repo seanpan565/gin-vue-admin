@@ -1,3 +1,4 @@
+// 初始化无需鉴权的 API 白名单种子数据。
 package system
 
 import (

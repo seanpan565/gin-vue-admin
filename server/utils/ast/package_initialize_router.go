@@ -1,3 +1,4 @@
+// package_initialize_router.go 向 router_biz.go 注入业务路由初始化调用。
 package ast
 
 import (
@@ -7,7 +8,7 @@ import (
 	"io"
 )
 
-// PackageInitializeRouter 包初始化路由
+// PackageInitializeRouter router_biz.go 注入器，追加 Router 变量及 Init 路由调用。
 // ModuleName := PackageName.AppName.GroupName
 // ModuleName.FunctionName(RouterGroupName)
 type PackageInitializeRouter struct {
@@ -124,6 +125,7 @@ func (a *PackageInitializeRouter) Format(filename string, writer io.Writer, file
 	return a.Base.Format(filename, writer, file)
 }
 
+// CreateAssignStmt 创建 Router 模块变量的短变量声明语句。
 func (a *PackageInitializeRouter) CreateAssignStmt() *ast.AssignStmt {
 	//创建左侧变量
 	ident := &ast.Ident{

@@ -1,3 +1,4 @@
+<!-- 侧边栏模式布局 -->
 <template>
   <div class="flex h-full">
     <!-- 一级菜单常驻侧边栏 -->

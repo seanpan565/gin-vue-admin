@@ -1,3 +1,4 @@
+// ast_enter.go 通过访问者模式修改 enter/router 入口文件的 import 与结构体字段。
 package ast
 
 import (
@@ -14,6 +15,7 @@ import (
 	"strings"
 )
 
+// Visitor enter 文件 AST 访问者，用于追加 import、结构体字段与路由变量。
 type Visitor struct {
 	ImportCode  string
 	StructName  string
@@ -21,6 +23,7 @@ type Visitor struct {
 	GroupName   string
 }
 
+// Visit 遍历 AST 节点并按配置注入 import、结构体字段或路由变量。
 func (vi *Visitor) Visit(node ast.Node) ast.Visitor {
 	switch n := node.(type) {
 	case *ast.GenDecl:
@@ -151,6 +154,7 @@ func (vi *Visitor) addFuncBodyVar(funDecl *ast.FuncDecl) ast.Visitor {
 	return vi
 }
 
+// ImportReference 向指定文件注入 import、Group 结构体字段及 Routers 函数内路由变量。
 func ImportReference(filepath, importCode, structName, packageName, groupName string) error {
 	fSet := token.NewFileSet()
 	fParser, err := parser.ParseFile(fSet, filepath, nil, parser.ParseComments)

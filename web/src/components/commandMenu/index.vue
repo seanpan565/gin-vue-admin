@@ -1,3 +1,4 @@
+<!-- 全局快捷命令菜单，快速跳转功能页面 -->
 <template>
   <el-dialog
     v-model="dialogVisible"

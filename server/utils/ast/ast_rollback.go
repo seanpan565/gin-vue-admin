@@ -1,3 +1,4 @@
+// ast_rollback.go 回滚自动代码生成对 gorm/router 初始化文件的修改。
 package ast
 
 import (
@@ -12,11 +13,13 @@ import (
 	"path/filepath"
 )
 
+// RollBackAst 回滚 gorm 与 router 初始化文件中的自动生成代码。
 func RollBackAst(pk, model string) {
 	RollGormBack(pk, model)
 	RollRouterBack(pk, model)
 }
 
+// RollGormBack 从 gorm_biz.go 移除指定模型的 AutoMigrate 注册及多余 import。
 func RollGormBack(pk, model string) {
 
 	// 首先分析存在多少个ttt作为调用方的node块
@@ -94,6 +97,7 @@ func RollGormBack(pk, model string) {
 
 }
 
+// RollRouterBack 从 router_biz.go 移除指定 Router 变量及 Init 调用。
 func RollRouterBack(pk, model string) {
 
 	// 首先抓到所有的代码块结构 {}

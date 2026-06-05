@@ -1,4 +1,7 @@
+// Package task 定时任务，维护数据库表数据。
 package task
+
+// clearTable.go 按保留周期清理过期表记录。
 
 import (
 	"errors"
@@ -15,6 +18,7 @@ import (
 //@param: db(数据库对象) *gorm.DB, tableName(表名) string, compareField(比较字段) string, interval(间隔) string
 //@return: error
 
+// ClearTable 清理操作记录与 JWT 黑名单等过期数据。
 func ClearTable(db *gorm.DB) error {
 	var ClearTableDetail []common.ClearDB
 

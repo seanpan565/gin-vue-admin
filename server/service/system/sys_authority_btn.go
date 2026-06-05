@@ -1,5 +1,6 @@
 package system
 
+// AuthorityBtnService 角色按钮权限
 import (
 	"errors"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"

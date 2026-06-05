@@ -1,3 +1,4 @@
+// Oracle 数据库配置，对应 config.yaml 中 oracle 节点。
 package config
 
 import (

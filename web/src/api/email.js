@@ -1,3 +1,4 @@
+// 邮件 API：测试邮件发送
 import service from '@/utils/request'
 // @Tags email
 // @Summary 发送测试邮件

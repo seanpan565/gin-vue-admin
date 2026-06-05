@@ -1,3 +1,4 @@
+<!-- MCP 连接测试 -->
 <template>
   <div class="p-2">
     <el-card class="mb-2">

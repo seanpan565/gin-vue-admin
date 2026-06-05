@@ -1,3 +1,4 @@
+<!-- 个人中心 -->
 <template>
   <div class="profile-container">
     <!-- 顶部个人信息卡片 -->

@@ -1,3 +1,4 @@
+// 菜单 API：动态路由菜单与菜单 CRUD
 import service from '@/utils/request'
 // @Summary 用户登录 获取动态路由
 // @Produce  application/json

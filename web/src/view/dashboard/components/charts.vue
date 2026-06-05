@@ -1,3 +1,4 @@
+<!-- 仪表盘图表容器 -->
 <template>
   <div class="">
     <div class="flex items-center justify-between mb-2">

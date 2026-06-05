@@ -1,3 +1,4 @@
+// ast_router.go 向路由初始化函数注入 Router 变量与 Init 调用。
 package ast
 
 import (
@@ -11,10 +12,12 @@ import (
 	"strings"
 )
 
+// AppendNodeToList 在语句列表指定位置插入一条语句。
 func AppendNodeToList(stmts []ast.Stmt, stmt ast.Stmt, index int) []ast.Stmt {
 	return append(stmts[:index], append([]ast.Stmt{stmt}, stmts[index:]...)...)
 }
 
+// AddRouterCode 向 initBizRouter 函数注入 Router 变量定义及 Init 路由调用。
 func AddRouterCode(path, funcName, pk, model string) {
 	src, err := os.ReadFile(path)
 	if err != nil {

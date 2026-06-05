@@ -1,3 +1,4 @@
+// zap.go 基于配置初始化 Zap 日志库，支持多级别输出与错误入库。
 package core
 
 import (

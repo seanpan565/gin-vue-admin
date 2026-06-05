@@ -1,5 +1,7 @@
+// Package response 邮件插件响应模型。
 package response
 
+// Email 发送邮件请求参数。
 type Email struct {
 	To      string `json:"to"`      // 邮件发送给谁
 	Subject string `json:"subject"` // 邮件标题

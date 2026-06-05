@@ -1,5 +1,6 @@
 package request
 
+// MCP 代码生成相关请求参数
 type AutoMcpTool struct {
 	Name        string `json:"name" form:"name" binding:"required"`
 	Description string `json:"description" form:"description" binding:"required"`

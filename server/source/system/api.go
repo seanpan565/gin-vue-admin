@@ -1,3 +1,4 @@
+// 初始化系统 API 路由种子数据（sys_apis 表）。
 package system
 
 import (

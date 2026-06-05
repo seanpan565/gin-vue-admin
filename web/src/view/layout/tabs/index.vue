@@ -1,3 +1,4 @@
+<!-- 多标签页管理 -->
 <template>
   <div class="gva-tabs">
     <el-tabs

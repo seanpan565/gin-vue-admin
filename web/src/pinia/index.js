@@ -1,3 +1,4 @@
+// Pinia 状态管理入口，统一导出各 store
 import { createPinia } from 'pinia'
 import { useAppStore } from '@/pinia/modules/app'
 import { useUserStore } from '@/pinia/modules/user'

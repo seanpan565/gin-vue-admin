@@ -1,3 +1,4 @@
+<!-- 侧边栏容器 -->
 <template>
   <div>
     <normal-mode

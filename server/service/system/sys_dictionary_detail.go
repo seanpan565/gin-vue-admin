@@ -1,5 +1,6 @@
 package system
 
+// DictionaryDetailService 字典详情管理
 import (
 	"fmt"
 	"strconv"

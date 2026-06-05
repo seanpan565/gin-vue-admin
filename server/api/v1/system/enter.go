@@ -1,7 +1,9 @@
+// Package system 系统管理模块API
 package system
 
 import "github.com/flipped-aurora/gin-vue-admin/server/service"
 
+// ApiGroup 系统模块API分组
 type ApiGroup struct {
 	DBApi
 	JwtApi
@@ -30,6 +32,7 @@ type ApiGroup struct {
 	AIWorkflowSessionApi
 }
 
+// 注入 service 层依赖
 var (
 	apiService               = service.ServiceGroupApp.SystemServiceGroup.ApiService
 	jwtService               = service.ServiceGroupApp.SystemServiceGroup.JwtService

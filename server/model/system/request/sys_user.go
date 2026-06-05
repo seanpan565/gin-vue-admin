@@ -5,6 +5,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
 )
 
+// 用户管理相关请求参数
 // Register User register structure
 type Register struct {
 	Username     string `json:"userName" example:"用户名"`

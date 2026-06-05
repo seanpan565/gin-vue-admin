@@ -1,5 +1,6 @@
 package utils
 
+// 系统级事件管理，支持注册与触发重载回调。
 import (
 	"sync"
 )
@@ -10,7 +11,7 @@ type SystemEvents struct {
 	mu             sync.RWMutex
 }
 
-// 全局事件管理器
+// GlobalSystemEvents 全局系统事件管理器
 var GlobalSystemEvents = &SystemEvents{}
 
 // RegisterReloadHandler 注册系统重载处理函数

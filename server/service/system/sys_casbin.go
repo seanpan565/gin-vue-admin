@@ -1,5 +1,6 @@
 package system
 
+// CasbinService 权限策略管理
 import (
 	"errors"
 	"strconv"

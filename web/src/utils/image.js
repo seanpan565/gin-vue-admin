@@ -1,3 +1,4 @@
+// 图片压缩：上传前按尺寸/大小压缩
 export default class ImageCompress {
   constructor(file, fileSize, maxWH = 1920) {
     this.file = file

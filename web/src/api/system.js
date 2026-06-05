@@ -1,3 +1,4 @@
+// 系统配置 API：读取与更新 server 配置
 import service from '@/utils/request'
 // @Tags systrm
 // @Summary 获取配置文件内容

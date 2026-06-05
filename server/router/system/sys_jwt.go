@@ -1,5 +1,7 @@
 package system
 
+// InitJwtRouter 注册JWT黑名单相关路由
+
 import (
 	"github.com/gin-gonic/gin"
 )

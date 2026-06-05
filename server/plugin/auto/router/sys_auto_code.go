@@ -1,9 +1,12 @@
+// sys_auto_code.go 代码生成器、MCP 与插件管理相关路由。
 package router
 
 import "github.com/gin-gonic/gin"
 
+// AutoCodeRouter 代码生成器路由组。
 type AutoCodeRouter struct{}
 
+// InitAutoCodeRouter 注册代码生成器路由。
 func (s *AutoCodeRouter) InitAutoCodeRouter(Router *gin.RouterGroup, RouterPublic *gin.RouterGroup) {
 	autoCodeRouter := Router.Group("autoCode")
 	publicAutoCodeRouter := RouterPublic.Group("autoCode")

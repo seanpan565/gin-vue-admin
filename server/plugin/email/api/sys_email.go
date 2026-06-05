@@ -1,4 +1,7 @@
+// Package api 邮件插件 API 层。
 package api
+
+// sys_email.go 邮件发送与测试接口。
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
@@ -9,6 +12,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// EmailApi 邮件 API 处理器。
 type EmailApi struct{}
 
 // EmailTest

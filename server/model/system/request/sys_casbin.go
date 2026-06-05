@@ -1,5 +1,6 @@
 package request
 
+// Casbin 权限策略相关请求参数
 // CasbinInfo Casbin info structure
 type CasbinInfo struct {
 	Path   string `json:"path"`   // 路径

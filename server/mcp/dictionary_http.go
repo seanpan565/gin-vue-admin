@@ -1,4 +1,7 @@
+// Package mcpTool 字典相关上游 HTTP 调用封装。
 package mcpTool
+
+// dictionary_http.go 字典 CRUD 上游 API 代理。
 
 import (
 	"context"
@@ -9,6 +12,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/utils"
 )
 
+// exportedDictionary 导出的字典结构。
 type exportedDictionary struct {
 	Name                 string                       `json:"name"`
 	Type                 string                       `json:"type"`

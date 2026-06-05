@@ -1,5 +1,7 @@
+// Package stacktrace 提供调用栈解析工具，用于定位业务代码位置。
 package stacktrace
 
+// 调用栈解析，从 zap 堆栈文本中提取最终业务调用帧。
 import (
     "regexp"
     "strconv"

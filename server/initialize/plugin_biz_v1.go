@@ -1,3 +1,4 @@
+// plugin_biz_v1.go v1 插件注册（RouterGroup 模式），如邮件插件。
 package initialize
 
 import (

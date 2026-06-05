@@ -1,3 +1,4 @@
+// Package mcpTool MCP 工具：GVA 生成代码审查。
 package mcpTool
 
 import (
@@ -11,9 +12,11 @@ import (
 )
 
 // GVAReviewer GVA代码审查工具
+// GVAReviewer GVA 代码审查工具。
 type GVAReviewer struct{}
 
 // init 注册工具
+// init 注册 gva_review 工具。
 func init() {
 	RegisterTool(&GVAReviewer{})
 }

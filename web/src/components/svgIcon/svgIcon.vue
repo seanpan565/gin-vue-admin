@@ -1,3 +1,4 @@
+<!-- SVG 图标组件，支持本地 symbol 与 Iconify 在线图标 -->
 <template>
   <template v-if="localIcon">
     <svg aria-hidden="true" width="1em" height="1em" v-bind="bindAttrs">

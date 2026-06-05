@@ -1,3 +1,4 @@
+<!-- 图生代码 -->
 <template>
   <div>
     <warning-bar

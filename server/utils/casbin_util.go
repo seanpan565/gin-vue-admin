@@ -1,5 +1,6 @@
 package utils
 
+// Casbin RBAC 权限引擎单例获取。
 import (
 	"sync"
 

@@ -1,5 +1,6 @@
 package upload
 
+// AWS S3 对象存储实现。
 import (
 	"context"
 	"errors"
@@ -17,6 +18,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// AwsS3 AWS S3 存储
 type AwsS3 struct{}
 
 //@author: [WqyJh](https://github.com/WqyJh)

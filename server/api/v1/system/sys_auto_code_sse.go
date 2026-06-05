@@ -1,5 +1,6 @@
 package system
 
+// AutoCodeApi 代码生成LLM流式接口
 import (
 	"bufio"
 	"errors"

@@ -4,6 +4,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// SysAutoCodePackage 代码生成包配置表模型
 type SysAutoCodePackage struct {
 	global.GVA_MODEL
 	Desc        string `json:"desc" gorm:"comment:描述"`

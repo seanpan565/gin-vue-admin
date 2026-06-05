@@ -1,3 +1,4 @@
+<!-- Word 文档在线预览组件 -->
 <template>
   <vue-office-docx :src="docx" @rendered="rendered" />
 </template>

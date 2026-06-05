@@ -1,3 +1,5 @@
+// Package middleware Gin 中间件层，提供鉴权、权限、跨域、限流、日志等 HTTP 拦截能力。
+// jwt.go JWT 鉴权中间件，校验 token 有效性并支持临近过期自动续签。
 package middleware
 
 import (
@@ -13,6 +15,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// JWTAuth 校验 x-token，处理黑名单、过期续签及多点登录状态。
 func JWTAuth() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// 我们这里jwt鉴权取头部信息 x-token 登录时回返回token信息 这里前端需要把token存储到cookie或者本地localStorage中 不过需要跟后端协商过期时间 可以约定刷新令牌或者重新登录

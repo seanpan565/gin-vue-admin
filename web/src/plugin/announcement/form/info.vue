@@ -1,3 +1,4 @@
+<!-- 公告表单组件 -->
 <template>
   <div>
     <div class="gva-form-box">

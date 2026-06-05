@@ -6,6 +6,7 @@ import (
 	system "github.com/flipped-aurora/gin-vue-admin/server/model/system"
 )
 
+// AI 工作流会话相关请求参数
 type SysAIWorkflowSessionUpsert struct {
 	ID             uint                       `json:"id"`
 	Tab            string                     `json:"tab"`

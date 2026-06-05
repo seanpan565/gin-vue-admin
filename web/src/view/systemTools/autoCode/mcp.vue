@@ -1,3 +1,4 @@
+<!-- MCP 配置 -->
 <template>
   <div class="gva-form-box">
     <el-form :model="form" ref="formRef" label-width="100px" :rules="rules">

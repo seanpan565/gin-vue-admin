@@ -4,6 +4,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// ExaFileUploadAndDownload 文件上传下载记录表模型
 type ExaFileUploadAndDownload struct {
 	global.GVA_MODEL
 	Name    string `json:"name" form:"name" gorm:"column:name;comment:文件名"`                                // 文件名

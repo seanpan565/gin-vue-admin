@@ -1,3 +1,4 @@
+// gorm_mysql.go MySQL 数据库连接初始化。
 package initialize
 
 import (

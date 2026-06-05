@@ -1,3 +1,4 @@
+<!-- 通用文件上传组件，支持图片与视频 -->
 <template>
   <div>
     <el-upload

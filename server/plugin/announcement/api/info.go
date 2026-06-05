@@ -1,5 +1,7 @@
+// Package api 公告插件 API 层。
 package api
 
+// info.go 公告 CRUD 及公开接口处理器。
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
@@ -11,6 +13,7 @@ import (
 
 var Info = new(info)
 
+// info 公告 API 处理器。
 type info struct{}
 
 // CreateInfo 创建公告

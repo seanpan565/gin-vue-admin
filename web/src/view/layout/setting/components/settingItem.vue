@@ -1,3 +1,4 @@
+<!-- 设置项通用组件 -->
 <template>
   <div class="gva-theme-setting-item" :style="themeStyleVars">
     <div class="flex items-center gap-2">

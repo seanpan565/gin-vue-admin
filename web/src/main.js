@@ -1,3 +1,4 @@
+// 应用入口：初始化 Vue 实例并挂载全局插件
 import './style/element_visiable.scss'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import 'uno.css'

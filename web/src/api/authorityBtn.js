@@ -1,3 +1,4 @@
+// 角色按钮权限 API：菜单按钮级权限配置
 import service from '@/utils/request'
 
 export const getAuthorityBtnApi = (data) => {

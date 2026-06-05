@@ -1,5 +1,7 @@
 package example
 
+// InitAttachmentCategoryRouterRouter 注册附件分类相关路由
+
 import (
 	"github.com/gin-gonic/gin"
 )

@@ -1,3 +1,4 @@
+// 示例模块路由组：注册客户、附件分类、文件上传等示例业务路由
 package example
 
 import (

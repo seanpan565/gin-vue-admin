@@ -1,3 +1,4 @@
+// 仪表盘子组件统一导出
 import GvaBanner from './banner.vue'
 import GvaCard from './card.vue'
 import GvaChart from './charts.vue'

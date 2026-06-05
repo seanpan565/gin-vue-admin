@@ -1,3 +1,4 @@
+<!-- 邮件插件配置页 -->
 <template>
   <div>
     <warning-bar

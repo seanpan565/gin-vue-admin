@@ -1,3 +1,4 @@
+<!-- 打包插件 -->
 <template>
   <div class="gva-form-box">
     <div class="p-4 bg-white dark:bg-slate-900">

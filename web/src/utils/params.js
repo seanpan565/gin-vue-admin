@@ -1,3 +1,4 @@
+// 系统参数工具：异步获取并缓存后台参数值
 import { useParamsStore } from '@/pinia/modules/params'
 /*
  * 获取参数方法 使用示例 getParams('key').then(res)  或者 async函数下 const res = await getParams('key')

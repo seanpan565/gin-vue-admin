@@ -1,5 +1,6 @@
 package upload
 
+// 阿里云 OSS 对象存储实现。
 import (
 	"errors"
 	"mime/multipart"
@@ -10,6 +11,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// AliyunOSS 阿里云 OSS 存储
 type AliyunOSS struct{}
 
 func (*AliyunOSS) UploadFile(file *multipart.FileHeader) (string, string, error) {
@@ -58,6 +60,7 @@ func (*AliyunOSS) DeleteFile(key string) error {
 	return nil
 }
 
+// NewBucket 创建并返回阿里云 OSS Bucket 实例
 func NewBucket() (*oss.Bucket, error) {
 	// 创建OSSClient实例。
 	client, err := oss.New(global.GVA_CONFIG.AliyunOSS.Endpoint, global.GVA_CONFIG.AliyunOSS.AccessKeyId, global.GVA_CONFIG.AliyunOSS.AccessKeySecret)

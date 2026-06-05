@@ -1,3 +1,4 @@
+<!-- 角色权限管理 -->
 <template>
   <div class="authority">
     <warning-bar title="注：右上角头像下拉可切换角色" />

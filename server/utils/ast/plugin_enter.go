@@ -1,3 +1,4 @@
+// plugin_enter.go 向插件 enter 文件注入结构体字段与服务变量。
 package ast
 
 import (
@@ -6,7 +7,7 @@ import (
 	"io"
 )
 
-// PluginEnter 插件化入口
+// PluginEnter 插件 enter 文件注入器，追加 Group 结构体字段与模块单例变量。
 // ModuleName := PackageName.GroupName.ServiceName
 type PluginEnter struct {
 	Base

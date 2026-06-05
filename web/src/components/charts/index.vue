@@ -1,3 +1,4 @@
+<!-- ECharts 图表封装组件，支持窗口自适应 -->
 <template>
   <VCharts
     v-if="renderChart"

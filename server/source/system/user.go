@@ -1,3 +1,4 @@
+// 初始化默认管理员账号种子数据。
 package system
 
 import (

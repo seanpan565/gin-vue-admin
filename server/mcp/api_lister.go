@@ -1,4 +1,7 @@
+// Package mcpTool MCP 工具：列出系统全部 API。
 package mcpTool
+
+// api_lister.go 对比数据库 API 与 Gin 路由 API。
 
 import (
 	"context"
@@ -8,6 +11,7 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+// init 注册 list_all_apis 工具。
 func init() {
 	RegisterTool(&ApiLister{})
 }
@@ -33,6 +37,7 @@ type mcpRoutesResponse struct {
 	Routes gin.RoutesInfo `json:"routes"`
 }
 
+// ApiLister 系统 API 列表工具。
 type ApiLister struct{}
 
 func (a *ApiLister) New() mcp.Tool {

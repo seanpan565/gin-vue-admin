@@ -1,3 +1,4 @@
+<!-- 文件上传示例 -->
 <template>
   <div v-loading.fullscreen.lock="fullscreenLoading">
     <div class="flex gap-4 pt-2">

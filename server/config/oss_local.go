@@ -1,3 +1,4 @@
+// 本地文件存储配置，对应 config.yaml 中 local 节点。
 package config
 
 type Local struct {

@@ -1,5 +1,7 @@
+// Package service 公告插件业务层。
 package service
 
+// info.go 公告数据持久化与查询逻辑。
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/model"
@@ -8,6 +10,7 @@ import (
 
 var Info = new(info)
 
+// info 公告 Service 实现。
 type info struct{}
 
 // CreateInfo 创建公告记录

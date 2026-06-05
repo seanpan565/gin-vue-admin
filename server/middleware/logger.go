@@ -1,3 +1,4 @@
+// logger.go 可定制的结构化请求日志中间件，支持 JSON 输出。
 package middleware
 
 import (
@@ -77,6 +78,7 @@ func (l Logger) SetLoggerMiddleware() gin.HandlerFunc {
 	}
 }
 
+// DefaultLogger 输出 JSON 格式请求日志，适用于 k8s 日志采集。
 func DefaultLogger() gin.HandlerFunc {
 	return Logger{
 		Print: func(layout LogLayout) {

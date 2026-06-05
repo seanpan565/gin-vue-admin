@@ -1,3 +1,4 @@
+// Package request 定义系统模块 API 请求参数结构。
 package request
 
 import (
@@ -5,6 +6,7 @@ import (
 	"github.com/google/uuid"
 )
 
+// CustomClaims JWT 自定义载荷结构
 // CustomClaims structure
 type CustomClaims struct {
 	BaseClaims

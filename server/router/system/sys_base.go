@@ -1,5 +1,7 @@
 package system
 
+// InitBaseRouter 注册登录、验证码等基础路由
+
 import (
 	"github.com/gin-gonic/gin"
 )

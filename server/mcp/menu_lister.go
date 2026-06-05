@@ -1,4 +1,7 @@
+// Package mcpTool MCP 工具：列出系统全部菜单。
 package mcpTool
+
+// menu_lister.go 获取完整菜单树供 AI 配置路由。
 
 import (
 	"context"
@@ -7,6 +10,7 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+// init 注册 list_all_menus 工具。
 func init() {
 	RegisterTool(&MenuLister{})
 }
@@ -19,6 +23,7 @@ type MenuListResponse struct {
 	Description string               `json:"description"`
 }
 
+// MenuLister 菜单列表工具。
 type MenuLister struct{}
 
 func (m *MenuLister) New() mcp.Tool {

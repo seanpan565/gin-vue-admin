@@ -1,9 +1,11 @@
+// Package service 邮件插件业务层。
 package service
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email/utils"
 )
 
+// EmailService 邮件 Service 实现。
 type EmailService struct{}
 
 //@author: [maplepie](https://github.com/maplepie)

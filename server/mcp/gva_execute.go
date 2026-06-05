@@ -1,3 +1,4 @@
+// Package mcpTool MCP 工具：GVA 代码生成执行器。
 package mcpTool
 
 import (
@@ -15,11 +16,13 @@ import (
 )
 
 // 注册工具
+// init 注册 gva_execute 工具。
 func init() {
 	RegisterTool(&GVAExecutor{})
 }
 
 // GVAExecutor GVA代码生成器
+// GVAExecutor GVA 代码生成执行工具。
 type GVAExecutor struct{}
 
 // ExecuteRequest 执行请求结构体
@@ -40,6 +43,7 @@ type ExecuteResponse struct {
 }
 
 // ExecutionPlan 执行计划结构体
+// ExecutionPlan 代码生成执行计划。
 type ExecutionPlan struct {
 	PackageName             string                            `json:"packageName"`
 	PackageType             string                            `json:"packageType"` // "plugin" 或 "package"

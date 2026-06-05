@@ -1,3 +1,5 @@
+// Package global 定义全局单例变量（DB、Redis、配置、日志等），供各层共享访问。
+// global.go 全局变量声明及按别名获取 DB/Redis 实例的辅助方法。
 package global
 
 import (

@@ -1,5 +1,6 @@
 package system
 
+// autoCodeTemplate MCP工具代码生成
 import (
 	"context"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"

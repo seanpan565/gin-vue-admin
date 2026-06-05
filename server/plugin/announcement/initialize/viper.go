@@ -1,4 +1,7 @@
+// Package initialize 公告插件安装初始化。
 package initialize
+
+// viper.go 从配置文件加载公告插件配置。
 
 import (
 	"fmt"
@@ -8,6 +11,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// Viper 解析 announcement 配置节。
 func Viper() {
 	err := global.GVA_VP.UnmarshalKey("announcement", &plugin.Config)
 	if err != nil {

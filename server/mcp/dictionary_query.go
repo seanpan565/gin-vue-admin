@@ -1,4 +1,7 @@
+// Package mcpTool MCP 工具：查询系统字典。
 package mcpTool
+
+// dictionary_query.go 获取字典及字典项供 AI 生成逻辑。
 
 import (
 	"context"
@@ -7,6 +10,7 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+// init 注册 query_dictionaries 工具。
 func init() {
 	RegisterTool(&DictionaryQuery{})
 }
@@ -41,6 +45,7 @@ type DictionaryQueryResponse struct {
 	Dictionaries []DictionaryInfo `json:"dictionaries"`
 }
 
+// DictionaryQuery 字典查询工具。
 type DictionaryQuery struct{}
 
 func (d *DictionaryQuery) New() mcp.Tool {

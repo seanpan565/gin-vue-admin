@@ -1,3 +1,4 @@
+// 阿里云 OSS 配置，对应 config.yaml 中 aliyun-oss 节点。
 package config
 
 type AliyunOSS struct {

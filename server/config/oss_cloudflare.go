@@ -1,3 +1,4 @@
+// Cloudflare R2 配置，对应 config.yaml 中 cloudflare-r2 节点。
 package config
 
 type CloudflareR2 struct {

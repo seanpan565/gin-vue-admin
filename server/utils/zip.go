@@ -1,5 +1,6 @@
 package utils
 
+// ZIP 压缩包解压工具。
 import (
 	"archive/zip"
 	"fmt"
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-// 解压
+// Unzip 解压 ZIP 文件到目标目录，返回解压后的文件路径列表
 func Unzip(zipFile string, destDir string) ([]string, error) {
 	zipReader, err := zip.OpenReader(zipFile)
 	var paths []string

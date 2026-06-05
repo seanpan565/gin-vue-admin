@@ -1,4 +1,7 @@
+// Package utils 邮件插件发送工具。
 package utils
+
+// email.go SMTP 发信与 LOGIN 认证实现。
 
 import (
 	"crypto/tls"
@@ -88,6 +91,7 @@ func send(to []string, subject string, body string) error {
 }
 
 // LoginAuth 用于IBM、微软邮箱服务器的LOGIN认证方式
+// loginAuth IBM/微软邮箱 LOGIN 认证。
 type loginAuth struct {
 	username, password string
 }

@@ -1,3 +1,4 @@
+// Axios 请求封装：Token 注入、Loading 与统一错误处理
 import axios from 'axios'
 import { useUserStore } from '@/pinia/modules/user'
 import { ElLoading, ElMessage } from 'element-plus'
@@ -116,6 +117,7 @@ const resetLoading = () => {
   closeLoadingInstance()
 }
 
+// 请求/响应拦截：Token、Loading 计数与 401 登出
 service.interceptors.request.use(
   (config) => {
     if (typeof config.timeout === 'undefined') {

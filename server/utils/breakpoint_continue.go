@@ -1,5 +1,6 @@
 package utils
 
+// 大文件断点续传，支持分片上传、合并与清理。
 import (
 	"errors"
 	"os"

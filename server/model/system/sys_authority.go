@@ -4,6 +4,7 @@ import (
 	"time"
 )
 
+// SysAuthority 系统角色表模型
 type SysAuthority struct {
 	CreatedAt       time.Time       // 创建时间
 	UpdatedAt       time.Time       // 更新时间

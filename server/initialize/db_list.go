@@ -1,3 +1,4 @@
+// db_list.go 初始化多数据库连接列表，支持别名切换主库。
 package initialize
 
 import (
@@ -8,6 +9,7 @@ import (
 
 const sys = "system"
 
+// DBList 遍历配置初始化多个数据库连接，alias 为 system 时覆盖主库。
 func DBList() {
 	dbMap := make(map[string]*gorm.DB)
 	for _, info := range global.GVA_CONFIG.DBList {

@@ -1,3 +1,4 @@
+<!-- 角色 API 权限配置 -->
 <template>
   <div>
     <div class="sticky top-0.5 z-10 flex space-x-2">

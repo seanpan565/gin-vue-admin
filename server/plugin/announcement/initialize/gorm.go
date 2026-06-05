@@ -1,4 +1,7 @@
+// Package initialize 公告插件安装初始化。
 package initialize
+
+// gorm.go 安装时迁移公告数据表。
 
 import (
 	"context"
@@ -9,6 +12,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// Gorm 自动迁移公告 Info 表。
 func Gorm(ctx context.Context) {
 	err := global.GVA_DB.WithContext(ctx).AutoMigrate(
 		new(model.Info),

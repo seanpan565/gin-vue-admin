@@ -1,9 +1,12 @@
+// sys_skills.go AI 技能管理相关路由。
 package router
 
 import "github.com/gin-gonic/gin"
 
+// SkillsRouter 技能管理路由组。
 type SkillsRouter struct{}
 
+// InitSkillsRouter 注册技能管理路由。
 func (s *SkillsRouter) InitSkillsRouter(Router *gin.RouterGroup, pubRouter *gin.RouterGroup) {
 	skillsRouter := Router.Group("skills")
 	skillsRouterPub := pubRouter.Group("skills")

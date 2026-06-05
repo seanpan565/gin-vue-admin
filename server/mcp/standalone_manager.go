@@ -1,4 +1,7 @@
+// Package mcpTool MCP 独立进程托管与生命周期管理。
 package mcpTool
+
+// standalone_manager.go 启动、停止与健康检查独立 MCP 服务。
 
 import (
 	"context"
@@ -28,6 +31,7 @@ const (
 	mcpBuildTimeout       = 2 * time.Minute
 )
 
+// ManagedStandaloneStatus 托管 MCP 进程运行状态。
 type ManagedStandaloneStatus struct {
 	State      string `json:"state"`
 	Managed    bool   `json:"managed"`
@@ -45,6 +49,7 @@ type ManagedStandaloneStatus struct {
 	Message    string `json:"message,omitempty"`
 }
 
+// managedProcessMeta 托管进程元数据。
 type managedProcessMeta struct {
 	PID        int      `json:"pid"`
 	StartedAt  string   `json:"startedAt"`
@@ -85,6 +90,7 @@ func ResolveMCPHealthURL() string {
 	return baseURL.String()
 }
 
+// GetManagedStandaloneStatus 查询托管 MCP 服务状态。
 func GetManagedStandaloneStatus(ctx context.Context) ManagedStandaloneStatus {
 	reachable, reachErr := checkMCPHealth(ctx)
 	meta, _ := readManagedProcessMeta()
@@ -139,6 +145,7 @@ func GetManagedStandaloneStatus(ctx context.Context) ManagedStandaloneStatus {
 	return status
 }
 
+// StartManagedStandalone 启动托管 MCP 独立服务。
 func StartManagedStandalone(ctx context.Context) (ManagedStandaloneStatus, error) {
 	current := GetManagedStandaloneStatus(ctx)
 	if current.Reachable {
@@ -197,6 +204,7 @@ func StartManagedStandalone(ctx context.Context) (ManagedStandaloneStatus, error
 	return waitForManagedProcess(ctx, meta)
 }
 
+// StopManagedStandalone 停止托管 MCP 独立服务。
 func StopManagedStandalone(ctx context.Context) (ManagedStandaloneStatus, error) {
 	meta, err := readManagedProcessMeta()
 	if err != nil {

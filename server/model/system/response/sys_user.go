@@ -4,6 +4,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
 )
 
+// 用户管理相关响应结构
 type SysUserResponse struct {
 	User system.SysUser `json:"user"`
 }

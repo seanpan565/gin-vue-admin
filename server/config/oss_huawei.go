@@ -1,3 +1,4 @@
+// 华为云 OBS 配置，对应 config.yaml 中 hua-wei-obs 节点。
 package config
 
 type HuaWeiObs struct {

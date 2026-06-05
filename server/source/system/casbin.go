@@ -1,3 +1,4 @@
+// 初始化 Casbin 权限策略种子数据。
 package system
 
 import (

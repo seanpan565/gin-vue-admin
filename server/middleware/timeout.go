@@ -1,3 +1,4 @@
+// timeout.go 请求超时控制中间件，防止慢请求长期占用连接。
 package middleware
 
 import (

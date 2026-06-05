@@ -1,3 +1,5 @@
+// MCP 独立服务入口：与主 Web 服务分离运行，提供 AI 代码生成等 MCP 工具
+// 启动命令：go run ./cmd/mcp -config ./cmd/mcp/config.yaml
 package main
 
 import (
@@ -9,6 +11,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// main 加载 MCP 配置、初始化日志并启动 StreamableHTTP MCP 服务
 func main() {
 	configPath, err := loadStandaloneConfig()
 	if err != nil {

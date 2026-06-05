@@ -1,3 +1,4 @@
+// 动态路由处理：将后台返回的组件路径转为懒加载模块
 const viewModules = import.meta.glob('../view/**/*.vue')
 const pluginModules = import.meta.glob('../plugin/**/*.vue')
 

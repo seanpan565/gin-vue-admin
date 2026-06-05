@@ -2,6 +2,7 @@ package response
 
 import "github.com/flipped-aurora/gin-vue-admin/server/model/system"
 
+// 代码自动生成相关响应结构
 type Db struct {
 	Database string `json:"database" gorm:"column:database"`
 }

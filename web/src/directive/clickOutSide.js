@@ -1,3 +1,4 @@
+// v-click-outside 指令：点击元素外部时触发回调
 export default {
   install: (app) => {
     app.directive('click-outside', {

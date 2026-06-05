@@ -1,11 +1,15 @@
+// ast_type.go 定义自动代码生成目标文件类型常量及分组名映射。
 package ast
 
+// Type 自动代码生成目标文件类型标识。
 type Type string
 
+// String 返回类型字符串值。
 func (r Type) String() string {
 	return string(r)
 }
 
+// Group 根据类型返回 enter 文件中对应的分组结构体名。
 func (r Type) Group() string {
 	switch r {
 	case TypePackageApiEnter:

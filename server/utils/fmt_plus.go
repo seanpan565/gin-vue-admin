@@ -1,5 +1,6 @@
 package utils
 
+// 字符串格式化、反射转换与树形结构构建等通用工具。
 import (
 	"fmt"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common"
@@ -39,10 +40,12 @@ func ArrayToString(array []interface{}) string {
 	return strings.Replace(strings.Trim(fmt.Sprint(array), "[]"), " ", ",", -1)
 }
 
+// Pointer 返回值的指针
 func Pointer[T any](in T) (out *T) {
 	return &in
 }
 
+// FirstUpper 首字母大写
 func FirstUpper(s string) string {
 	if s == "" {
 		return ""
@@ -50,6 +53,7 @@ func FirstUpper(s string) string {
 	return strings.ToUpper(s[:1]) + s[1:]
 }
 
+// FirstLower 首字母小写
 func FirstLower(s string) string {
 	if s == "" {
 		return ""
@@ -95,6 +99,7 @@ func RandomString(n int) string {
 	return string(b)
 }
 
+// RandomInt 生成 [min, max) 范围内的随机整数
 func RandomInt(min, max int) int {
 	return min + rand.Intn(max-min)
 }

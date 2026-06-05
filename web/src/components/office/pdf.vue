@@ -1,3 +1,4 @@
+<!-- PDF 文件在线预览组件 -->
 <template>
   <vue-office-pdf
     :src="pdf"

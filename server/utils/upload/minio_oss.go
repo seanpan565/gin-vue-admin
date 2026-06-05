@@ -1,5 +1,6 @@
 package upload
 
+// MinIO 对象存储实现。
 import (
 	"bytes"
 	"context"
@@ -20,11 +21,13 @@ import (
 
 var MinioClient *Minio // 优化性能，但是不支持动态配置
 
+// Minio MinIO 存储客户端
 type Minio struct {
 	Client *minio.Client
 	bucket string
 }
 
+// GetMinio 获取或初始化 MinIO 客户端单例
 func GetMinio(endpoint, accessKeyID, secretAccessKey, bucketName string, useSSL bool) (*Minio, error) {
 	if MinioClient != nil {
 		return MinioClient, nil

@@ -1,3 +1,4 @@
+// Package initialize auto 插件安装初始化。
 package initialize
 
 import (
@@ -7,6 +8,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// router.go 安装时挂载 auto 插件 HTTP 路由。
+
+// Router 注册 auto 插件路由入口。
 func Router(engine *gin.Engine) {
 	InitializeRouter(engine)
 }

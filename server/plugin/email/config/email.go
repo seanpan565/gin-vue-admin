@@ -1,5 +1,7 @@
+// Package config 邮件插件 SMTP 配置。
 package config
 
+// Email SMTP 连接配置。
 type Email struct {
 	To          string `mapstructure:"to" json:"to" yaml:"to"`                               // 收件人:多个以英文逗号分隔 例：a@qq.com b@qq.com 正式开发中请把此项目作为参数使用
 	From        string `mapstructure:"from" json:"from" yaml:"from"`                         // 发件人  你自己要发邮件的邮箱

@@ -1,3 +1,4 @@
+<!-- 错误信息预览弹窗，展示错误类型与详情 -->
 <template>
   <div 
     class="fixed inset-0 bg-black/40 dark:bg-black/60 flex items-center justify-center z-[999]"

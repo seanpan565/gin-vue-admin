@@ -1,3 +1,4 @@
+// 公告插件 API：公告信息 CRUD
 import service from '@/utils/request'
 
 // @Tags Info

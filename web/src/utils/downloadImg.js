@@ -1,3 +1,4 @@
+// 图片下载：跨域 canvas 导出为本地文件
 export const downloadImage = (imgsrc, name) => {
   // 下载图片地址和图片名
   var image = new Image()

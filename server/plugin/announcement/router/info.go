@@ -1,5 +1,7 @@
+// Package router 公告插件路由层。
 package router
 
+// info.go 公告 HTTP 路由注册。
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/middleware"
 	"github.com/gin-gonic/gin"
@@ -7,9 +9,10 @@ import (
 
 var Info = new(info)
 
+// info 公告路由处理器。
 type info struct{}
 
-// Init 初始化 公告 路由信息
+// Init 注册公告私有与公开路由。
 func (r *info) Init(public *gin.RouterGroup, private *gin.RouterGroup) {
 	{
 		group := private.Group("info").Use(middleware.OperationRecord())

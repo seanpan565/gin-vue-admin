@@ -1,3 +1,4 @@
+// MCP 独立服务配置加载：解析 yaml、填充默认值、自动识别项目根目录
 package main
 
 import (
@@ -15,6 +16,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// standaloneConfig MCP 独立进程所需的最小配置子集
 type standaloneConfig struct {
 	MCP      config.MCP      `yaml:"mcp"`
 	AutoCode config.Autocode `yaml:"autocode"`

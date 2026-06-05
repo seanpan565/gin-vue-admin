@@ -1,3 +1,4 @@
+// 插件市场 API：获取可安装插件列表
 import service from '@/utils/request'
 
 export const getShopPluginList = (params) => {

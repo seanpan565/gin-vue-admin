@@ -1,3 +1,4 @@
+// ast_auto_enter.go 向自动生成的 enter 结构体追加嵌入类型字段。
 package ast
 
 import (
@@ -10,6 +11,7 @@ import (
 	"os"
 )
 
+// ImportForAutoEnter 向指定 enter 结构体追加嵌入类型字段（已存在则跳过）。
 func ImportForAutoEnter(path string, funcName string, code string) {
 	src, err := os.ReadFile(path)
 	if err != nil {

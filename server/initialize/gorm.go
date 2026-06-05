@@ -1,3 +1,4 @@
+// gorm.go 按配置选择数据库驱动，并自动迁移系统与示例表结构。
 package initialize
 
 import (
@@ -11,6 +12,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Gorm 根据 system.db-type 初始化对应数据库连接。
 func Gorm() *gorm.DB {
 	switch global.GVA_CONFIG.System.DbType {
 	case "mysql":
@@ -34,6 +36,7 @@ func Gorm() *gorm.DB {
 	}
 }
 
+// RegisterTables 自动迁移系统表、示例表及业务扩展表。
 func RegisterTables() {
 	if global.GVA_CONFIG.System.DisableAutoMigrate {
 		global.GVA_LOG.Info("auto-migrate is disabled, skipping table registration")

@@ -1,5 +1,6 @@
 package system
 
+// InitDBService 数据库初始化协调
 import (
 	"context"
 	"database/sql"

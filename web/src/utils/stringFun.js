@@ -1,3 +1,4 @@
+// 字符串工具：驼峰转换、随机串等
 /* eslint-disable */
 export const toUpperCase = (str) => {
   if (str[0]) {

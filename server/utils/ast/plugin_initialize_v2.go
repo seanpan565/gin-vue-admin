@@ -1,3 +1,4 @@
+// plugin_initialize_v2.go 向 plugin/register.go 添加插件 blank import。
 package ast
 
 import (
@@ -8,6 +9,7 @@ import (
 	"strings"
 )
 
+// PluginInitializeV2 插件 V2 注册注入器，向 register.go 追加 blank import。
 type PluginInitializeV2 struct {
 	Base
 	Type         Type   // 类型

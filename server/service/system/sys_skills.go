@@ -1,5 +1,6 @@
 package system
 
+// SkillsService Agent技能管理
 import (
 	"archive/zip"
 	"bytes"

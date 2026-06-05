@@ -1,3 +1,4 @@
+<!-- 仪表盘 Wiki 链接 -->
 <template>
   <div class="grid grid-cols-2 gap-2">
     <a

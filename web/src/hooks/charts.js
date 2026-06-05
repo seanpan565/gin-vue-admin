@@ -1,3 +1,4 @@
+// 根据明暗主题生成 ECharts 配置项的组合式函数
 // 本组件参考 arco-pro 的实现
 // https://github.com/arco-design/arco-design-pro-vue/blob/main/arco-design-pro-vite/src/hooks/chart-option.ts
 

@@ -1,3 +1,4 @@
+<!-- 示例模块入口 -->
 <template>
   <div>
     <router-view v-slot="{ Component }">

@@ -1,3 +1,4 @@
+<!-- 文件选择与上传组件，支持多文件上传 -->
 <template>
   <div>
     <el-upload

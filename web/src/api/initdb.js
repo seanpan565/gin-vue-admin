@@ -1,3 +1,4 @@
+// 数据库初始化 API：首次部署时初始化库表
 import service from '@/utils/request'
 // @Tags InitDB
 // @Summary 初始化用户数据库

@@ -1,5 +1,6 @@
 package system
 
+// OperationRecordService 操作记录管理
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"

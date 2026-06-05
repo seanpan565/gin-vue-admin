@@ -5,6 +5,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
 )
 
+// 版本管理相关响应结构
 // ExportVersionResponse 导出版本响应结构体
 type ExportVersionResponse struct {
 	Version      request.VersionInfo    `json:"version"`      // 版本信息

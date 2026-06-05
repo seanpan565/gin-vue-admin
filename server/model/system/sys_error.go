@@ -5,6 +5,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// SysError 系统错误日志表模型
 // 错误日志 结构体  SysError
 type SysError struct {
 	global.GVA_MODEL

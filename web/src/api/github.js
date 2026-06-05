@@ -1,3 +1,4 @@
+// GitHub API：获取 GVA 仓库提交与贡献者信息
 import axios from 'axios'
 
 const service = axios.create()

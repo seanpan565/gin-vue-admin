@@ -1,3 +1,4 @@
+<!-- 表单设计器 -->
 <template>
   <div class="form-designer-container">
     <fc-designer ref="designer" :config="config" height="calc(100vh - 160px)">

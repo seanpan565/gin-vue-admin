@@ -1,3 +1,4 @@
+// Skills API：AI 技能工具与配置管理
 import service from '@/utils/request'
 
 export const getSkillTools = () => {

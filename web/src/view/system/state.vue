@@ -1,3 +1,4 @@
+<!-- 服务器状态监控 -->
 <template>
   <div>
     <el-row :gutter="15" class="py-1">

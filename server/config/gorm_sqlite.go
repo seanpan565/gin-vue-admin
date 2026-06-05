@@ -1,3 +1,4 @@
+// SQLite 数据库配置，对应 config.yaml 中 sqlite 节点。
 package config
 
 import (

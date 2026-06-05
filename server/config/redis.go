@@ -1,3 +1,4 @@
+// Redis 缓存配置，对应 config.yaml 中 redis 节点。
 package config
 
 type Redis struct {

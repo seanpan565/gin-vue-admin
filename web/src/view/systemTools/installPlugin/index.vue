@@ -1,3 +1,4 @@
+<!-- 插件安装 -->
 <template>
   <div class="gva-form-box">
     <el-upload

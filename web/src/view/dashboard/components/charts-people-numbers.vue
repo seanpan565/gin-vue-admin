@@ -1,3 +1,4 @@
+<!-- 仪表盘用户数量图表 -->
 <template>
   <Chart :height="height" :option="chartOption" />
 </template>

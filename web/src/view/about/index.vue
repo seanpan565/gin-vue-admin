@@ -1,3 +1,4 @@
+<!-- 关于页面：项目信息与链接 -->
 <template>
   <div class="mt-2">
     <div class="flex flex-col md:flex-row gap-4">

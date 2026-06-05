@@ -1,3 +1,4 @@
+// 初始化示例模块文件上传下载种子数据。
 package example
 
 import (

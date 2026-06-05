@@ -1,3 +1,4 @@
+// register_init.go 侧载 source 包，触发各数据源 init 注册。
 package initialize
 
 import (

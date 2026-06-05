@@ -1,3 +1,4 @@
+// plugin_initialize_router.go 向插件 router 初始化函数注入路由注册调用。
 package ast
 
 import (
@@ -6,7 +7,7 @@ import (
 	"io"
 )
 
-// PluginInitializeRouter 插件初始化路由
+// PluginInitializeRouter 插件 router 初始化注入器，追加 Init 路由调用语句。
 // PackageName.AppName.GroupName.FunctionName()
 type PluginInitializeRouter struct {
 	Base

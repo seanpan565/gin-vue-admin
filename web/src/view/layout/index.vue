@@ -1,3 +1,4 @@
+<!-- 主布局框架 -->
 <template>
   <div
     class="bg-gray-50 text-slate-700 dark:text-slate-500 dark:bg-slate-800 w-screen h-screen"

@@ -1,5 +1,7 @@
 package system
 
+// InitSysOperationRecordRouter 注册操作记录相关路由
+
 import (
 	"github.com/gin-gonic/gin"
 )

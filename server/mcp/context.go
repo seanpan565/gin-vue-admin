@@ -1,3 +1,4 @@
+// Package mcpTool MCP 请求上下文与鉴权令牌传递。
 package mcpTool
 
 import (
@@ -12,6 +13,7 @@ type mcpContextKey string
 
 const authTokenContextKey mcpContextKey = "mcp-auth-token"
 
+// WithHTTPRequestContext 将请求鉴权 token 写入 context。
 func WithHTTPRequestContext(ctx context.Context, r *http.Request) context.Context {
 	token := extractIncomingAuthToken(r.Header)
 	return context.WithValue(ctx, authTokenContextKey, token)
@@ -24,6 +26,7 @@ func configuredAuthHeader() string {
 	return "x-token"
 }
 
+// ConfiguredAuthHeader 返回配置的鉴权请求头名称。
 func ConfiguredAuthHeader() string {
 	return configuredAuthHeader()
 }

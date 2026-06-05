@@ -1,3 +1,4 @@
+// interfaces_base.go 提供 AST 处理基类，封装文件解析、格式化及路径转换。
 package ast
 
 import (
@@ -14,10 +15,12 @@ import (
 	"strings"
 )
 
+// Base AST 处理基类，持有 FileSet 供解析与格式化使用。
 type Base struct {
 	FileSet *token.FileSet
 }
 
+// Parse 解析 Go 源文件为 AST，writer 非空时从 writer 读取内容。
 func (a *Base) Parse(filename string, writer io.Writer) (file *ast.File, err error) {
 	a.FileSet = token.NewFileSet()
 	if writer != nil {
@@ -31,14 +34,17 @@ func (a *Base) Parse(filename string, writer io.Writer) (file *ast.File, err err
 	return file, nil
 }
 
+// Rollback 基类默认不回滚，由子类覆盖实现。
 func (a *Base) Rollback(file *ast.File) error {
 	return nil
 }
 
+// Injection 基类默认不注入，由子类覆盖实现。
 func (a *Base) Injection(file *ast.File) error {
 	return nil
 }
 
+// Format 将 AST 格式化后写回文件或 writer。
 func (a *Base) Format(filename string, writer io.Writer, file *ast.File) error {
 	fileSet := a.FileSet
 	if fileSet == nil {

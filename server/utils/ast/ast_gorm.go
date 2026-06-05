@@ -1,3 +1,4 @@
+// ast_gorm.go 向 gorm 初始化文件注入 AutoMigrate 注册逻辑。
 package ast
 
 import (
@@ -10,7 +11,7 @@ import (
 	"os"
 )
 
-// AddRegisterTablesAst 自动为 gorm.go 注册一个自动迁移
+// AddRegisterTablesAst 向 gorm 初始化函数注入 import、DB 变量及 AutoMigrate 模型注册。
 func AddRegisterTablesAst(path, funcName, pk, varName, dbName, model string) {
 	modelPk := fmt.Sprintf("github.com/flipped-aurora/gin-vue-admin/server/model/%s", pk)
 	src, err := os.ReadFile(path)
@@ -147,7 +148,7 @@ func addAutoMigrate(astBody *ast.BlockStmt, dbname string, pk string, model stri
 	}
 }
 
-// NeedAppendModel 为automigrate增加实参
+// NeedAppendModel 判断 AutoMigrate 调用中是否尚未包含指定模型参数。
 func NeedAppendModel(callNode ast.Node, pk string, model string) bool {
 	flag := true
 	ast.Inspect(callNode, func(node ast.Node) bool {

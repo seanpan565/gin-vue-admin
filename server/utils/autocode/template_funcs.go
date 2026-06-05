@@ -1,5 +1,7 @@
+// Package autocode 提供代码自动生成所需的模板渲染函数。
 package autocode
 
+// 自动代码模板函数，生成 Model、搜索、表格及表单等代码片段。
 import (
 	"fmt"
 	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"

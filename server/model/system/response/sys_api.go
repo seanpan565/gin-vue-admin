@@ -4,6 +4,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
 )
 
+// API 管理相关响应结构
 type SysAPIResponse struct {
 	Api system.SysApi `json:"api"`
 }

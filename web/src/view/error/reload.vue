@@ -1,3 +1,4 @@
+<!-- 页面重载中转页 -->
 <template>
   <div />
 </template>

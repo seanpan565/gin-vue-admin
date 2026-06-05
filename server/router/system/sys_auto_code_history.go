@@ -1,5 +1,7 @@
 package system
 
+// InitAutoCodeHistoryRouter 注册代码生成历史回滚相关路由
+
 import (
 	"github.com/gin-gonic/gin"
 )

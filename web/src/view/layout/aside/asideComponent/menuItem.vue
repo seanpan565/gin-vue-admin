@@ -1,3 +1,4 @@
+<!-- 侧边栏菜单项 -->
 <template>
   <el-menu-item
     :index="routerInfo.name"

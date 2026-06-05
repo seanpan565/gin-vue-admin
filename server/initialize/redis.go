@@ -1,3 +1,4 @@
+// redis.go 初始化 Redis 单例及多实例连接池。
 package initialize
 
 import (
@@ -36,6 +37,7 @@ func initRedisClient(redisCfg config.Redis) (redis.UniversalClient, error) {
 	return client, nil
 }
 
+// Redis 初始化默认 Redis 客户端并写入 global.GVA_REDIS。
 func Redis() {
 	redisClient, err := initRedisClient(global.GVA_CONFIG.Redis)
 	if err != nil {
@@ -44,6 +46,7 @@ func Redis() {
 	global.GVA_REDIS = redisClient
 }
 
+// RedisList 初始化多 Redis 实例，供多点登录等场景使用。
 func RedisList() {
 	redisMap := make(map[string]redis.UniversalClient)
 

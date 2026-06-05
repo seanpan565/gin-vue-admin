@@ -1,3 +1,4 @@
+// 系统参数 store：按 key 缓存并获取后台配置参数
 import { getSysParam } from '@/api/sysParams'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'

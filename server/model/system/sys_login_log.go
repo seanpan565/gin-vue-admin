@@ -4,6 +4,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// SysLoginLog 用户登录日志表模型
 type SysLoginLog struct {
 	global.GVA_MODEL
 	Username      string  `json:"username" gorm:"column:username;comment:用户名"`

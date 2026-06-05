@@ -1,5 +1,7 @@
 package system
 
+// InitAuthorityBtnRouterRouter 注册按钮权限相关路由
+
 import (
 	"github.com/gin-gonic/gin"
 )

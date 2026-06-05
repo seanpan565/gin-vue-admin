@@ -1,3 +1,4 @@
+<!-- 角色菜单权限配置 -->
 <template>
   <div>
     <div class="sticky top-0.5 z-10 pb-2">

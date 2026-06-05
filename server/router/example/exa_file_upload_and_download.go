@@ -1,5 +1,7 @@
 package example
 
+// InitFileUploadAndDownloadRouter 注册文件上传下载相关路由
+
 import (
 	"github.com/gin-gonic/gin"
 )

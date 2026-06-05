@@ -1,3 +1,4 @@
+<!-- 可编辑标签数组控件，支持增删标签 -->
 <template>
   <div class="flex gap-2">
     <el-tag

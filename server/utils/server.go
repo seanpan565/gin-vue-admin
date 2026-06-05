@@ -1,5 +1,6 @@
 package utils
 
+// 服务器硬件与运行时信息采集，用于系统监控展示。
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"runtime"
@@ -17,6 +18,7 @@ const (
 	GB = 1024 * MB
 )
 
+// Server 服务器综合信息
 type Server struct {
 	Os   Os   `json:"os"`
 	Cpu  Cpu  `json:"cpu"`
@@ -24,6 +26,7 @@ type Server struct {
 	Disk []Disk `json:"disk"`
 }
 
+// Os 操作系统与 Go 运行时信息
 type Os struct {
 	GOOS         string `json:"goos"`
 	NumCPU       int    `json:"numCpu"`
@@ -32,17 +35,20 @@ type Os struct {
 	NumGoroutine int    `json:"numGoroutine"`
 }
 
+// Cpu CPU 使用率与核心数
 type Cpu struct {
 	Cpus  []float64 `json:"cpus"`
 	Cores int       `json:"cores"`
 }
 
+// Ram 内存使用情况
 type Ram struct {
 	UsedMB      int `json:"usedMb"`
 	TotalMB     int `json:"totalMb"`
 	UsedPercent int `json:"usedPercent"`
 }
 
+// Disk 磁盘分区使用情况
 type Disk struct {
 	MountPoint  string `json:"mountPoint"`
 	UsedMB      int `json:"usedMb"`

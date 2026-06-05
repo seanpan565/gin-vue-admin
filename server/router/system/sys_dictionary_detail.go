@@ -1,5 +1,7 @@
 package system
 
+// InitSysDictionaryDetailRouter 注册字典详情相关路由
+
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/middleware"
 	"github.com/gin-gonic/gin"
@@ -10,12 +12,12 @@ type DictionaryDetailRouter struct{}
 func (s *DictionaryDetailRouter) InitSysDictionaryDetailRouter(Router *gin.RouterGroup) {
 	dictionaryDetailRouter := Router.Group("sysDictionaryDetail").Use(middleware.OperationRecord())
 	dictionaryDetailRouterWithoutRecord := Router.Group("sysDictionaryDetail")
-	{
+	{ // 需操作记录中间件的路由
 		dictionaryDetailRouter.POST("createSysDictionaryDetail", dictionaryDetailApi.CreateSysDictionaryDetail)   // 新建SysDictionaryDetail
 		dictionaryDetailRouter.DELETE("deleteSysDictionaryDetail", dictionaryDetailApi.DeleteSysDictionaryDetail) // 删除SysDictionaryDetail
 		dictionaryDetailRouter.PUT("updateSysDictionaryDetail", dictionaryDetailApi.UpdateSysDictionaryDetail)    // 更新SysDictionaryDetail
 	}
-	{
+	{ // 无需操作记录中间件的查询路由
 		dictionaryDetailRouterWithoutRecord.GET("findSysDictionaryDetail", dictionaryDetailApi.FindSysDictionaryDetail)           // 根据ID获取SysDictionaryDetail
 		dictionaryDetailRouterWithoutRecord.GET("getSysDictionaryDetailList", dictionaryDetailApi.GetSysDictionaryDetailList)     // 获取SysDictionaryDetail列表
 		dictionaryDetailRouterWithoutRecord.GET("getDictionaryTreeList", dictionaryDetailApi.GetDictionaryTreeList)               // 获取字典详情树形结构

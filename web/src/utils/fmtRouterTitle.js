@@ -1,3 +1,4 @@
+// 路由标题模板：替换 ${param} 占位符为实际参数
 export const fmtTitle = (title, now) => {
   const reg = /\$\{(.+?)\}/
   const reg_g = /\$\{(.+?)\}/g

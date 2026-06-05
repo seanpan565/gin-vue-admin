@@ -1,4 +1,7 @@
+// Package mcpTool MCP 工具：创建前端菜单。
 package mcpTool
+
+// menu_creator.go 向系统注册新菜单项。
 
 import (
 	"context"
@@ -10,6 +13,7 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+// init 注册 create_menu 工具。
 func init() {
 	RegisterTool(&MenuCreator{})
 }
@@ -50,6 +54,7 @@ type MenuCreateResponse struct {
 	Path    string `json:"path"`
 }
 
+// MenuCreator 菜单创建工具。
 type MenuCreator struct{}
 
 func (m *MenuCreator) New() mcp.Tool {

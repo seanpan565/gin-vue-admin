@@ -1,3 +1,4 @@
+// GVA 框架 Vue 插件：注册全局资源并输出欢迎信息
 /*
  * gin-vue-admin web框架组
  *

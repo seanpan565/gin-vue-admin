@@ -1,5 +1,6 @@
 package system
 
+// aiWorkflowSession AI工作流Markdown文档
 import (
 	"context"
 	"fmt"

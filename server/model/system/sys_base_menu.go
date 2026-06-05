@@ -4,6 +4,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// SysBaseMenu 系统基础菜单表模型
 type SysBaseMenu struct {
 	global.GVA_MODEL
 	MenuLevel     uint                   `json:"-"`

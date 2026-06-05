@@ -1,5 +1,6 @@
 package utils
 
+// 基于反射的结构体字段校验框架。
 import (
 	"errors"
 	"reflect"
@@ -8,10 +9,13 @@ import (
 	"strings"
 )
 
+// Rules 字段名到校验规则列表的映射
 type Rules map[string][]string
 
+// RulesMap 命名规则组映射
 type RulesMap map[string]Rules
 
+// CustomizeMap 全局自定义校验规则注册表
 var CustomizeMap = make(map[string]Rules)
 
 //@author: [piexlmax](https://github.com/piexlmax)

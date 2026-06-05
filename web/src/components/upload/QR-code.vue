@@ -1,3 +1,4 @@
+<!-- 扫码上传组件，通过二维码在移动端上传 -->
 <template>
   <div>
     <el-button type="primary" icon="iphone" @click="createQrCode"> 扫码上传</el-button>

@@ -1,5 +1,7 @@
+// Package request 提供 HTTP 请求封装工具。
 package request
 
+// HTTP 请求工具，支持 JSON 请求体、超时及 SSE 流式场景。
 import (
 	"bytes"
 	"context"
@@ -9,6 +11,7 @@ import (
 	"time"
 )
 
+// HttpRequest 发送 HTTP 请求，默认超时 10 分钟
 func HttpRequest(
 	urlStr string,
 	method string,

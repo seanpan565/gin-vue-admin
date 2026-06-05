@@ -5,6 +5,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// SysDictionaryDetail 字典明细表模型
 // 如果含有time.Time 请自行import time包
 type SysDictionaryDetail struct {
 	global.GVA_MODEL

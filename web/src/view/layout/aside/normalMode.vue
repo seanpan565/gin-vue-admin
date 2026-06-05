@@ -1,3 +1,4 @@
+<!-- 常规模式侧边栏 -->
 <template>
   <div
     class="relative h-full bg-white text-slate-700 dark:text-slate-300 dark:bg-slate-900 shadow dark:shadow-gray-700"

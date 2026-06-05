@@ -1,3 +1,4 @@
+// mongo.go MongoDB 连接初始化及索引管理。
 package initialize
 
 import (
@@ -39,6 +40,7 @@ func (m *mongo) Indexes(ctx context.Context) error {
 	return nil
 }
 
+// Initialization 建立 MongoDB 连接并创建预设索引。
 func (m *mongo) Initialization() error {
 	var opts []options.ClientOptions
 	if global.GVA_CONFIG.Mongo.IsZap {

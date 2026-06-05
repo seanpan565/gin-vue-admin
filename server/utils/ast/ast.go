@@ -1,3 +1,6 @@
+// Package ast 提供自动代码生成所需的 Go AST 解析、构造与修改工具。
+//
+// ast.go 定义 AST 通用辅助函数，用于菜单/API/字典结构体生成及 import 查询。
 package ast
 
 import (
@@ -9,7 +12,7 @@ import (
 	"log"
 )
 
-// AddImport 增加 import 方法
+// AddImport 向 AST 节点追加 import 路径（已存在则跳过）。
 func AddImport(astNode ast.Node, imp string) {
 	impStr := fmt.Sprintf("\"%s\"", imp)
 	ast.Inspect(astNode, func(node ast.Node) bool {
@@ -34,7 +37,7 @@ func AddImport(astNode ast.Node, imp string) {
 	})
 }
 
-// FindFunction 查询特定function方法
+// FindFunction 按函数名查找首个 FuncDecl 节点。
 func FindFunction(astNode ast.Node, FunctionName string) *ast.FuncDecl {
 	var funcDeclP *ast.FuncDecl
 	ast.Inspect(astNode, func(node ast.Node) bool {
@@ -49,7 +52,7 @@ func FindFunction(astNode ast.Node, FunctionName string) *ast.FuncDecl {
 	return funcDeclP
 }
 
-// FindArray 查询特定数组方法
+// FindArray 查找指定包名与类型名的数组字面量赋值节点。
 func FindArray(astNode ast.Node, identName, selectorExprName string) *ast.CompositeLit {
 	var assignStmt *ast.CompositeLit
 	ast.Inspect(astNode, func(n ast.Node) bool {
@@ -73,6 +76,7 @@ func FindArray(astNode ast.Node, identName, selectorExprName string) *ast.Compos
 	return assignStmt
 }
 
+// CreateMenuStructAst 将菜单配置转换为 AST 复合字面量表达式列表。
 func CreateMenuStructAst(menus []system.SysBaseMenu) *[]ast.Expr {
 	var menuElts []ast.Expr
 	for i := range menus {
@@ -204,6 +208,7 @@ func CreateMenuStructAst(menus []system.SysBaseMenu) *[]ast.Expr {
 	return &menuElts
 }
 
+// CreateApiStructAst 将 API 配置转换为 AST 复合字面量表达式列表。
 func CreateApiStructAst(apis []system.SysApi) *[]ast.Expr {
 	var apiElts []ast.Expr
 	for i := range apis {
@@ -233,7 +238,7 @@ func CreateApiStructAst(apis []system.SysApi) *[]ast.Expr {
 	return &apiElts
 }
 
-// CheckImport 检查是否存在Import
+// CheckImport 检查文件是否已包含指定 import 路径。
 func CheckImport(file *ast.File, importPath string) bool {
 	for _, imp := range file.Imports {
 		// Remove quotes around the import path
@@ -274,6 +279,7 @@ func clearPosition(astNode ast.Node) {
 	})
 }
 
+// CreateStmt 将 Go 表达式字符串解析为 ExprStmt 语句节点。
 func CreateStmt(statement string) *ast.ExprStmt {
 	expr, err := parser.ParseExpr(statement)
 	if err != nil {
@@ -283,11 +289,13 @@ func CreateStmt(statement string) *ast.ExprStmt {
 	return &ast.ExprStmt{X: expr}
 }
 
+// IsBlockStmt 判断节点是否为 BlockStmt。
 func IsBlockStmt(node ast.Node) bool {
 	_, ok := node.(*ast.BlockStmt)
 	return ok
 }
 
+// VariableExistsInBlock 检查代码块内是否已定义指定变量名。
 func VariableExistsInBlock(block *ast.BlockStmt, varName string) bool {
 	exists := false
 	ast.Inspect(block, func(n ast.Node) bool {
@@ -305,6 +313,7 @@ func VariableExistsInBlock(block *ast.BlockStmt, varName string) bool {
 	return exists
 }
 
+// CreateDictionaryStructAst 将字典配置转换为 AST 复合字面量表达式列表。
 func CreateDictionaryStructAst(dictionaries []system.SysDictionary) *[]ast.Expr {
 	var dictElts []ast.Expr
 	for i := range dictionaries {

@@ -1,5 +1,6 @@
 package system
 
+// SkillsApi Skills技能管理接口
 import (
 	"net/http"
 

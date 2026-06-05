@@ -1,3 +1,4 @@
+<!-- 布局模式选择卡片 -->
 <template>
   <div class="grid grid-cols-2 gap-6 gva-theme-font px-6">
     <div

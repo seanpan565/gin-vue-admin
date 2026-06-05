@@ -1,7 +1,11 @@
+// Package model auto 插件数据模型。
 package model
 
 import "github.com/flipped-aurora/gin-vue-admin/server/global"
 
+// sys_auto_code_package.go 自动化代码包配置模型。
+
+// SysAutoCodePackage 自动化代码包实体。
 type SysAutoCodePackage struct {
 	global.GVA_MODEL
 	Desc        string `json:"desc" gorm:"comment:描述"`

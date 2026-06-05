@@ -1,4 +1,7 @@
+// Package email 邮件插件，提供 SMTP 发信与测试接口。
 package email
+
+// main.go 邮件插件入口，支持 v1 插件方式注册路由。
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email/global"
@@ -6,8 +9,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// emailPlugin 邮件插件实现。
 type emailPlugin struct{}
 
+// CreateEmailPlug 创建邮件插件并写入 SMTP 配置。
 func CreateEmailPlug(To, From, Host, Secret, Nickname string, Port int, IsSSL bool, IsLoginAuth bool) *emailPlugin {
 	global.GlobalConfig.To = To
 	global.GlobalConfig.From = From
@@ -20,6 +25,7 @@ func CreateEmailPlug(To, From, Host, Secret, Nickname string, Port int, IsSSL bo
 	return &emailPlugin{}
 }
 
+// Register 注册邮件相关 HTTP 路由。
 func (*emailPlugin) Register(group *gin.RouterGroup) {
 	router.RouterGroupApp.InitEmailRouter(group)
 }

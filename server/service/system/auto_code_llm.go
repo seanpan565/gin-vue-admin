@@ -1,5 +1,6 @@
 package system
 
+// AutoCodeService LLM辅助代码生成
 import (
 	"context"
 	"errors"

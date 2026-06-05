@@ -1,3 +1,4 @@
+// 系统参数 API：运行时参数配置 CRUD
 import service from '@/utils/request'
 // @Tags SysParams
 // @Summary 创建参数

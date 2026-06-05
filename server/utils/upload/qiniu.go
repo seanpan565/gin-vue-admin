@@ -1,5 +1,6 @@
 package upload
 
+// 七牛云对象存储实现。
 import (
 	"context"
 	"errors"
@@ -13,6 +14,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// Qiniu 七牛云存储
 type Qiniu struct{}
 
 //@author: [piexlmax](https://github.com/piexlmax)

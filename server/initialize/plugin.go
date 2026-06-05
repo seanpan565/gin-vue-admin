@@ -1,3 +1,4 @@
+// plugin.go 插件路由安装入口，支持数据库未就绪时延迟注册。
 package initialize
 
 import (
@@ -5,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// InstallPlugin 注册 v1/v2 插件路由，数据库未初始化时订阅就绪事件后再注册。
 func InstallPlugin(PrivateGroup *gin.RouterGroup, PublicRouter *gin.RouterGroup, engine *gin.Engine) {
 	notifier := GetDBReadyNotifier()
 

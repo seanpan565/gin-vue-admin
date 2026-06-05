@@ -1,4 +1,7 @@
+// Package utils 插件安装工具，负责向系统注册 API、菜单与字典。
 package utils
+
+// check.go 提供插件元数据注册及安装时的数据库写入能力。
 
 import (
 	"github.com/pkg/errors"
@@ -13,6 +16,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
 )
 
+// 插件安装时缓存的 API、菜单、字典映射。
 var (
 	ApiMap  = make(map[string][]system.SysApi)
 	MenuMap = make(map[string][]system.SysBaseMenu)
@@ -37,6 +41,7 @@ func getPluginName() string {
 	return pluginName
 }
 
+// RegisterApis 注册插件 API 到数据库并缓存。
 func RegisterApis(apis ...system.SysApi) {
 	name := getPluginName()
 	if name != "" {
@@ -60,6 +65,7 @@ func RegisterApis(apis ...system.SysApi) {
 	}
 }
 
+// RegisterMenus 注册插件菜单到数据库并缓存。
 func RegisterMenus(menus ...system.SysBaseMenu) {
 	name := getPluginName()
 	if name != "" {
@@ -93,6 +99,7 @@ func RegisterMenus(menus ...system.SysBaseMenu) {
 
 }
 
+// RegisterDictionaries 注册插件字典到数据库并缓存。
 func RegisterDictionaries(dictionaries ...system.SysDictionary) {
 	name := getPluginName()
 	if name != "" {

@@ -1,3 +1,4 @@
+// reload.go 系统热重载：重新读取配置并重建数据库连接与表结构。
 package initialize
 
 import (

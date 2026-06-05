@@ -1,3 +1,4 @@
+<!-- 图片裁剪后上传组件 -->
 <template>
   <el-upload
       ref="uploadRef"

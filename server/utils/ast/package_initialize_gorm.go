@@ -1,3 +1,4 @@
+// package_initialize_gorm.go 向 gorm_biz.go 注入业务库 AutoMigrate 注册。
 package ast
 
 import (
@@ -7,7 +8,7 @@ import (
 	"io"
 )
 
-// PackageInitializeGorm 包初始化gorm
+// PackageInitializeGorm gorm_biz.go 注入器，注册业务库 DB 变量及 AutoMigrate 模型。
 type PackageInitializeGorm struct {
 	Base
 	Type         Type   // 类型

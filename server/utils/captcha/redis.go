@@ -1,5 +1,7 @@
+// Package captcha 提供验证码 Redis 存储后端。
 package captcha
 
+// 验证码 Redis 存储实现，满足 base64Captcha 存储接口。
 import (
 	"context"
 	"time"
@@ -8,6 +10,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// NewDefaultRedisStore 创建默认配置的 Redis 验证码存储
 func NewDefaultRedisStore() *RedisStore {
 	return &RedisStore{
 		Expiration: time.Second * 180,
@@ -16,12 +19,14 @@ func NewDefaultRedisStore() *RedisStore {
 	}
 }
 
+// RedisStore 基于 Redis 的验证码存储
 type RedisStore struct {
 	Expiration time.Duration
 	PreKey     string
 	Context    context.Context
 }
 
+// UseWithCtx 绑定上下文
 func (rs *RedisStore) UseWithCtx(ctx context.Context) *RedisStore {
 	if ctx == nil {
 		rs.Context = ctx
@@ -29,6 +34,7 @@ func (rs *RedisStore) UseWithCtx(ctx context.Context) *RedisStore {
 	return rs
 }
 
+// Set 存储验证码
 func (rs *RedisStore) Set(id string, value string) error {
 	err := global.GVA_REDIS.Set(rs.Context, rs.PreKey+id, value, rs.Expiration).Err()
 	if err != nil {
@@ -38,6 +44,7 @@ func (rs *RedisStore) Set(id string, value string) error {
 	return nil
 }
 
+// Get 获取验证码，可选验证后清除
 func (rs *RedisStore) Get(key string, clear bool) string {
 	val, err := global.GVA_REDIS.Get(rs.Context, key).Result()
 	if err != nil {
@@ -54,6 +61,7 @@ func (rs *RedisStore) Get(key string, clear bool) string {
 	return val
 }
 
+// Verify 校验验证码答案
 func (rs *RedisStore) Verify(id, answer string, clear bool) bool {
 	key := rs.PreKey + id
 	v := rs.Get(key, clear)

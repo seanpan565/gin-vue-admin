@@ -1,5 +1,7 @@
+// Package timer 提供基于 cron 的定时任务管理。
 package timer
 
+// 定时任务调度器，支持多 cron 组、函数/Job 注册及生命周期管理。
 import (
 	"github.com/robfig/cron/v3"
 	"sync"
@@ -34,12 +36,14 @@ type Timer interface {
 	Close()
 }
 
+// task 单个定时任务元信息
 type task struct {
 	EntryID  cron.EntryID
 	Spec     string
 	TaskName string
 }
 
+// taskManager 单个 cron 调度器及其任务集合
 type taskManager struct {
 	corn  *cron.Cron
 	tasks map[cron.EntryID]*task
@@ -224,6 +228,7 @@ func (t *timer) Close() {
 	}
 }
 
+// NewTimerTask 创建定时任务管理器
 func NewTimerTask() Timer {
 	return &timer{cronList: make(map[string]*taskManager)}
 }

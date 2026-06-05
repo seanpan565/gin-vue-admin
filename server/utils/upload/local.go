@@ -1,5 +1,6 @@
 package upload
 
+// 本地文件系统存储实现。
 import (
 	"errors"
 	"io"
@@ -17,6 +18,7 @@ import (
 
 var mu sync.Mutex
 
+// Local 本地文件存储
 type Local struct{}
 
 //@author: [piexlmax](https://github.com/piexlmax)

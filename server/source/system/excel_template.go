@@ -1,3 +1,4 @@
+// 初始化 Excel 导出模板种子数据。
 package system
 
 import (

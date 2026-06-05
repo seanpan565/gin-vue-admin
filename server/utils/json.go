@@ -1,10 +1,12 @@
 package utils
 
+// JSON 解析辅助工具。
 import (
 	"encoding/json"
 	"strings"
 )
 
+// GetJSONKeys 按顺序提取 JSON 对象顶层键名
 func GetJSONKeys(jsonStr string) (keys []string, err error) {
 	// 使用json.Decoder，以便在解析过程中记录键的顺序
 	dec := json.NewDecoder(strings.NewReader(jsonStr))

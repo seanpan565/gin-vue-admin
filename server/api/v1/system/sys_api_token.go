@@ -1,5 +1,6 @@
 package system
 
+// ApiTokenApi API Token管理接口
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"

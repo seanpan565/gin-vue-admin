@@ -1,5 +1,6 @@
 package system
 
+// BaseApi 验证码生成与校验接口
 import (
 	"time"
 

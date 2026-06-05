@@ -1,3 +1,4 @@
+// 系统错误 API：前端/后端错误日志上报与查询
 import service from '@/utils/request'
 // @Tags SysError
 // @Summary 创建错误日志

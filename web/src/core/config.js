@@ -1,6 +1,4 @@
-/**
- * 网站配置文件
- */
+/** 网站全局配置：应用名、Tab 缓存开关及启动日志 */
 import packageInfo from '../../package.json'
 
 const greenText = (text) => `\x1b[32m${text}\x1b[0m`

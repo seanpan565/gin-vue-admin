@@ -4,6 +4,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// SysApi 系统 API 路由表模型
 type SysApi struct {
 	global.GVA_MODEL
 	Path        string `json:"path" gorm:"comment:api路径"`             // api路径

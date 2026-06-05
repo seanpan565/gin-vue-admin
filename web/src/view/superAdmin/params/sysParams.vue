@@ -1,3 +1,4 @@
+<!-- 系统参数管理 -->
 <template>
   <div>
     <warning-bar title="获取参数且缓存方法已在前端utils/params 已经封装完成 不必自己书写 使用方法查看文件内注释" />

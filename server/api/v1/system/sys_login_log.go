@@ -1,5 +1,6 @@
 package system
 
+// LoginLogApi 登录日志查询接口
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"

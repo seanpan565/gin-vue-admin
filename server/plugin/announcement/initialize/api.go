@@ -1,4 +1,7 @@
+// Package initialize 公告插件安装初始化。
 package initialize
+
+// api.go 安装时注册公告 API 权限。
 
 import (
 	"context"
@@ -6,6 +9,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/plugin/plugin-tool/utils"
 )
 
+// Api 注册公告 API 到系统。
 func Api(ctx context.Context) {
 	entities := []model.SysApi{
 		{

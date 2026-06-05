@@ -1,3 +1,4 @@
+// package_module_enter.go 向子包 enter 文件注入结构体字段与模块变量。
 package ast
 
 import (
@@ -6,7 +7,7 @@ import (
 	"io"
 )
 
-// PackageModuleEnter 模块化入口
+// PackageModuleEnter 子包 enter 文件注入器，追加结构体嵌入字段与模块单例变量。
 // ModuleName := PackageName.AppName.GroupName.ServiceName
 type PackageModuleEnter struct {
 	Base

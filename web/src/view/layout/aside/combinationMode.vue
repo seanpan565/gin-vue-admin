@@ -1,3 +1,4 @@
+<!-- 组合模式侧边栏 -->
 <template>
   <div class="h-full">
     <div

@@ -1,5 +1,6 @@
 package system
 
+// SysParamsService 系统参数管理
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system"

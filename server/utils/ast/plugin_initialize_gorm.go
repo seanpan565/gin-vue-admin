@@ -1,3 +1,4 @@
+// plugin_initialize_gorm.go 向插件 gorm 初始化文件注入 AutoMigrate。
 package ast
 
 import (
@@ -10,6 +11,7 @@ import (
 	"io"
 )
 
+// PluginInitializeGorm 插件 gorm 初始化注入器，注册 AutoMigrate 模型。
 type PluginInitializeGorm struct {
 	Base
 	Type         Type   // 类型

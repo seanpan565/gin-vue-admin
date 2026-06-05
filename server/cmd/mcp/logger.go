@@ -1,3 +1,4 @@
+// MCP 独立服务日志初始化（开发模式 zap）
 package main
 
 import (

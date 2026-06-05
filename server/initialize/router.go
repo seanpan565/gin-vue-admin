@@ -1,3 +1,4 @@
+// router.go 注册 Gin 总路由，挂载中间件、Swagger 及系统/业务/插件路由组。
 package initialize
 
 import (
@@ -31,8 +32,7 @@ func (fs justFilesFilesystem) Open(name string) (http.File, error) {
 	return f, nil
 }
 
-// 初始化总路由
-
+// Routers 初始化 Gin 引擎，区分公开/私有路由组并注册全部业务路由。
 func Routers() *gin.Engine {
 	Router := gin.New()
 	// 使用自定义的 Recovery 中间件，记录 panic 并入库

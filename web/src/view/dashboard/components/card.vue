@@ -1,4 +1,5 @@
-﻿<template>
+﻿<!-- 仪表盘统计卡片 -->
+<template>
   <div
     class="rounded-lg border border-black/10 bg-white text-black/80 dark:text-slate-400 dark:bg-slate-900 dark:text-white/80"
     :class="[customClass || '', withoutPadding ? 'p-0' : 'p-4']"

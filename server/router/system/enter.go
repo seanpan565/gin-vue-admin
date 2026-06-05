@@ -1,3 +1,4 @@
+// 系统模块路由组：注册用户、角色、菜单、字典等系统管理相关路由
 package system
 
 import api "github.com/flipped-aurora/gin-vue-admin/server/api/v1"

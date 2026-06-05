@@ -1,5 +1,6 @@
 package system
 
+// BaseApi 登录、注册与用户信息管理接口
 import (
 	"strconv"
 	"time"

@@ -1,4 +1,7 @@
+// Package mcpTool MCP 工具：为角色分配 API 权限。
 package mcpTool
+
+// role_api_assigner.go 将 API 权限追加到指定角色。
 
 import (
 	"context"
@@ -11,10 +14,12 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+// init 注册 assign_api_to_role 工具。
 func init() {
 	RegisterTool(&RoleAPIAssigner{})
 }
 
+// RoleAPIAssigner 角色 API 授权工具。
 type RoleAPIAssigner struct{}
 
 type roleAPIAssignResponse struct {

@@ -1,3 +1,4 @@
+// router_biz.go 业务自定义路由注册入口，在此扩展项目专属路由。
 package initialize
 
 import (
@@ -11,6 +12,7 @@ func holder(routers ...*gin.RouterGroup) {
 	_ = router.RouterGroupApp
 }
 
+// initBizRouter 注册业务路由，开发者在此追加自定义 RouterGroup。
 func initBizRouter(routers ...*gin.RouterGroup) {
 	privateGroup := routers[0]
 	publicGroup := routers[1]

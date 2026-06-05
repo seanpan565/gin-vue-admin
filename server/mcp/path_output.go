@@ -1,4 +1,7 @@
+// Package mcpTool 生成文件路径规范化输出。
 package mcpTool
+
+// path_output.go 将绝对路径转为相对项目根路径。
 
 import (
 	"path/filepath"
@@ -7,6 +10,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// outputPath 输出相对项目根的安全路径。
 func outputPath(path string) string {
 	path = strings.TrimSpace(path)
 	if path == "" {

@@ -1,5 +1,6 @@
 package system
 
+// autoCodeTemplate 自动化代码模板
 import (
 	"context"
 	"encoding/json"

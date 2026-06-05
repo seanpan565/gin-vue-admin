@@ -1,5 +1,6 @@
 package system
 
+// AuthorityMenuApi 菜单与角色菜单关联接口
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"

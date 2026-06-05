@@ -17,6 +17,7 @@ type Login interface {
 
 var _ Login = new(SysUser)
 
+// SysUser 系统用户表模型
 type SysUser struct {
 	global.GVA_MODEL
 	UUID          uuid.UUID      `json:"uuid" gorm:"index;comment:用户UUID"`                                                                   // 用户UUID

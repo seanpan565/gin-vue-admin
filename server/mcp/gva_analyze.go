@@ -1,5 +1,7 @@
-﻿package mcpTool
+﻿// Package mcpTool MCP 工具：GVA 需求与包模块分析。
+package mcpTool
 
+// gva_analyze.go 分析现有包/模块并判断是否需要新建。
 import (
 	"context"
 	"encoding/json"
@@ -13,12 +15,12 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
-// 注册工具
+// init 注册 gva_analyze 工具。
 func init() {
 	RegisterTool(&GVAAnalyzer{})
 }
 
-// GVAAnalyzer GVA分析器 - 用于分析当前功能是否需要创建独立的package和module
+// GVAAnalyzer GVA 系统分析工具。
 type GVAAnalyzer struct{}
 
 // AnalyzeRequest 分析请求结构体

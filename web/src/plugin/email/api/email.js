@@ -1,3 +1,4 @@
+// 邮件插件 API
 import service from '@/utils/request'
 // @Tags System
 // @Summary 发送测试邮件

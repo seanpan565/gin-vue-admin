@@ -1,3 +1,4 @@
+<!-- 生成代码预览弹窗 -->
 <template>
   <el-tabs
     v-model="activeName"

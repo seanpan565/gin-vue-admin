@@ -1,3 +1,4 @@
+// 初始化字典明细项种子数据。
 package system
 
 import (

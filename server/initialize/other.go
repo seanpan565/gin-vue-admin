@@ -1,3 +1,4 @@
+// other.go 初始化 JWT 缓存、自动代码模块名等杂项配置。
 package initialize
 
 import (
@@ -10,6 +11,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/utils"
 )
 
+// OtherInit 解析 JWT 时长、初始化本地缓存及 go.mod 模块名。
 func OtherInit() {
 	dr, err := utils.ParseDuration(global.GVA_CONFIG.JWT.ExpiresTime)
 	if err != nil {

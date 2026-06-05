@@ -1,3 +1,4 @@
+// 字典工具：生成缓存 key 及便捷获取字典选项
 import { useDictionaryStore } from '@/pinia/modules/dictionary'
 
 /**

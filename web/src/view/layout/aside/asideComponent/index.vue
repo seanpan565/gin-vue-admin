@@ -1,3 +1,4 @@
+<!-- 侧边栏菜单组件入口 -->
 <template>
   <component
     :is="menuComponent"

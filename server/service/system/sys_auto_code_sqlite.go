@@ -1,5 +1,6 @@
 package system
 
+// autoCodeSqlite SQLite自动化代码
 import (
 	"fmt"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"

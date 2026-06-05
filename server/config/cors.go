@@ -1,3 +1,4 @@
+// 跨域 CORS 配置，对应 config.yaml 中 cors 节点。
 package config
 
 type CORS struct {

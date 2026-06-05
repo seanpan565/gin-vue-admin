@@ -1,6 +1,8 @@
 //go:build windows
 
+// Package mcpTool Windows 平台 MCP 托管进程工具。
 package mcpTool
+// process_utils_windows.go Windows 下的进程分离与终止。
 
 import (
 	"errors"
@@ -13,6 +15,7 @@ import (
 
 const windowsStillActive = 259
 
+// prepareDetachedProcess 以隐藏窗口方式启动子进程。
 func prepareDetachedProcess(cmd *exec.Cmd) {
 	cmd.SysProcAttr = &syscall.SysProcAttr{
 		HideWindow:    true,

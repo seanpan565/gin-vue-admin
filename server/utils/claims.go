@@ -1,5 +1,6 @@
 package utils
 
+// Gin 上下文中 JWT 令牌与用户信息的读写提取。
 import (
 	"net"
 	"time"
@@ -11,6 +12,7 @@ import (
 	"github.com/google/uuid"
 )
 
+// ClearToken 清除 Cookie 中的 x-token
 func ClearToken(c *gin.Context) {
 	// 增加cookie x-token 向来源的web添加
 	host, _, err := net.SplitHostPort(c.Request.Host)
@@ -25,6 +27,7 @@ func ClearToken(c *gin.Context) {
 	}
 }
 
+// SetToken 将 token 写入 Cookie
 func SetToken(c *gin.Context, token string, maxAge int) {
 	// 增加cookie x-token 向来源的web添加
 	host, _, err := net.SplitHostPort(c.Request.Host)
@@ -39,6 +42,7 @@ func SetToken(c *gin.Context, token string, maxAge int) {
 	}
 }
 
+// GetToken 从请求头或 Cookie 获取 token
 func GetToken(c *gin.Context) string {
 	token := c.Request.Header.Get("x-token")
 	if token == "" {
@@ -54,6 +58,7 @@ func GetToken(c *gin.Context) string {
 	return token
 }
 
+// GetClaims 从请求中解析 JWT Claims
 func GetClaims(c *gin.Context) (*systemReq.CustomClaims, error) {
 	token := GetToken(c)
 	j := NewJWT()
@@ -134,6 +139,7 @@ func GetUserName(c *gin.Context) string {
 	}
 }
 
+// LoginToken 为用户生成登录 token 及 Claims
 func LoginToken(user system.Login) (token string, claims systemReq.CustomClaims, err error) {
 	j := NewJWT()
 	claims = j.CreateClaims(systemReq.BaseClaims{

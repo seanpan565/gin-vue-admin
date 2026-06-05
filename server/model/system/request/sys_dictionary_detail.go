@@ -5,6 +5,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
 )
 
+// 字典明细相关请求参数
 type SysDictionaryDetailSearch struct {
 	system.SysDictionaryDetail
 	request.PageInfo

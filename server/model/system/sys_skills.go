@@ -1,5 +1,6 @@
 package system
 
+// Skills 技能元数据模型（YAML/JSON，非数据库表）
 type SkillMeta struct {
 	Name         string `json:"name" yaml:"name"`
 	Description  string `json:"description" yaml:"description"`

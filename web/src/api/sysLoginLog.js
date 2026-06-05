@@ -1,3 +1,4 @@
+// 登录日志 API：用户登录记录查询与删除
 import service from '@/utils/request'
 
 export const deleteLoginLog = (data) => {

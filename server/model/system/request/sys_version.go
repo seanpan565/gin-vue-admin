@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// 版本管理相关请求参数
 type SysVersionSearch struct {
 	CreatedAtRange []time.Time `json:"createdAtRange" form:"createdAtRange[]"`
 	VersionName    *string     `json:"versionName" form:"versionName"`

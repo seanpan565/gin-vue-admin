@@ -2,6 +2,7 @@ package request
 
 import "github.com/flipped-aurora/gin-vue-admin/server/model/system"
 
+// 技能管理相关请求参数
 type SkillToolRequest struct {
 	Tool string `json:"tool"`
 }

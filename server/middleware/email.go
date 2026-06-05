@@ -1,3 +1,4 @@
+// email.go 接口报错时通过邮件插件发送告警通知。
 package middleware
 
 import (
@@ -15,6 +16,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// ErrorToEmail 捕获非 200 响应并将错误详情邮件通知管理员。
 func ErrorToEmail() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var username string

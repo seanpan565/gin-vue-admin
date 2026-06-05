@@ -1,3 +1,4 @@
+// version.go 应用版本号与基本信息常量。
 package global
 
 // Version 版本信息

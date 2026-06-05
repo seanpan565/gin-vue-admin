@@ -1,3 +1,4 @@
+// 全局注册：Element Plus 图标、本地 SVG 图标及 $GIN_VUE_ADMIN
 import config from './config'
 import { h } from 'vue'
 

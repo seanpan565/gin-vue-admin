@@ -1,3 +1,4 @@
+// timer.go 注册后台定时任务（如每日清理过期日志）。
 package initialize
 
 import (
@@ -9,6 +10,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// Timer 启动定时任务调度器并注册内置清理任务。
 func Timer() {
 	go func() {
 		var option []cron.Option

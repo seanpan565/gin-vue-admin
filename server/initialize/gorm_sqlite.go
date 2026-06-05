@@ -1,3 +1,4 @@
+// gorm_sqlite.go SQLite 数据库连接初始化。
 package initialize
 
 import (

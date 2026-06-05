@@ -1,3 +1,4 @@
+// Package system 定义系统模块数据库实体与关联模型。
 package system
 
 import (
@@ -5,6 +6,7 @@ import (
 	common "github.com/flipped-aurora/gin-vue-admin/server/model/common"
 )
 
+// SysAIWorkflowSession AI 工作流会话表模型
 type AIWorkflowMessage struct {
 	ID             string         `json:"id"`
 	Role           string         `json:"role"`

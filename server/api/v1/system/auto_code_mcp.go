@@ -1,5 +1,6 @@
 package system
 
+// AutoCodeTemplateApi MCP工具创建与测试接口
 import (
 	"strings"
 

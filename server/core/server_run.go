@@ -1,3 +1,4 @@
+// server_run.go HTTP 服务生命周期管理，支持信号触发的优雅关闭。
 package core
 
 import (

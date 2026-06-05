@@ -1,3 +1,4 @@
+// 验证码配置，对应 config.yaml 中 captcha 节点。
 package config
 
 type Captcha struct {

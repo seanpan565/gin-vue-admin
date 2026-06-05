@@ -1,3 +1,4 @@
+// casbin_rbac.go 基于 Casbin 的 RBAC 权限校验中间件。
 package middleware
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-// CasbinHandler 拦截器
+// CasbinHandler 按角色校验请求路径与方法是否授权。
 func CasbinHandler() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		waitUse, _ := utils.GetClaims(c)

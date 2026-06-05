@@ -1,3 +1,4 @@
+<!-- 系统配置 -->
 <template>
   <div class="system">
     <el-form ref="form" :model="config" label-width="240px">

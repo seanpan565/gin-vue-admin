@@ -1,3 +1,4 @@
+// MCP 服务配置，对应 config.yaml 中 mcp 节点。
 package config
 
 type MCP struct {

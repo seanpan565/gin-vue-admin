@@ -1,3 +1,4 @@
+<!-- 字典类型管理 -->
 <template>
   <div>
     <warning-bar

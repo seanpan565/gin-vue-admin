@@ -1,3 +1,4 @@
+<!-- 全屏切换按钮 -->
 <template>
   <div @click="clickFull">
     <div v-if="isShow" class="gvaIcon gvaIcon-fullscreen-expand" />

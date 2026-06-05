@@ -1,3 +1,4 @@
+// 磁盘监控配置，对应 config.yaml 中 disk-list 节点。
 package config
 
 type Disk struct {

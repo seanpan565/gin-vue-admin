@@ -1,3 +1,4 @@
+// Package model 公告插件数据模型。
 package model
 
 import (

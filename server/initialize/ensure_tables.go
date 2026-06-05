@@ -1,3 +1,4 @@
+// ensure_tables.go 数据库初始化阶段确保核心表结构已创建（InitDB 流程使用）。
 package initialize
 
 import (

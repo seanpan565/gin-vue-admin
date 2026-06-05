@@ -1,3 +1,4 @@
+<!-- 全局菜单搜索 -->
 <template>
   <div class="search-component items-center">
     <div

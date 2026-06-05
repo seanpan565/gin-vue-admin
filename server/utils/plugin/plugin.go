@@ -1,5 +1,7 @@
+// Package plugin 定义 v1 插件接口，用于路由级插件扩展。
 package plugin
 
+// v1 插件模式接口，插件自行注册路由并返回路径前缀。
 import (
 	"github.com/gin-gonic/gin"
 )

@@ -1,3 +1,4 @@
+// validator.go 注册全局请求参数校验规则（分页、ID、角色等）。
 package initialize
 
 import "github.com/flipped-aurora/gin-vue-admin/server/utils"

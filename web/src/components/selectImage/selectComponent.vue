@@ -1,3 +1,4 @@
+<!-- 单张图片/视频预览与选择入口组件 -->
 <template>
   <div
       class="w-40 h-40 relative rounded border border-dashed border-gray-300 cursor-pointer group"

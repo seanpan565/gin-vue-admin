@@ -1,5 +1,6 @@
 package system
 
+// DictionaryDetailApi 字典详情管理接口
 import (
 	"strconv"
 

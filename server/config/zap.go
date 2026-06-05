@@ -1,3 +1,4 @@
+// Zap 日志配置，对应 config.yaml 中 zap 节点。
 package config
 
 import (

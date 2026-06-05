@@ -1,5 +1,7 @@
+// Package utils 提供通用工具函数，涵盖文件、JWT、校验、加密等。
 package utils
 
+// 目录与文件操作工具，提供路径检测、批量创建、移动及删除等功能。
 import (
 	"errors"
 	"os"
@@ -89,6 +91,7 @@ Redirect:
 	return os.Rename(src, dst)
 }
 
+// DeLFile 删除指定路径的文件或目录
 func DeLFile(filePath string) error {
 	return os.RemoveAll(filePath)
 }

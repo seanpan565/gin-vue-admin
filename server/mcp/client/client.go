@@ -1,3 +1,4 @@
+// Package client MCP Streamable HTTP 客户端封装。
 package client
 
 import (
@@ -9,6 +10,7 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+// NewClient 创建 Streamable HTTP MCP 客户端并完成握手。
 func NewClient(baseURL, name, version, serverName string, headers ...map[string]string) (*mcpClient.Client, error) {
 	options := make([]transport.StreamableHTTPCOption, 0, 1)
 	if len(headers) > 0 && len(headers[0]) > 0 {

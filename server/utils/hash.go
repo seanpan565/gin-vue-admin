@@ -1,5 +1,6 @@
 package utils
 
+// 密码哈希与 MD5 摘要工具。
 import (
 	"crypto/md5"
 	"encoding/hex"

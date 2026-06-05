@@ -1,3 +1,4 @@
+// loadtls.go HTTPS 重定向中间件，配合 Router.RunTLS 使用。
 package middleware
 
 import (
@@ -7,8 +8,7 @@ import (
 	"github.com/unrolled/secure"
 )
 
-// 用https把这个中间件在router里面use一下就好
-
+// LoadTls 强制将 HTTP 请求重定向到 HTTPS。
 func LoadTls() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		middleware := secure.New(secure.Options{

@@ -1,3 +1,4 @@
+// 代码自动生成配置，对应 config.yaml 中 autocode 节点。
 package config
 
 import (

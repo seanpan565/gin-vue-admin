@@ -1,3 +1,4 @@
+// API Token API：开放接口访问令牌管理
 import service from '@/utils/request'
 
 export const createApiToken = (data) => {

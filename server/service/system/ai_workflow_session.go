@@ -1,5 +1,6 @@
 package system
 
+// aiWorkflowSession AI工作流会话
 import (
 	"context"
 	"errors"

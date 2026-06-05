@@ -1,5 +1,6 @@
 package system
 
+// SysErrorService 系统错误记录
 import (
 	"context"
 	"fmt"

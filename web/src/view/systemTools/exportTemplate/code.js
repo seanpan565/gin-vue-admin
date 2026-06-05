@@ -1,3 +1,4 @@
+// 导出模板示例代码片段生成
 export const getCode = (templateID) => {
   return `<template>
   <!-- 导出组件 -->

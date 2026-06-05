@@ -1,3 +1,4 @@
+<!-- 404 错误页 -->
 <template>
   <div>
     <div class="w-full h-screen bg-gray-50 flex items-center justify-center">

@@ -1,3 +1,4 @@
+// 初始化系统菜单与按钮种子数据。
 package system
 
 import (

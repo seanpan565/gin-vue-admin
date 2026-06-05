@@ -1,4 +1,5 @@
-﻿<template>
+﻿<!-- 仪表盘快捷入口 -->
+<template>
   <div class="h-full space-y-5">
     <div>
       <div class="mb-2 text-xs tracking-wide text-black/55 dark:text-white/55">常用入口</div>

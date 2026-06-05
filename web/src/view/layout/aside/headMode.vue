@@ -1,3 +1,4 @@
+<!-- 顶部导航模式侧边栏 -->
 <template>
   <div
     class="h-full text-slate-700 dark:text-slate-300 mx-2 flex items-center w-[calc(100vw-600px)] overflow-auto"

@@ -1,5 +1,7 @@
+// Package upload 提供多平台对象存储上传抽象与实现。
 package upload
 
+// OSS 对象存储统一接口及工厂方法，按配置选择具体实现。
 import (
 	"mime/multipart"
 

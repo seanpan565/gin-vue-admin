@@ -5,6 +5,7 @@ import (
 	model "github.com/flipped-aurora/gin-vue-admin/server/model/system"
 )
 
+// 代码生成历史相关请求参数
 type SysAutoHistoryCreate struct {
 	Table            string            // 表名
 	Package          string            // 模块名/插件名

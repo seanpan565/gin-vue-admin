@@ -1,3 +1,4 @@
+<!-- 代码生成器 -->
 <template>
   <div>
     <warning-bar

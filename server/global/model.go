@@ -1,3 +1,4 @@
+// model.go 提供 GORM 基础模型，包含主键、时间戳与软删除字段。
 package global
 
 import (

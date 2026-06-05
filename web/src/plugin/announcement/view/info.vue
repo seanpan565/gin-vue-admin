@@ -1,3 +1,4 @@
+<!-- 公告管理页面 -->
 <template>
   <div>
     <div class="gva-search-box">

@@ -1,3 +1,4 @@
+// 初始化默认角色种子数据（超级管理员、普通用户等）。
 package system
 
 import (

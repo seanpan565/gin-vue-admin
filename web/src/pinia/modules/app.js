@@ -1,3 +1,4 @@
+// 应用全局配置 store：主题、布局、设备适配等 UI 状态
 import { defineStore } from 'pinia'
 import { ref, watchEffect, reactive } from 'vue'
 import { setBodyPrimaryColor } from '@/utils/format'

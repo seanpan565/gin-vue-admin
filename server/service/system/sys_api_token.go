@@ -1,5 +1,6 @@
 package system
 
+// ApiTokenService API令牌管理
 import (
 	"errors"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"

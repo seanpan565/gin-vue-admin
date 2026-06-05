@@ -1,3 +1,4 @@
+// 字典详情 API：字典项及树形结构管理
 import service from '@/utils/request'
 // @Tags SysDictionaryDetail
 // @Summary 创建SysDictionaryDetail

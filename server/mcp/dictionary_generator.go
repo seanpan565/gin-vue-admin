@@ -1,4 +1,7 @@
+// Package mcpTool MCP 工具：生成并创建字典选项。
 package mcpTool
+
+// dictionary_generator.go 智能创建字典及字典详情。
 
 import (
 	"context"
@@ -10,10 +13,12 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+// init 注册 generate_dictionary_options 工具。
 func init() {
 	RegisterTool(&DictionaryOptionsGenerator{})
 }
 
+// DictionaryOptionsGenerator 字典选项生成工具。
 type DictionaryOptionsGenerator struct{}
 
 type DictionaryOption struct {

@@ -1,3 +1,4 @@
+// Package model auto 插件数据模型。
 package model
 
 import (
@@ -5,6 +6,9 @@ import (
 	common "github.com/flipped-aurora/gin-vue-admin/server/model/common"
 )
 
+// sys_ai_workflow_session.go AI 工作流会话相关模型。
+
+// AIWorkflowMessage 单条 AI 工作流消息。
 type AIWorkflowMessage struct {
 	ID             string         `json:"id"`
 	Role           string         `json:"role"`
@@ -17,6 +21,7 @@ type AIWorkflowMessage struct {
 
 type AIWorkflowMessages = common.JSONSlice[AIWorkflowMessage]
 
+// SysAIWorkflowSession AI 工作流会话主表。
 type SysAIWorkflowSession struct {
 	global.GVA_MODEL
 	UserID         uint                `json:"userId" gorm:"column:user_id;index;comment:用户ID"`

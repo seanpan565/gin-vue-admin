@@ -1,4 +1,7 @@
+// Package mcpTool MCP HTTP 服务构建与启动。
 package mcpTool
+
+// server.go 创建 MCP 服务及 Streamable HTTP 端点。
 
 import (
 	"net/http"
@@ -8,6 +11,7 @@ import (
 	mcpServer "github.com/mark3labs/mcp-go/server"
 )
 
+// NewMCPServer 创建并注册全部 MCP 工具。
 func NewMCPServer() *mcpServer.MCPServer {
 	config := global.GVA_CONFIG.MCP
 
@@ -22,6 +26,7 @@ func NewMCPServer() *mcpServer.MCPServer {
 	return s
 }
 
+// NewStreamableHTTPServer 创建 Streamable HTTP MCP 服务。
 func NewStreamableHTTPServer() *mcpServer.StreamableHTTPServer {
 	config := global.GVA_CONFIG.MCP
 	path := config.Path

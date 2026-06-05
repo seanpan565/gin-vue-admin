@@ -1,3 +1,4 @@
+<!-- 菜单图标选择 -->
 <template>
   <div class="w-full">
     <el-select

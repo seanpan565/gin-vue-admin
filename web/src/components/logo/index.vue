@@ -1,3 +1,4 @@
+// 系统 Logo 展示组件，支持明暗主题切换
 <script setup>
 import { ref, watchEffect } from 'vue';
 import { useAppStore } from '@/pinia/modules/app.js';

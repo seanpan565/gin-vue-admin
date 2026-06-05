@@ -1,4 +1,4 @@
-// 权限按钮展示指令
+// v-auth 指令：按角色 ID 控制按钮/元素可见性
 import { useUserStore } from '@/pinia/modules/user'
 export default {
   install: (app) => {

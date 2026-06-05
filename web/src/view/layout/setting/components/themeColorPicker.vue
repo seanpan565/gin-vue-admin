@@ -1,3 +1,4 @@
+<!-- 主题色选择器 -->
 <template>
   <div class="gva-theme-font">
     <div class="gva-theme-card-bg p-4">

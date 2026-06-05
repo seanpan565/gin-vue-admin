@@ -1,3 +1,4 @@
+// AWS S3 配置，对应 config.yaml 中 aws-s3 节点。
 package config
 
 type AwsS3 struct {

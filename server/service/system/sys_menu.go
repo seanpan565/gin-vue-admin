@@ -1,5 +1,6 @@
 package system
 
+// MenuService 菜单权限管理
 import (
 	"errors"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"

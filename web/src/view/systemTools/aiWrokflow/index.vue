@@ -1,3 +1,4 @@
+<!-- AI 工作流管理 -->
 <template>
   <div class="gva-table-box ai-workflow-page space-y-4">
     <warning-bar

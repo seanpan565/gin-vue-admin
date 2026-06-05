@@ -1,3 +1,4 @@
+// error.go Panic 恢复中间件，记录堆栈并将错误写入 sys_errors 表。
 package middleware
 
 import (
@@ -17,7 +18,7 @@ import (
 	"go.uber.org/zap"
 )
 
-// GinRecovery recover掉项目可能出现的panic，并使用zap记录相关日志
+// GinRecovery 捕获 panic 并记录日志，可选将堆栈写入 sys_errors 表。
 func GinRecovery(stack bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		defer func() {

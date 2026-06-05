@@ -1,3 +1,4 @@
+// plugin_notifier.go 数据库就绪通知器，协调 InitDB 完成后的插件延迟注册。
 package initialize
 
 import (

@@ -1,5 +1,6 @@
 package system
 
+// autoCodePlugin 插件GORM模板测试
 import (
 	"context"
 	"path/filepath"

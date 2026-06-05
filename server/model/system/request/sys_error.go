@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// 错误日志相关请求参数
 type SysErrorSearch struct{
     CreatedAtRange []time.Time `json:"createdAtRange" form:"createdAtRange[]"`
       Form  *string `json:"form" form:"form"` 

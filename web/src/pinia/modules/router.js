@@ -1,3 +1,4 @@
+// 路由 store：动态菜单、异步路由与 keep-alive 缓存管理
 import { asyncRouterHandle } from '@/utils/asyncRouter'
 import { emitter } from '@/utils/bus.js'
 import { asyncMenu } from '@/api/menu'

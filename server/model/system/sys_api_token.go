@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// SysApiToken API 访问令牌表模型
 type SysApiToken struct {
 	global.GVA_MODEL
 	UserID      uint      `json:"userId" gorm:"comment:用户ID"`

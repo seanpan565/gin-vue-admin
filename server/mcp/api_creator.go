@@ -1,4 +1,7 @@
+// Package mcpTool MCP 工具：创建 API 权限记录。
 package mcpTool
+
+// api_creator.go 向系统注册新 API 权限。
 
 import (
 	"context"
@@ -12,6 +15,7 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+// init 注册 create_api 工具。
 func init() {
 	RegisterTool(&ApiCreator{})
 }
@@ -31,6 +35,7 @@ type ApiCreateResponse struct {
 	Method  string `json:"method"`
 }
 
+// ApiCreator API 创建工具。
 type ApiCreator struct{}
 
 func (a *ApiCreator) New() mcp.Tool {

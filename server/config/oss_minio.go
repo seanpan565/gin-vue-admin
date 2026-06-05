@@ -1,3 +1,4 @@
+// MinIO 对象存储配置，对应 config.yaml 中 minio 节点。
 package config
 
 type Minio struct {

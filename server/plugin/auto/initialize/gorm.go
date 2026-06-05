@@ -1,3 +1,4 @@
+// Package initialize auto 插件安装初始化。
 package initialize
 
 import (
@@ -10,6 +11,9 @@ import (
 	"go.uber.org/zap"
 )
 
+// gorm.go 安装时自动迁移 auto 插件数据表。
+
+// Gorm 迁移 AI 工作流、代码历史与自动化包表。
 func Gorm(ctx context.Context) {
 	err := global.GVA_DB.WithContext(ctx).AutoMigrate(
 		new(autoModel.SysAIWorkflowSession),

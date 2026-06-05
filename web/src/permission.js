@@ -1,3 +1,4 @@
+// 路由权限守卫：登录校验、动态路由注册与页面缓存
 import { useUserStore } from '@/pinia/modules/user'
 import { useRouterStore } from '@/pinia/modules/router'
 import getPageTitle from '@/utils/page'
@@ -36,7 +37,7 @@ function addTopLevelIfAbsent(r) {
   }
 }
 
-// 将 n 级菜单扁平化为：
+// 将 n 级菜单扁平化并动态注册到 Vue Router
 // - 常规：一级 layout + 二级页面组件
 // - 若某节点 meta.defaultMenu === true：该节点为顶级（不包裹在 layout 下），其子节点作为该顶级的二级页面组件
 function addRouteByChildren(route, segments = [], parentName = null) {

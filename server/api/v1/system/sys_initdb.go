@@ -1,5 +1,6 @@
 package system
 
+// DBApi 数据库初始化与检测接口
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"

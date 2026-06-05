@@ -1,3 +1,4 @@
+// 邮件服务配置，对应 config.yaml 中 email 节点。
 package config
 
 type Email struct {

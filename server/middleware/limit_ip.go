@@ -1,3 +1,4 @@
+// limit_ip.go 基于 Redis 的 IP 访问频率限流中间件。
 package middleware
 
 import (
@@ -52,6 +53,7 @@ func DefaultCheckOrMark(key string, expire int, limit int) (err error) {
 	return err
 }
 
+// DefaultLimit 按客户端 IP 限制单位时间内的请求次数。
 func DefaultLimit() gin.HandlerFunc {
 	return LimitConfig{
 		GenerationKey: DefaultGenerationKey,

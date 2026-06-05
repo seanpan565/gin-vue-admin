@@ -1,3 +1,4 @@
+<!-- 图片压缩上传组件 -->
 <template>
   <div>
     <el-upload

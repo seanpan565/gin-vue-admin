@@ -1,3 +1,4 @@
+<!-- 数据库初始化页 -->
 <template>
   <div
     class="rounded-lg flex items-center justify-evenly w-full h-full relative md:w-screen md:h-screen md:bg-[#194bfb] overflow-hidden"

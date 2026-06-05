@@ -1,3 +1,4 @@
+// gorm_pgsql.go PostgreSQL 数据库连接初始化。
 package initialize
 
 import (

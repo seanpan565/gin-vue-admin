@@ -1,3 +1,4 @@
+// 字典 API：系统字典类型 CRUD
 import service from '@/utils/request'
 // @Tags SysDictionary
 // @Summary 创建SysDictionary

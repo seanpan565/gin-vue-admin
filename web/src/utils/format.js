@@ -1,3 +1,4 @@
+// 通用格式化：布尔、时间、字典标签及主题色设置
 import { formatTimeToStr } from '@/utils/date'
 import { getDict } from '@/utils/dictionary'
 import { ref } from 'vue'

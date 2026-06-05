@@ -1,3 +1,4 @@
+// 多数据源配置，对应 config.yaml 中 db-list 节点。
 package config
 
 import (

@@ -1,3 +1,4 @@
+// Package model auto 插件数据模型。
 package model
 
 import (
@@ -9,6 +10,8 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"gorm.io/gorm"
 )
+
+// sys_auto_code_history.go 代码生成历史记录模型。
 
 // SysAutoCodeHistory 自动代码生成记录，用于回滚与重放。
 type SysAutoCodeHistory struct {

@@ -1,11 +1,12 @@
+// sys_auto_code_history.go 代码生成历史与回滚相关路由。
 package router
 
-import (
-	"github.com/gin-gonic/gin"
-)
+import "github.com/gin-gonic/gin"
 
+// AutoCodeHistoryRouter 代码生成历史路由组。
 type AutoCodeHistoryRouter struct{}
 
+// InitAutoCodeHistoryRouter 注册代码生成历史路由。
 func (s *AutoCodeRouter) InitAutoCodeHistoryRouter(Router *gin.RouterGroup) {
 	autoCodeHistoryRouter := Router.Group("autoCode")
 	{

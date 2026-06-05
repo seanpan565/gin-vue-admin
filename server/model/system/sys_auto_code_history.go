@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+// SysAutoCodeHistory 代码自动生成历史记录表模型
 // SysAutoCodeHistory 自动迁移代码记录,用于回滚,重放使用
 type SysAutoCodeHistory struct {
 	global.GVA_MODEL

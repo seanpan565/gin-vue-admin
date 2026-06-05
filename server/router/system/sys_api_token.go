@@ -1,5 +1,7 @@
 package system
 
+// InitApiTokenRouter 注册API Token相关路由
+
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1"
 	"github.com/flipped-aurora/gin-vue-admin/server/middleware"

@@ -1,3 +1,5 @@
+// Package core 服务端核心层，负责启动 HTTP 服务及配置/日志等基础设施初始化。
+// server.go 服务启动入口，串联 Redis、MongoDB、路由注册与 HTTP 监听。
 package core
 
 import (
@@ -11,6 +13,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// RunServer 初始化缓存与数据层，注册路由并启动 HTTP 服务。
 func RunServer() {
 	if global.GVA_CONFIG.System.UseRedis {
 		initialize.Redis()

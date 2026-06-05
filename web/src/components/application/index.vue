@@ -1,3 +1,4 @@
+<!-- 全局错误对话框应用层，监听事件总线展示错误 -->
 <template>
   <error-preview v-if="showError" :error-data="errorInfo" @close="handleClose" @confirm="handleConfirm" />
 </template>

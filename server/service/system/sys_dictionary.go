@@ -1,5 +1,6 @@
 package system
 
+// DictionaryService 字典管理
 import (
 	"encoding/json"
 	"errors"

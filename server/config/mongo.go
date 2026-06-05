@@ -1,3 +1,4 @@
+// MongoDB 配置，对应 config.yaml 中 mongo 节点。
 package config
 
 import (

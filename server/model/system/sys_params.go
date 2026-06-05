@@ -5,6 +5,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// SysParams 系统参数表模型
 // 参数 结构体  SysParams
 type SysParams struct {
 	global.GVA_MODEL

@@ -4,6 +4,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// ExaFile 断点续传文件表模型
 // file struct, 文件结构体
 type ExaFile struct {
 	global.GVA_MODEL

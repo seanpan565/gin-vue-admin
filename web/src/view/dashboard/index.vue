@@ -1,4 +1,5 @@
-﻿<template>
+﻿<!-- 仪表盘首页 -->
+<template>
   <div class="h-full gva-container2 overflow-auto bg-slate-50/60 dark:bg-slate-900">
     <div class="space-y-4 p-4 lg:p-6">
       <section

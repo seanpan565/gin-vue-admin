@@ -1,5 +1,6 @@
 package system
 
+// AutoCodePluginApi 插件安装与管理接口
 import (
 	"fmt"
 	"os"

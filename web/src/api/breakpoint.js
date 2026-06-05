@@ -1,3 +1,4 @@
+// 断点续传 API：大文件分片上传与合并
 import service from '@/utils/request'
 // @Summary 设置角色资源权限
 // @Security ApiKeyAuth

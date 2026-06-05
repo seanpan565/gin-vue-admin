@@ -1,3 +1,4 @@
+<!-- 字典详情管理 -->
 <template>
   <div>
     <div class="gva-table-box">

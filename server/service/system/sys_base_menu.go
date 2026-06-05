@@ -1,5 +1,6 @@
 package system
 
+// BaseMenuService 基础菜单管理
 import (
 	"errors"
 

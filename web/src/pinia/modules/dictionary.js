@@ -1,3 +1,4 @@
+// 字典 store：系统字典数据缓存与树形/扁平查询
 import { findSysDictionary } from '@/api/sysDictionary'
 import { getDictionaryTreeListByType } from '@/api/sysDictionaryDetail'
 

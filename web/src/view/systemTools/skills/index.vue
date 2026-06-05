@@ -1,4 +1,5 @@
-﻿<template>
+﻿<!-- Skills 技能管理 -->
+<template>
   <div class="h-full">
     <warning-bar
         href="https://plugin.gin-vue-admin.com/license"

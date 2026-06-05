@@ -1,3 +1,4 @@
+<!-- 明暗主题切换 -->
 <template>
   <div class="flex justify-center">
     <div class="gva-theme-mode-selector">

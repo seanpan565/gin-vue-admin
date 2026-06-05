@@ -1,5 +1,6 @@
 package system
 
+// SqliteInitHandler SQLite数据库初始化
 import (
 	"context"
 	"errors"

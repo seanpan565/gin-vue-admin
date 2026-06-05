@@ -1,3 +1,4 @@
+// plugin_biz_v2.go v2 插件注册（Engine 模式），通过 blank import 自动加载。
 package initialize
 
 import (

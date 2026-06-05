@@ -1,3 +1,4 @@
+<!-- 自动化 Package 管理 -->
 <template>
   <div>
     <warning-bar

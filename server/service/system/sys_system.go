@@ -1,5 +1,6 @@
 package system
 
+// SystemConfigService 系统配置管理
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/config"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"

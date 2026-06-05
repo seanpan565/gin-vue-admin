@@ -10,6 +10,7 @@ import (
 	"strings"
 )
 
+// 代码自动生成相关请求参数
 type AutoCode struct {
 	Package             string                 `json:"package"`
 	PackageT            string                 `json:"-"`

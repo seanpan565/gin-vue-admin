@@ -1,5 +1,6 @@
 package utils
 
+// JWT 令牌生成、解析与 Redis 存储。
 import (
 	"context"
 	"errors"
@@ -10,6 +11,7 @@ import (
 	jwt "github.com/golang-jwt/jwt/v5"
 )
 
+// JWT JWT 令牌管理器
 type JWT struct {
 	SigningKey []byte
 }
@@ -23,12 +25,14 @@ var (
 	TokenInvalid          = errors.New("无法处理此token")
 )
 
+// NewJWT 创建 JWT 管理器实例
 func NewJWT() *JWT {
 	return &JWT{
 		[]byte(global.GVA_CONFIG.JWT.SigningKey),
 	}
 }
 
+// CreateClaims 根据用户信息构建 JWT Claims
 func (j *JWT) CreateClaims(baseClaims request.BaseClaims) request.CustomClaims {
 	bf, _ := ParseDuration(global.GVA_CONFIG.JWT.BufferTime)
 	ep, _ := ParseDuration(global.GVA_CONFIG.JWT.ExpiresTime)

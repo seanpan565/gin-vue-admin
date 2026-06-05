@@ -1,3 +1,4 @@
+// operation.go 操作记录中间件，将请求/响应信息写入 sys_operation_records 表。
 package middleware
 
 import (
@@ -28,6 +29,7 @@ func init() {
 	}
 }
 
+// OperationRecord 记录用户 API 操作详情（请求体、响应、耗时等）。
 func OperationRecord() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var body []byte

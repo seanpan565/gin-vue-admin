@@ -1,3 +1,4 @@
+<!-- Office 文档预览入口，按类型渲染 docx/pdf/xlsx/图片 -->
 <template>
   <div class="border border-solid border-gray-100 h-full w-full">
     <el-row>

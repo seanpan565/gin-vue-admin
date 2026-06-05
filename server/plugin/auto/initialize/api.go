@@ -1,3 +1,4 @@
+// Package initialize auto 插件安装初始化，注册 API、菜单、表结构与路由。
 package initialize
 
 import (
@@ -7,6 +8,9 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/plugin/plugin-tool/utils"
 )
 
+// api.go 安装时向系统注册 auto 插件 API 权限。
+
+// Api 注册 auto 插件全部 API 到系统。
 func Api(ctx context.Context) {
 	_ = ctx
 	entities := []model.SysApi{

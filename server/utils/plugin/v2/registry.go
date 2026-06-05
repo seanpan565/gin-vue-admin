@@ -1,5 +1,6 @@
 package plugin
 
+// v2 插件注册表，支持插件自动发现与初始化。
 import "sync"
 
 var (
@@ -7,7 +8,7 @@ var (
 	registry   []Plugin
 )
 
-// Register records a plugin for auto initialization.
+// Register 注册插件实例，供启动时自动初始化
 func Register(p Plugin) {
 	if p == nil {
 		return
@@ -17,7 +18,7 @@ func Register(p Plugin) {
 	registryMu.Unlock()
 }
 
-// Registered returns a snapshot of all registered plugins.
+// Registered 返回已注册插件的快照副本
 func Registered() []Plugin {
 	registryMu.RLock()
 	defer registryMu.RUnlock()

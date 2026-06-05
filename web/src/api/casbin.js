@@ -1,3 +1,4 @@
+// Casbin API：角色 API 权限策略的更新与查询
 import service from '@/utils/request'
 // @Tags authority
 // @Summary 更改角色api权限

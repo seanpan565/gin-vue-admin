@@ -5,6 +5,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// SysExportTemplate 数据导出模板表模型
 // 导出模板 结构体  SysExportTemplate
 type SysExportTemplate struct {
 	global.GVA_MODEL

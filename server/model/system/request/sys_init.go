@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// 数据库初始化相关请求参数
 type InitDB struct {
 	AdminPassword string `json:"adminPassword" binding:"required"`
 	DBType        string `json:"dbType"`                    // 数据库类型

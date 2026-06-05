@@ -1,3 +1,4 @@
+<!-- 扫码上传页（客户端） -->
 <template>
   <div class="flex justify-center w-full pt-2">
     <el-upload

@@ -1,4 +1,7 @@
+// Package mcpTool MCP 上游 GVA 主服务 HTTP 客户端。
 package mcpTool
+
+// http_client.go 代理 MCP 工具对主后端 API 的调用。
 
 import (
 	"bytes"
@@ -15,12 +18,14 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// upstreamEnvelope 上游 API 统一响应封装。
 type upstreamEnvelope[T any] struct {
 	Code int    `json:"code"`
 	Data T      `json:"data"`
 	Msg  string `json:"msg"`
 }
 
+// ResolveMCPServiceURL 解析 MCP 服务对外 URL。
 func ResolveMCPServiceURL() string {
 	baseURL := strings.TrimSpace(global.GVA_CONFIG.MCP.BaseURL)
 	if baseURL != "" {

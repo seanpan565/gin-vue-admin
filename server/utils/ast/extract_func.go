@@ -1,3 +1,4 @@
+// extract_func.go 根据源码位置提取完整函数定义。
 package ast
 
 import (

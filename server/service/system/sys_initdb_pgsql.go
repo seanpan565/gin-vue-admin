@@ -1,5 +1,6 @@
 package system
 
+// PgsqlInitHandler PostgreSQL数据库初始化
 import (
 	"context"
 	"errors"

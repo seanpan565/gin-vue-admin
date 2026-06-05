@@ -1,5 +1,6 @@
 package system
 
+// AutoCodeApi 代码自动生成接口
 import (
 	"errors"
 	"fmt"

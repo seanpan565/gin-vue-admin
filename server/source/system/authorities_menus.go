@@ -1,3 +1,4 @@
+// 初始化角色与菜单关联关系种子数据。
 package system
 
 import (

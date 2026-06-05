@@ -7,6 +7,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 )
 
+// SysOperationRecord 系统操作记录表模型
 // 如果含有time.Time 请自行import time包
 type SysOperationRecord struct {
 	global.GVA_MODEL

@@ -1,5 +1,6 @@
 package system
 
+// autoCodePlugin 自动化插件代码
 import (
 	"bytes"
 	"context"

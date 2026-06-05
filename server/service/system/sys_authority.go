@@ -1,5 +1,6 @@
 package system
 
+// AuthorityService 角色权限管理
 import (
 	"errors"
 	"strconv"

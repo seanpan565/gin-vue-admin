@@ -1,3 +1,4 @@
+// JWT API：Token 黑名单（登出失效）
 import service from '@/utils/request'
 // @Tags jwt
 // @Summary jwt加入黑名单

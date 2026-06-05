@@ -1,3 +1,4 @@
+// import.go 实现 import 声明的注入与回滚。
 package ast
 
 import (
@@ -7,11 +8,13 @@ import (
 	"strings"
 )
 
+// Import import 注入/回滚处理器。
 type Import struct {
 	Base
 	ImportPath string // 导包路径
 }
 
+// NewImport 创建指定 import 路径的处理器。
 func NewImport(importPath string) *Import {
 	return &Import{ImportPath: importPath}
 }

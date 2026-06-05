@@ -1,4 +1,7 @@
+// Package router 邮件插件路由层。
 package router
+
+// sys_email.go 邮件 HTTP 路由注册。
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/middleware"
@@ -6,8 +9,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// EmailRouter 邮件路由组。
 type EmailRouter struct{}
 
+// InitEmailRouter 注册邮件发送路由。
 func (s *EmailRouter) InitEmailRouter(Router *gin.RouterGroup) {
 	emailRouter := Router.Use(middleware.OperationRecord())
 	EmailApi := api.ApiGroupApp.EmailApi.EmailTest

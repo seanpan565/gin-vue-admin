@@ -1,5 +1,6 @@
 package system
 
+// SysVersionService 系统版本管理
 import (
 	"context"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"

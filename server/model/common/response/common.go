@@ -1,5 +1,6 @@
 package response
 
+// PageResult 分页列表响应结构。
 type PageResult struct {
 	List     interface{} `json:"list"`
 	Total    int64       `json:"total"`

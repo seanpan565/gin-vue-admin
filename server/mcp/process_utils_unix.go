@@ -1,6 +1,8 @@
 //go:build !windows
 
+// Package mcpTool Unix 平台 MCP 托管进程工具。
 package mcpTool
+// process_utils_unix.go 非 Windows 下的进程分离与终止。
 
 import (
 	"errors"
@@ -8,6 +10,7 @@ import (
 	"syscall"
 )
 
+// prepareDetachedProcess 以独立进程组启动子进程。
 func prepareDetachedProcess(cmd *exec.Cmd) {
 	cmd.SysProcAttr = &syscall.SysProcAttr{
 		Setpgid: true,

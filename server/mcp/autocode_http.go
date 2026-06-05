@@ -1,4 +1,7 @@
+// Package mcpTool 自动化代码上游 HTTP 调用封装。
 package mcpTool
+
+// autocode_http.go 包/模块/历史等上游 API 代理。
 
 import (
 	"context"

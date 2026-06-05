@@ -1,3 +1,4 @@
+// 监听窗口尺寸并切换移动端/桌面端布局的组合式函数
 // 本组件参考 arco-pro 的实现
 // https://github.com/arco-design/arco-design-pro-vue/blob/main/arco-design-pro-vite/src/hooks/responsive.ts
 

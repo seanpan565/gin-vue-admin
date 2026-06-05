@@ -1,3 +1,4 @@
+// cors.go 跨域资源共享（CORS）中间件，支持全放行与白名单模式。
 package middleware
 
 import (

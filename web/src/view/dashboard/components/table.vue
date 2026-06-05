@@ -1,3 +1,4 @@
+<!-- 仪表盘数据表格 -->
 <template>
   <div>
     <el-table :data="tableData" stripe style="width: 100%">

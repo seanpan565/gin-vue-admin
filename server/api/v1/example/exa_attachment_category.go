@@ -1,5 +1,6 @@
 package example
 
+// AttachmentCategoryApi 附件分类管理接口
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	common "github.com/flipped-aurora/gin-vue-admin/server/model/common/request"

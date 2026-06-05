@@ -1,5 +1,6 @@
 package system
 
+// AutoCodeHistoryApi 代码生成历史记录接口
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	common "github.com/flipped-aurora/gin-vue-admin/server/model/common/request"

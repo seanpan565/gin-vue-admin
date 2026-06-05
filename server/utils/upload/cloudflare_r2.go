@@ -1,5 +1,6 @@
 package upload
 
+// Cloudflare R2 对象存储实现。
 import (
 	"context"
 	"errors"
@@ -16,6 +17,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// CloudflareR2 Cloudflare R2 存储
 type CloudflareR2 struct{}
 
 func (c *CloudflareR2) UploadFile(file *multipart.FileHeader) (fileUrl string, fileName string, err error) {

@@ -1,3 +1,4 @@
+// 代码生成 API：自动代码、LLM 生成及 MCP 相关接口
 import service from '@/utils/request'
 import { useUserStore } from '@/pinia/modules/user'
 
@@ -261,6 +262,7 @@ export const llmAuto = (data, options = {}) => {
   })
 }
 
+// LLM 流式请求：SSE 解析、超时控制与增量文本合并
 const streamLLMRequest = async (url, data, options = {}) => {
   const controller = options.controller || new AbortController()
   const timeout = options.timeout ?? DEFAULT_LLM_TIMEOUT

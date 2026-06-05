@@ -1,3 +1,4 @@
+// Package mcpTool MCP 工具：智能需求分析（首选入口）。
 package mcpTool
 
 import (
@@ -9,10 +10,12 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
+// init 注册 requirement_analyzer 工具。
 func init() {
 	RegisterTool(&RequirementAnalyzer{})
 }
 
+// RequirementAnalyzer 需求分析工具。
 type RequirementAnalyzer struct{}
 
 // RequirementAnalysisRequest 需求分析请求

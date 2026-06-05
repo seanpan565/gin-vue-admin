@@ -1,3 +1,4 @@
+// 用户 store：登录态、用户信息及登入/登出流程
 import { login, getUserInfo } from '@/api/user'
 import { jsonInBlacklist } from '@/api/jwt'
 import router from '@/router/index'

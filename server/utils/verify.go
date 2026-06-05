@@ -1,5 +1,6 @@
 package utils
 
+// 各业务模块预定义的参数校验规则集合。
 var (
 	IdVerify               = Rules{"ID": []string{NotEmpty()}}
 	ApiVerify              = Rules{"Path": {NotEmpty()}, "Description": {NotEmpty()}, "ApiGroup": {NotEmpty()}, "Method": {NotEmpty()}}

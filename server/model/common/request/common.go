@@ -1,3 +1,4 @@
+// Package request 定义 Model 层通用请求参数（分页、ID 查询等）。
 package request
 
 import (
