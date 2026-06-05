@@ -54,6 +54,7 @@ const registerIcons = async (app) => {
 }
 
 export const register = (app) => {
+  config.appName = import.meta.env.VITE_APP_TITLE || config.appName
   // 统一注册el-icon图标
   for (const iconName in ElIconModules) {
     app.component(iconName, ElIconModules[iconName])

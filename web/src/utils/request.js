@@ -8,7 +8,9 @@ import router from '@/router/index'
 const DEFAULT_REQUEST_TIMEOUT = 1000 * 60 * 10
 const DEFAULT_LOADING_FORCE_CLOSE_DELAY = 30000
 
-const service = axios.create()
+const service = axios.create({
+  timeout: DEFAULT_REQUEST_TIMEOUT
+})
 
 let activeAxios = 0
 let persistentLoadingCount = 0

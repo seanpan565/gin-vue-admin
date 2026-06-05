@@ -31,33 +31,32 @@
 </template>
 
 <script setup>
-
   const notices = [
     {
-      typeTitle: '通知',
-      time: '今天',
-      title: '购买商业授权后可进入专属技术支持通道，加快问题排查和版本升级效率。',
+      typeTitle: '架构',
+      time: '开发',
+      title: '商城业务建议放在 mall 包：Router → API → Service → Model，权限继续走 JWT + Casbin。',
       dotClass: 'bg-cyan-500',
       tagClass: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-200'
     },
     {
-      typeTitle: '活动',
-      time: '2天前',
-      title: '插件市场正在进行限时优惠活动，授权用户可获得更低的插件采购成本。',
+      typeTitle: '参考',
+      time: '示例',
+      title: 'example/customer 是最接近标准 CRUD 的模板，写商品/订单时可先对照其前后端结构。',
       dotClass: 'bg-emerald-500',
       tagClass: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-200'
     },
     {
-      typeTitle: '合规',
-      time: '3天前',
-      title: '未授权商用存在合规风险，建议团队尽快完成授权以保障项目持续交付。',
+      typeTitle: '规范',
+      time: '数据',
+      title: '金额请用 int64 存「分」；订单号使用 UUID/雪花，不要直接暴露自增 ID。',
       dotClass: 'bg-amber-500',
       tagClass: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-200'
     },
     {
-      typeTitle: '服务',
-      time: '5天前',
-      title: '授权用户可获得官方长期维护承诺，包含安全修复与关键版本升级支持。',
+      typeTitle: '调试',
+      time: '接口',
+      title: '本地 Swagger：http://127.0.0.1:8888/swagger/index.html，登录后在 Header 填入 x-token 调试私有接口。',
       dotClass: 'bg-violet-500',
       tagClass: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-200'
     }
@@ -65,4 +64,3 @@
 </script>
 
 <style scoped lang="scss"></style>
-

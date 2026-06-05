@@ -7,6 +7,7 @@
       :href="item.url"
       class="text-sm text-black/70 dark:text-white/70 no-underline hover:text-[var(--el-color-primary)] dark:hover:text-white"
       target="_blank"
+      rel="noopener noreferrer"
     >
       {{ item.title }}
     </a>
@@ -14,28 +15,19 @@
 </template>
 
 <script setup>
+  import { externalLinks, siteFeatures } from '@/core/site'
+
   const wikis = [
-    {
-      title: 'Vue3',
-      url: 'https://v3.cn.vuejs.org/guide/introduction.html'
-    },
-    {
-      title: 'GIN 文档',
-      url: 'https://gin-gonic.com/'
-    },
-    {
-      title: 'GVA 文档',
-      url: 'https://www.gin-vue-admin.com/'
-    },
-    {
-      title: '插件市场',
-      url: 'https://plugin.gin-vue-admin.com/'
-    },
-    {
-      title: 'github 仓库',
-      url: 'https://github.com/flipped-aurora/gin-vue-admin'
-    }
+    { title: 'GVA 文档', url: externalLinks.gvaDocs },
+    { title: 'Gin 文档', url: externalLinks.ginDocs },
+    { title: 'Vue3 文档', url: externalLinks.vueDocs },
+    { title: 'Swagger', url: externalLinks.swagger(import.meta.env.VITE_SERVER_PORT) },
+    { title: 'GitHub', url: externalLinks.github }
   ]
+
+  if (siteFeatures.pluginMarket) {
+    wikis.push({ title: '插件市场', url: 'https://plugin.gin-vue-admin.com/' })
+  }
 </script>
 
 <style scoped lang="scss"></style>

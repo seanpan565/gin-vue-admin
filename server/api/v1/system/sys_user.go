@@ -13,6 +13,7 @@ import (
 	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
 	systemRes "github.com/flipped-aurora/gin-vue-admin/server/model/system/response"
 	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	captchaStore "github.com/flipped-aurora/gin-vue-admin/server/utils/captcha"
 	"github.com/gin-gonic/gin"
 	"github.com/redis/go-redis/v9"
 	"go.uber.org/zap"
@@ -48,7 +49,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 	}
 
 	var oc bool = openCaptcha == 0 || openCaptcha < interfaceToInt(v)
-	if oc && (l.Captcha == "" || l.CaptchaId == "" || !store.Verify(l.CaptchaId, l.Captcha, true)) {
+	if oc && (l.Captcha == "" || l.CaptchaId == "" || !captchaStore.Store(c.Request.Context()).Verify(l.CaptchaId, l.Captcha, true)) {
 		// 验证码次数+1
 		global.BlackCache.Increment(key, 1)
 		response.FailWithMessage("验证码错误", c)
