@@ -433,6 +433,31 @@ definitions:
         description: 是否使用集群模式
         type: boolean
     type: object
+  config.Security:
+    properties:
+      auth-limit-count:
+        type: integer
+      auth-limit-time:
+        type: integer
+      error-report-key:
+        type: string
+      member-captcha-enable:
+        type: boolean
+      metrics-auth-token:
+        type: string
+      metrics-enable:
+        type: boolean
+      swagger-enable:
+        type: boolean
+      upload-allowed-exts:
+        items:
+          type: string
+        type: array
+      upload-max-image-mb:
+        type: number
+      upload-max-video-mb:
+        type: number
+    type: object
   config.Server:
     properties:
       aliyun-oss:
@@ -494,6 +519,10 @@ definitions:
         items:
           $ref: '#/definitions/config.Redis'
         type: array
+      security:
+        allOf:
+        - $ref: '#/definitions/config.Security'
+        description: 安全加固
       sqlite:
         $ref: '#/definitions/config.Sqlite'
       system:
@@ -619,6 +648,9 @@ definitions:
       oss-type:
         description: Oss类型
         type: string
+      read-timeout:
+        description: HTTP 读超时，如 10m
+        type: string
       router-prefix:
         type: string
       use-mongo:
@@ -633,6 +665,9 @@ definitions:
       use-strict-auth:
         description: 使用树形角色分配模式
         type: boolean
+      write-timeout:
+        description: HTTP 写超时，如 10m
+        type: string
     type: object
   config.TencentCOS:
     properties:
@@ -695,78 +730,6 @@ definitions:
         type: string
       pid:
         type: integer
-      updatedAt:
-        description: 更新时间
-        type: string
-    type: object
-  example.ExaCustomer:
-    properties:
-      ID:
-        description: 主键ID
-        type: integer
-      createdAt:
-        description: 创建时间
-        type: string
-      customerName:
-        description: 客户名
-        type: string
-      customerPhoneData:
-        description: 客户手机号
-        type: string
-      sysUser:
-        allOf:
-        - $ref: '#/definitions/system.SysUser'
-        description: 管理详情
-      sysUserAuthorityID:
-        description: 管理角色ID
-        type: integer
-      sysUserId:
-        description: 管理ID
-        type: integer
-      updatedAt:
-        description: 更新时间
-        type: string
-    type: object
-  example.ExaFile:
-    properties:
-      ID:
-        description: 主键ID
-        type: integer
-      chunkTotal:
-        type: integer
-      createdAt:
-        description: 创建时间
-        type: string
-      exaFileChunk:
-        items:
-          $ref: '#/definitions/example.ExaFileChunk'
-        type: array
-      fileMd5:
-        type: string
-      fileName:
-        type: string
-      filePath:
-        type: string
-      isFinish:
-        type: boolean
-      updatedAt:
-        description: 更新时间
-        type: string
-    type: object
-  example.ExaFileChunk:
-    properties:
-      ID:
-        description: 主键ID
-        type: integer
-      createdAt:
-        description: 创建时间
-        type: string
-      exaFileID:
-        type: integer
-      fileChunkNumber:
-        type: integer
-      fileChunkPath:
-        type: string
       updatedAt:
         description: 更新时间
         type: string
@@ -914,32 +877,6 @@ definitions:
       updatedAt:
         description: 更新时间
         type: string
-    type: object
-  model.Info:
-    properties:
-      ID:
-        description: 主键ID
-        type: integer
-      attachments:
-        description: 附件
-        items:
-          type: object
-        type: array
-      content:
-        description: 内容
-        type: string
-      createdAt:
-        description: 创建时间
-        type: string
-      title:
-        description: 标题
-        type: string
-      updatedAt:
-        description: 更新时间
-        type: string
-      userID:
-        description: 作者
-        type: integer
     type: object
   request.AddMenuAuthorityInfo:
     properties:
@@ -1158,6 +1095,10 @@ definitions:
     type: object
   request.MemberLogin:
     properties:
+      captcha:
+        type: string
+      captchaId:
+        type: string
       mobile:
         type: string
       password:
@@ -1168,6 +1109,10 @@ definitions:
     type: object
   request.MemberRegister:
     properties:
+      captcha:
+        type: string
+      captchaId:
+        type: string
       mobile:
         type: string
       nickname:
@@ -1373,25 +1318,10 @@ definitions:
         description: 邮件发送给谁
         type: string
     type: object
-  response.ExaCustomerResponse:
-    properties:
-      customer:
-        $ref: '#/definitions/example.ExaCustomer'
-    type: object
   response.ExaFileResponse:
     properties:
       file:
         $ref: '#/definitions/example.ExaFileUploadAndDownload'
-    type: object
-  response.FilePathResponse:
-    properties:
-      filePath:
-        type: string
-    type: object
-  response.FileResponse:
-    properties:
-      file:
-        $ref: '#/definitions/example.ExaFile'
     type: object
   response.LoginResponse:
     properties:
@@ -2013,9 +1943,9 @@ definitions:
     type: object
 info:
   contact: {}
-  description: 使用gin+vue进行极速开发的全栈开发基础平台
-  title: Gin-Vue-Admin Swagger API接口文档
-  version: v2.9.2
+  description: 商城管理后台 REST API（管理端 admin + C 端 siteapi）
+  title: 商城管理后台 Swagger API 文档
+  version: v1.0.0
 paths:
   /api/createApi:
     post:
@@ -2807,6 +2737,28 @@ paths:
       summary: 用户登录
       tags:
       - Base
+  /base/uploadConfig:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  additionalProperties:
+                    format: float64
+                    type: number
+                  type: object
+                msg:
+                  type: string
+              type: object
+      summary: 获取前端上传大小限制（与 security 配置一致）
+      tags:
+      - Base
   /casbin/UpdateCasbin:
     post:
       consumes:
@@ -2865,175 +2817,6 @@ paths:
       summary: 获取权限列表
       tags:
       - Casbin
-  /customer/customer:
-    delete:
-      consumes:
-      - application/json
-      parameters:
-      - description: 客户ID
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/example.ExaCustomer'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 删除客户
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 删除客户
-      tags:
-      - ExaCustomer
-    get:
-      consumes:
-      - application/json
-      parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
-      - description: 创建时间
-        in: query
-        name: createdAt
-        type: string
-      - description: 客户名
-        in: query
-        name: customerName
-        type: string
-      - description: 客户手机号
-        in: query
-        name: customerPhoneData
-        type: string
-      - description: 管理角色ID
-        in: query
-        name: sysUserAuthorityID
-        type: integer
-      - description: 管理ID
-        in: query
-        name: sysUserId
-        type: integer
-      - description: 更新时间
-        in: query
-        name: updatedAt
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 获取单一客户信息,返回包括客户详情
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  $ref: '#/definitions/response.ExaCustomerResponse'
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 获取单一客户信息
-      tags:
-      - ExaCustomer
-    post:
-      consumes:
-      - application/json
-      parameters:
-      - description: 客户用户名, 客户手机号码
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/example.ExaCustomer'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 创建客户
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 创建客户
-      tags:
-      - ExaCustomer
-    put:
-      consumes:
-      - application/json
-      parameters:
-      - description: 客户ID, 客户信息
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/example.ExaCustomer'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 更新客户信息
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 更新客户信息
-      tags:
-      - ExaCustomer
-  /customer/customerList:
-    get:
-      consumes:
-      - application/json
-      parameters:
-      - description: 关键字
-        in: query
-        name: keyword
-        type: string
-      - description: 页码
-        in: query
-        name: page
-        type: integer
-      - description: 每页大小
-        in: query
-        name: pageSize
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 分页获取权限客户列表,返回包括列表,总数,页码,每页数量
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  $ref: '#/definitions/response.PageResult'
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 分页获取权限客户列表
-      tags:
-      - ExaCustomer
   /email/emailTest:
     post:
       produces:
@@ -3069,33 +2852,6 @@ paths:
       summary: 发送邮件
       tags:
       - System
-  /fileUploadAndDownload/breakpointContinue:
-    post:
-      consumes:
-      - multipart/form-data
-      parameters:
-      - description: an example for breakpoint resume, 断点续传示例
-        in: formData
-        name: file
-        required: true
-        type: file
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 断点续传到服务器
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 断点续传到服务器
-      tags:
-      - ExaFileUploadAndDownload
   /fileUploadAndDownload/deleteFile:
     post:
       parameters:
@@ -3120,63 +2876,6 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: 删除文件
-      tags:
-      - ExaFileUploadAndDownload
-  /fileUploadAndDownload/findFile:
-    get:
-      consumes:
-      - multipart/form-data
-      parameters:
-      - description: Find the file, 查找文件
-        in: formData
-        name: file
-        required: true
-        type: file
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 查找文件,返回包括文件详情
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  $ref: '#/definitions/response.FileResponse'
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 查找文件
-      tags:
-      - ExaFileUploadAndDownload
-    post:
-      consumes:
-      - multipart/form-data
-      parameters:
-      - description: 上传文件完成
-        in: formData
-        name: file
-        required: true
-        type: file
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 创建文件,返回包括文件路径
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  $ref: '#/definitions/response.FilePathResponse'
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 创建文件
       tags:
       - ExaFileUploadAndDownload
   /fileUploadAndDownload/getFileList:
@@ -3235,33 +2934,6 @@ paths:
       summary: 导入URL
       tags:
       - ExaFileUploadAndDownload
-  /fileUploadAndDownload/removeChunk:
-    post:
-      consumes:
-      - multipart/form-data
-      parameters:
-      - description: 删除缓存切片
-        in: formData
-        name: file
-        required: true
-        type: file
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 删除切片
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 删除切片
-      tags:
-      - ExaFileUploadAndDownload
   /fileUploadAndDownload/upload:
     post:
       consumes:
@@ -3291,262 +2963,6 @@ paths:
       summary: 上传文件示例
       tags:
       - ExaFileUploadAndDownload
-  /info/createInfo:
-    post:
-      consumes:
-      - application/json
-      parameters:
-      - description: 创建公告
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/model.Info'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 创建成功
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 创建公告
-      tags:
-      - Info
-  /info/deleteInfo:
-    delete:
-      consumes:
-      - application/json
-      parameters:
-      - description: 删除公告
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/model.Info'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 删除成功
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 删除公告
-      tags:
-      - Info
-  /info/deleteInfoByIds:
-    delete:
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 批量删除成功
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 批量删除公告
-      tags:
-      - Info
-  /info/findInfo:
-    get:
-      consumes:
-      - application/json
-      parameters:
-      - description: 主键ID
-        in: query
-        name: ID
-        type: integer
-      - description: 内容
-        in: query
-        name: content
-        type: string
-      - description: 创建时间
-        in: query
-        name: createdAt
-        type: string
-      - description: 标题
-        in: query
-        name: title
-        type: string
-      - description: 更新时间
-        in: query
-        name: updatedAt
-        type: string
-      - description: 作者
-        in: query
-        name: userID
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 查询成功
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  $ref: '#/definitions/model.Info'
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 用id查询公告
-      tags:
-      - Info
-  /info/getInfoDataSource:
-    get:
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 查询成功
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  type: object
-                msg:
-                  type: string
-              type: object
-      summary: 获取Info的数据源
-      tags:
-      - Info
-  /info/getInfoList:
-    get:
-      consumes:
-      - application/json
-      parameters:
-      - in: query
-        name: endCreatedAt
-        type: string
-      - description: 关键字
-        in: query
-        name: keyword
-        type: string
-      - description: 页码
-        in: query
-        name: page
-        type: integer
-      - description: 每页大小
-        in: query
-        name: pageSize
-        type: integer
-      - in: query
-        name: startCreatedAt
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 获取成功
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  $ref: '#/definitions/response.PageResult'
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 分页获取公告列表
-      tags:
-      - Info
-  /info/getInfoPublic:
-    get:
-      consumes:
-      - application/json
-      parameters:
-      - in: query
-        name: endCreatedAt
-        type: string
-      - description: 关键字
-        in: query
-        name: keyword
-        type: string
-      - description: 页码
-        in: query
-        name: page
-        type: integer
-      - description: 每页大小
-        in: query
-        name: pageSize
-        type: integer
-      - in: query
-        name: startCreatedAt
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 获取成功
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  type: object
-                msg:
-                  type: string
-              type: object
-      summary: 不需要鉴权的公告接口
-      tags:
-      - Info
-  /info/updateInfo:
-    put:
-      consumes:
-      - application/json
-      parameters:
-      - description: 更新公告
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/model.Info'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: 更新成功
-          schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                msg:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: 更新公告
-      tags:
-      - Info
   /init/checkdb:
     post:
       produces:

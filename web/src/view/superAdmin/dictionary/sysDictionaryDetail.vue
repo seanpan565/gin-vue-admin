@@ -320,7 +320,6 @@
 
   // 添加子节点
   const addChildNode = (parentNode) => {
-    console.log(parentNode)
     type.value = 'create'
     formData.value = {
       label: null,

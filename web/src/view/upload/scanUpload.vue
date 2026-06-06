@@ -18,7 +18,6 @@
   </div>
 
   <div class="flex flex-col w-full h-auto p-0 pt-4">
-    <!-- 左侧编辑区 -->
     <div class="flex-1 min-h-[60vh]">
       <div class="w-screen h-[calc(100vh-175px)] rounded">
         <template v-if="isCrop">
@@ -48,7 +47,6 @@
       </div>
     </div>
   </div>
-  <!-- 工具栏 -->
   <div class="toolbar">
     <el-button-group v-if="isCrop">
       <el-tooltip content="向左旋转">
@@ -61,7 +59,6 @@
       <el-button :icon="Minus" @click="changeScale(-1)"></el-button>
     </el-button-group>
 
-
     <el-switch
         size="large"
         v-model="isCrop"
@@ -73,8 +70,6 @@
     <el-button type="primary" @click="handleUpload" :loading="uploading"> {{ uploading ? '上传中...' : '上 传' }}
     </el-button>
   </div>
-
-
 </template>
 
 <script setup>
@@ -85,7 +80,6 @@ import 'vue-cropper/dist/index.css'
 import { VueCropper } from 'vue-cropper'
 import { getBaseUrl } from '@/utils/format'
 import { useRouter } from 'vue-router'
-import { useUserStore } from "@/pinia";
 
 defineOptions({
   name: 'scanUpload'
@@ -94,15 +88,12 @@ defineOptions({
 const classId = ref(0)
 const token = ref('')
 const isCrop = ref(false)
-
 const windowWidth = ref(300)
 
-// 获取屏幕宽度
 const getWindowResize = function() {
   windowWidth.value = window.innerWidth
 }
 
-// 生命周期
 onMounted(() => {
   getWindowResize()
   window.addEventListener('resize', getWindowResize)
@@ -110,20 +101,18 @@ onMounted(() => {
 
 const router = useRouter()
 router.isReady().then(() => {
-  let query = router.currentRoute.value.query
+  const query = router.currentRoute.value.query
   classId.value = query.id
   token.value = query.token
 }).catch(() => {})
 
 const uploadRef = ref(null)
-// 响应式数据
 const imgSrc = ref('')
 const cropperRef = ref(null)
 const { proxy } = getCurrentInstance()
 const previews = ref({})
 const uploading = ref(false)
 
-// 缩放控制
 const changeScale = (value) => {
   proxy.$refs.cropperRef.changeScale(value)
 }
@@ -131,10 +120,8 @@ const changeScale = (value) => {
 const fixedNumber = ref([1, 1])
 const cropWidth = ref(300)
 const cropHeight = ref(300)
-
 const fixedRatio = ref(false)
 
-// 文件处理
 const handleFileChange = (file) => {
   const isImage = file.raw.type.includes('image')
   if (!isImage) {
@@ -161,7 +148,6 @@ const handleFileChange = (file) => {
   reader.readAsDataURL(file.raw)
 }
 
-// 旋转控制
 const rotate = (degree) => {
   if (degree === -90) {
     proxy.$refs.cropperRef.rotateLeft()
@@ -170,10 +156,9 @@ const rotate = (degree) => {
   }
 }
 
-// 上传处理
 const handleUpload = () => {
   uploading.value = true
-  if(isCrop.value === false){
+  if (isCrop.value === false) {
     uploadRef.value.submit()
     return true
   }
@@ -183,7 +168,6 @@ const handleUpload = () => {
       uploadRef.value.clearFiles()
       uploadRef.value.handleStart(file)
       uploadRef.value.submit()
-
     } catch (error) {
       uploading.value = false
       ElMessage.error('上传失败: ' + error.message)
@@ -200,16 +184,12 @@ const handleImageSuccess = (res) => {
     ElMessage.success('上传成功')
   }
 }
-
 </script>
 
 <style scoped>
-
-/* 工具栏（固定在底部） */
 .toolbar {
   @apply fixed bottom-0 m-0 rounded-none p-2.5 shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-[1000] flex justify-between w-screen bg-slate-900;
 
-  /* 按钮组适配 */
   .el-button-group {
     @apply flex gap-2;
 
@@ -222,7 +202,6 @@ const handleImageSuccess = (res) => {
 :deep(.vue-cropper) {
   @apply bg-transparent;
 }
-
 </style>
 
 <style>

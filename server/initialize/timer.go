@@ -2,10 +2,10 @@
 package initialize
 
 import (
-	"fmt"
 	"mall-admin/server/task"
 
 	"github.com/robfig/cron/v3"
+	"go.uber.org/zap"
 
 	"mall-admin/server/global"
 )
@@ -19,11 +19,11 @@ func Timer() {
 		_, err := global.GVA_Timer.AddTaskByFunc("ClearDB", "@daily", func() {
 			err := task.ClearTable(global.GVA_DB) // 定时任务方法定在task文件包中
 			if err != nil {
-				fmt.Println("timer error:", err)
+				global.GVA_LOG.Error("定时清理数据库失败", zap.Error(err))
 			}
 		}, "定时清理数据库【日志，黑名单】内容", option...)
 		if err != nil {
-			fmt.Println("add timer error:", err)
+			global.GVA_LOG.Error("注册定时任务失败", zap.Error(err))
 		}
 
 		// 其他定时任务定在这里 参考上方使用方法

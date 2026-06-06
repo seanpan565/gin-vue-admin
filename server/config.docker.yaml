@@ -2,10 +2,10 @@
 
 # jwt configuration
 jwt:
-    signing-key: qmPlus
+    signing-key: "请替换为随机 UUID 或通过 GVA_JWT_SIGNING_KEY 注入"
     expires-time: 7d
     buffer-time: 1d
-    issuer: qmPlus
+    issuer: mall-admin
 # zap logger configuration
 zap:
     level: info

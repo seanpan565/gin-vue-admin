@@ -114,7 +114,12 @@ func (s *MemberService) Register(req mallReq.MemberRegister, clientIP string) (m
 		return mall.MallMember{}, err
 	}
 
-	return s.GetMemberByID(member.ID)
+	member.Profile = mall.MallMemberProfile{MemberID: member.ID, LevelID: levelID}
+	var level mall.MallMemberLevel
+	if e := global.GVA_DB.First(&level, levelID).Error; e == nil {
+		member.Profile.Level = level
+	}
+	return member, nil
 }
 
 // Login 会员密码登录，返回含扩展资料与等级的完整信息。

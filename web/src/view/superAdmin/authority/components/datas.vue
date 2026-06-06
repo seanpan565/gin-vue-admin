@@ -2,7 +2,7 @@
 <template>
   <div>
     <warning-bar
-      title="此功能用于配置角色与资源的 many2many 关系，需自行结合业务表实现。商城场景建议优先用 Casbin + API 权限；可参考 example/customer 示例。"
+      title="此功能用于配置角色与资源的 many2many 关系，需自行结合业务表实现。商城场景建议优先使用 Casbin + API 权限。"
     />
     <div class="sticky top-0.5 z-10 my-4">
       <el-button class="float-left" type="primary" @click="all">全选</el-button>

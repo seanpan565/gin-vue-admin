@@ -42,6 +42,18 @@
 mysql -uroot -p123456 -e "CREATE DATABASE IF NOT EXISTS gva DEFAULT CHARSET utf8mb4;"
 ```
 
+也可直接导入仓库根目录快照（含商城表与默认会员等级）：
+
+```bash
+mysql -uroot -p123456 gva < gva.sql
+```
+
+从旧版 GVA 升级的数据库，请执行遗留清理脚本后再启动：
+
+```bash
+mysql -uroot -p123456 gva < scripts/cleanup_legacy.sql
+```
+
 确保 MySQL、Redis 已启动。首次访问若库未初始化，打开 `http://127.0.0.1:8080` 会进入初始化向导。
 
 ### 2. 启动后端

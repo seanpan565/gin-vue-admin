@@ -13,6 +13,8 @@ import (
 	"gorm.io/gorm"
 )
 
+type FileUploadAndDownloadService struct{}
+
 //@author: [piexlmax](https://github.com/piexlmax)
 //@function: Upload
 //@description: 创建文件上传记录

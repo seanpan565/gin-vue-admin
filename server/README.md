@@ -7,7 +7,7 @@ Go 后端：管理后台 API（JWT + Casbin）与 C 端会员 API（`x-member-to
 ```text
 server/
 ├── api/
-│   ├── admin/          # 管理后台 Handler（system / example / mall）
+│   ├── admin/          # 管理后台 Handler（system / 上传 / mall）
 │   └── siteapi/        # C 端 Handler（会员认证等）
 ├── config/             # config.yaml 配置结构体
 ├── core/               # Viper、Zap、HTTP Server 启动
@@ -18,7 +18,7 @@ server/
 ├── model/
 │   ├── mall/           # 商城领域模型
 │   ├── system/         # 系统模型
-│   └── example/        # 示例模块
+│   └── example/        # 文件上传与媒体库
 ├── plugin/             # 邮件、公告等插件
 ├── router/
 │   ├── admin/          # 管理端路由（system / example / mall）

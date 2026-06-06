@@ -98,7 +98,7 @@ jwt:
     signing-key: f7fec431-305a-4ff8-a803-c7a5be4d89a5 # Token 签名密钥（已更换为随机 UUID，生产环境请妥善保管）
     expires-time: 7d                # Token 有效期（如 7d、24h）
     buffer-time: 1d                 # 自动续期缓冲时间，剩余不足此时间则刷新 Token
-    issuer: qmPlus                  # Token 签发者标识
+    issuer: mall-admin              # Token 签发者标识
 
 # 本地文件存储（system.oss-type 设为 local 时生效，默认方案）
 local:

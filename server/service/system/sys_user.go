@@ -229,7 +229,9 @@ func (userService *UserService) SetUserAuthorities(adminAuthorityID, id uint, au
 //@return: err error
 
 func (userService *UserService) DeleteUser(id int) (err error) {
-	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
+	var user system.SysUser
+	_ = global.GVA_DB.Select("uuid").Where("id = ?", id).First(&user).Error
+	err = global.GVA_DB.Transaction(func(tx *gorm.DB) error {
 		if err := tx.Where("id = ?", id).Delete(&system.SysUser{}).Error; err != nil {
 			return err
 		}
@@ -238,6 +240,10 @@ func (userService *UserService) DeleteUser(id int) (err error) {
 		}
 		return nil
 	})
+	if err == nil {
+		utils.InvalidateUserEnableCache(user.UUID.String())
+	}
+	return err
 }
 
 //@author: [piexlmax](https://github.com/piexlmax)
@@ -247,7 +253,7 @@ func (userService *UserService) DeleteUser(id int) (err error) {
 //@return: err error, user model.SysUser
 
 func (userService *UserService) SetUserInfo(req system.SysUser) error {
-	return global.GVA_DB.Model(&system.SysUser{}).
+	err := global.GVA_DB.Model(&system.SysUser{}).
 		Select("updated_at", "nick_name", "header_img", "phone", "email", "enable").
 		Where("id=?", req.ID).
 		Updates(map[string]interface{}{
@@ -258,6 +264,14 @@ func (userService *UserService) SetUserInfo(req system.SysUser) error {
 			"email":      req.Email,
 			"enable":     req.Enable,
 		}).Error
+	if err != nil {
+		return err
+	}
+	var user system.SysUser
+	if e := global.GVA_DB.Select("uuid").Where("id = ?", req.ID).First(&user).Error; e == nil {
+		utils.InvalidateUserEnableCache(user.UUID.String())
+	}
+	return nil
 }
 
 //@author: [piexlmax](https://github.com/piexlmax)

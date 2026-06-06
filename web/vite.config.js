@@ -59,11 +59,32 @@ export default ({ mode }) => {
       sourcemap: false, // 是否产出sourcemap.json
       outDir: outDir, // 产出目录
       target: 'es2015',
+      chunkSizeWarningLimit: 600,
       rolldownOptions: {
         output: {
           entryFileNames: 'assets/087AC4D233B64EB0[name].[hash].js',
           chunkFileNames: 'assets/087AC4D233B64EB0[name].[hash].js',
-          assetFileNames: 'assets/087AC4D233B64EB0[name].[hash].[ext]'
+          assetFileNames: 'assets/087AC4D233B64EB0[name].[hash].[ext]',
+          codeSplitting: {
+            groups: [
+              {
+                name: 'element-plus',
+                test: /[\\/]node_modules[\\/]element-plus[\\/]/
+              },
+              {
+                name: 'echarts',
+                test: /[\\/]node_modules[\\/](echarts|vue-echarts|zrender)[\\/]/
+              },
+              {
+                name: 'wangeditor',
+                test: /[\\/]node_modules[\\/]@wangeditor[\\/]/
+              },
+              {
+                name: 'vue-vendor',
+                test: /[\\/]node_modules[\\/](vue|vue-router|pinia|@vue)[\\/]/
+              }
+            ]
+          }
         }
       }
     },

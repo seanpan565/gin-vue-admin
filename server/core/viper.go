@@ -9,6 +9,7 @@ import (
 	"mall-admin/server/core/internal"
 	"mall-admin/server/global"
 	"github.com/fsnotify/fsnotify"
+	"go.uber.org/zap"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
@@ -27,9 +28,13 @@ func Viper() *viper.Viper {
 	v.WatchConfig()
 
 	v.OnConfigChange(func(e fsnotify.Event) {
-		fmt.Println("config file changed:", e.Name)
+		if global.GVA_LOG != nil {
+			global.GVA_LOG.Info("配置文件已变更", zap.String("file", e.Name))
+		}
 		if err = v.Unmarshal(&global.GVA_CONFIG); err != nil {
-			fmt.Println(err)
+			if global.GVA_LOG != nil {
+				global.GVA_LOG.Error("热加载配置失败", zap.Error(err))
+			}
 			return
 		}
 		ApplyEnvOverrides()

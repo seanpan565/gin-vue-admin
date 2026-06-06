@@ -1,4 +1,4 @@
-// 示例模块路由组：注册客户、附件分类、文件上传等示例业务路由
+// 示例模块路由组：文件上传与媒体库分类
 package example
 
 import (
@@ -6,15 +6,11 @@ import (
 )
 
 type RouterGroup struct {
-	CustomerRouter
-
 	AttachmentCategoryRouter
 	FileUploadAndDownloadRouter
 }
 
 var (
-	exaCustomerApi = api.ApiGroupApp.ExampleApiGroup.CustomerApi
-
-	attachmentCategoryApi       = api.ApiGroupApp.ExampleApiGroup.AttachmentCategoryApi
-	exaFileUploadAndDownloadApi = api.ApiGroupApp.ExampleApiGroup.FileUploadAndDownloadApi
+	attachmentCategoryApi         = api.ApiGroupApp.ExampleApiGroup.AttachmentCategoryApi
+	exaFileUploadAndDownloadApi   = api.ApiGroupApp.ExampleApiGroup.FileUploadAndDownloadApi
 )

@@ -94,11 +94,9 @@ func isBlacklist(jwt string) bool {
 	return ok
 }
 
-const userEnableCachePrefix = "user_enable:"
-
 // isUserEnabled 校验用户是否可用，结果缓存 5 分钟以降低 DB 压力。
 func isUserEnabled(uuid string) bool {
-	cacheKey := userEnableCachePrefix + uuid
+	cacheKey := utils.UserEnableCachePrefix + uuid
 	if v, ok := global.BlackCache.Get(cacheKey); ok {
 		enabled, _ := v.(bool)
 		return enabled

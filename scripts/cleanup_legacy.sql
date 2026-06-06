@@ -161,6 +161,12 @@ DROP TABLE IF EXISTS `exa_files`;
 DROP TABLE IF EXISTS `exa_customers`;
 DROP TABLE IF EXISTS `gva_announcements_info`;
 
+-- -----------------------------------------------------------------------------
+-- 11. 对齐菜单文案与图标（旧库残留）
+-- -----------------------------------------------------------------------------
+UPDATE sys_base_menus SET title = '系统工具' WHERE name = 'systemTools' AND title = '编程辅助';
+UPDATE sys_base_menus SET icon = 'odometer' WHERE name = 'dashboard' AND icon = 'customer-gva';
+
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- 完成。若需默认会员等级，请启动一次后端（AutoMigrate + seedMallDefaults）。
