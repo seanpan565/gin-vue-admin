@@ -1,7 +1,7 @@
 package system
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/global"
 )
 
 // SysBaseMenu 系统基础菜单表模型

@@ -3,10 +3,10 @@ package system
 // AuthorityBtnService 角色按钮权限
 import (
 	"errors"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/response"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
+	"mall-admin/server/model/system/request"
+	"mall-admin/server/model/system/response"
 	"gorm.io/gorm"
 )
 

@@ -2,7 +2,7 @@
 package router
 
 // enter.go 聚合公告路由及 API 引用。
-import "github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/api"
+import "mall-admin/server/plugin/announcement/api"
 
 var (
 	Router  = new(router)

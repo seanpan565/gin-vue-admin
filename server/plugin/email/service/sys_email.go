@@ -2,7 +2,7 @@
 package service
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email/utils"
+	"mall-admin/server/plugin/email/utils"
 )
 
 // EmailService 邮件 Service 实现。

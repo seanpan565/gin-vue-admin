@@ -1,8 +1,8 @@
 package request
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
 )
 
 // 菜单管理相关请求参数

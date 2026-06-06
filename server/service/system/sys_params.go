@@ -2,9 +2,9 @@ package system
 
 // SysParamsService 系统参数管理
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
+	systemReq "mall-admin/server/model/system/request"
 )
 
 type SysParamsService struct{}

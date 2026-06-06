@@ -3,7 +3,7 @@ package utils
 // 字符串格式化、反射转换与树形结构构建等通用工具。
 import (
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common"
+	"mall-admin/server/model/common"
 	"math/rand"
 	"reflect"
 	"strings"

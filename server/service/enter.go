@@ -3,8 +3,9 @@ package service
 
 // ServiceGroup 聚合各子模块Service
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/service/example"
-	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
+	"mall-admin/server/service/example"
+	"mall-admin/server/service/mall"
+	"mall-admin/server/service/system"
 )
 
 var ServiceGroupApp = new(ServiceGroup)
@@ -12,4 +13,5 @@ var ServiceGroupApp = new(ServiceGroup)
 type ServiceGroup struct {
 	SystemServiceGroup  system.ServiceGroup
 	ExampleServiceGroup example.ServiceGroup
+	MallServiceGroup    mall.ServiceGroup
 }

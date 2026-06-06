@@ -2,10 +2,10 @@ package system
 
 // SystemConfigService 系统配置管理
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/config"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"mall-admin/server/config"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
+	"mall-admin/server/utils"
 	"go.uber.org/zap"
 )
 

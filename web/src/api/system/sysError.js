@@ -9,10 +9,16 @@ import service from '@/utils/request'
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"创建成功"}"
 // @Router /sysError/createSysError [post]
 export const createSysError = (data) => {
+  const headers = {}
+  const reportKey = import.meta.env.VITE_ERROR_REPORT_KEY
+  if (reportKey) {
+    headers['X-Error-Report-Key'] = reportKey
+  }
   return service({
     url: '/sysError/createSysError',
     method: 'post',
-    data
+    data,
+    headers
   })
 }
 
@@ -93,20 +99,6 @@ export const getSysErrorList = (params) => {
     url: '/sysError/getSysErrorList',
     method: 'get',
     params
-  })
-}
-
-// @Tags SysError
-// @Summary 不需要鉴权的错误日志接口
-// @Accept application/json
-// @Produce application/json
-// @Param data query systemReq.SysErrorSearch true "分页获取错误日志列表"
-// @Success 200 {object} response.Response{data=object,msg=string} "获取成功"
-// @Router /sysError/getSysErrorPublic [get]
-export const getSysErrorPublic = () => {
-  return service({
-    url: '/sysError/getSysErrorPublic',
-    method: 'get',
   })
 }
 

@@ -2,8 +2,8 @@
 package initialize
 
 import (
-	_ "github.com/flipped-aurora/gin-vue-admin/server/plugin"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils/plugin/v2"
+	_ "mall-admin/server/plugin"
+	"mall-admin/server/utils/plugin/v2"
 	"github.com/gin-gonic/gin"
 )
 

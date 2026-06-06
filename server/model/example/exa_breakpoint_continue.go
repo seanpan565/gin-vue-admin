@@ -1,7 +1,7 @@
 package example
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/global"
 )
 
 // ExaFile 断点续传文件表模型

@@ -1,6 +1,6 @@
 package system
 
-import "github.com/flipped-aurora/gin-vue-admin/server/global"
+import "mall-admin/server/global"
 
 // SysBaseMenuBtn 菜单按钮表模型
 type SysBaseMenuBtn struct {

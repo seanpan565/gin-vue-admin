@@ -3,10 +3,10 @@ package api
 
 // info.go 公告 CRUD 及公开接口处理器。
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/model"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/model/request"
+	"mall-admin/server/global"
+	"mall-admin/server/model/common/response"
+	"mall-admin/server/plugin/announcement/model"
+	"mall-admin/server/plugin/announcement/model/request"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )

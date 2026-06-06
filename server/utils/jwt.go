@@ -6,8 +6,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system/request"
 	jwt "github.com/golang-jwt/jwt/v5"
 )
 
@@ -85,10 +85,25 @@ func (j *JWT) ParseToken(tokenString string) (*request.CustomClaims, error) {
 	}
 	if token != nil {
 		if claims, ok := token.Claims.(*request.CustomClaims); ok && token.Valid {
+			if !adminAudienceMatch(claims, "GVA") {
+				return nil, TokenInvalid
+			}
 			return claims, nil
 		}
 	}
 	return nil, TokenValid
+}
+
+func adminAudienceMatch(claims *request.CustomClaims, audience string) bool {
+	if len(claims.Audience) == 0 {
+		return false
+	}
+	for _, aud := range claims.Audience {
+		if aud == audience {
+			return true
+		}
+	}
+	return false
 }
 
 //@author: [piexlmax](https://github.com/piexlmax)

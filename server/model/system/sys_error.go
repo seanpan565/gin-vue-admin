@@ -2,7 +2,7 @@
 package system
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/global"
 )
 
 // SysError 系统错误日志表模型

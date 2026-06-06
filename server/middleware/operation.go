@@ -12,10 +12,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"mall-admin/server/utils"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
@@ -78,10 +78,11 @@ func OperationRecord() gin.HandlerFunc {
 		if strings.Contains(c.GetHeader("Content-Type"), "multipart/form-data") {
 			record.Body = "[文件]"
 		} else {
-			if len(body) > bufferSize {
+			safeBody := desensitizeRequestBody(c.Request.URL.Path, body)
+			if len(safeBody) > bufferSize {
 				record.Body = "[超出记录长度]"
 			} else {
-				record.Body = string(body)
+				record.Body = string(safeBody)
 			}
 		}
 
@@ -128,4 +129,48 @@ type responseBodyWriter struct {
 func (r responseBodyWriter) Write(b []byte) (int, error) {
 	r.body.Write(b)
 	return r.ResponseWriter.Write(b)
+}
+
+var sensitiveBodyPaths = []string{
+	"/base/login",
+	"/user/changePassword",
+	"/user/resetPassword",
+	"/user/admin_register",
+	"/site/auth/login",
+	"/site/auth/register",
+}
+
+var sensitiveBodyFields = []string{
+	"password", "passWord", "newPassword", "oldPassword",
+}
+
+// desensitizeRequestBody 对敏感接口请求体中的密码字段脱敏。
+func desensitizeRequestBody(path string, body []byte) []byte {
+	if len(body) == 0 {
+		return body
+	}
+	needMask := false
+	for _, p := range sensitiveBodyPaths {
+		if strings.HasSuffix(path, p) {
+			needMask = true
+			break
+		}
+	}
+	if !needMask {
+		return body
+	}
+	var payload map[string]interface{}
+	if err := json.Unmarshal(body, &payload); err != nil {
+		return []byte("[敏感请求已脱敏]")
+	}
+	for _, field := range sensitiveBodyFields {
+		if _, ok := payload[field]; ok {
+			payload[field] = "***"
+		}
+	}
+	masked, err := json.Marshal(payload)
+	if err != nil {
+		return []byte("[敏感请求已脱敏]")
+	}
+	return masked
 }

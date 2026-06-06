@@ -3,8 +3,8 @@ package system
 
 import (
 	"context"
-	sysModel "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
+	sysModel "mall-admin/server/model/system"
+	"mall-admin/server/service/system"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
@@ -45,17 +45,19 @@ func (i *initApiIgnore) InitializeData(ctx context.Context) (context.Context, er
 	}
 	entities := []sysModel.SysIgnoreApi{
 		{Method: "GET", Path: "/swagger/*any"},
-		{Method: "GET", Path: "/api/freshCasbin"},
 		{Method: "GET", Path: "/uploads/file/*filepath"},
 		{Method: "GET", Path: "/health"},
 		{Method: "HEAD", Path: "/uploads/file/*filepath"},
-		{Method: "POST", Path: "/autoCode/llmAuto"},
-		{Method: "POST", Path: "/autoCode/llmAutoSSE"},
 		{Method: "POST", Path: "/system/reloadSystem"},
 		{Method: "POST", Path: "/base/login"},
 		{Method: "POST", Path: "/base/captcha"},
 		{Method: "POST", Path: "/init/initdb"},
 		{Method: "POST", Path: "/init/checkdb"},
+		{Method: "POST", Path: "/site/auth/register"},
+		{Method: "POST", Path: "/site/auth/login"},
+		{Method: "POST", Path: "/site/auth/logout"},
+		{Method: "GET", Path: "/site/auth/profile"},
+		{Method: "POST", Path: "/sysError/createSysError"},
 		{Method: "GET", Path: "/info/getInfoDataSource"},
 		{Method: "GET", Path: "/info/getInfoPublic"},
 	}

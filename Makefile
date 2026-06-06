@@ -2,15 +2,15 @@ SHELL = /bin/bash
 
 #SCRIPT_DIR         = $(shell pwd)/etc/script
 #请选择golang版本
-BUILD_IMAGE_SERVER  = golang:1.22
+BUILD_IMAGE_SERVER  = golang:1.24
 #请选择node版本
 BUILD_IMAGE_WEB     = node:20
-#项目名称
-PROJECT_NAME        = github.com/flipped-aurora/gin-vue-admin/server
+#项目名称（Go module 路径，与 server/go.mod 一致）
+PROJECT_NAME        = mall-admin/server
 #配置文件目录
 CONFIG_FILE         = config.yaml
 #镜像仓库命名空间
-IMAGE_NAME          = gva
+IMAGE_NAME          = mall-admin
 #镜像地址
 REPOSITORY          = registry.cn-hangzhou.aliyuncs.com/${IMAGE_NAME}
 #镜像版本
@@ -29,13 +29,13 @@ build-web:
 build-server:
 	docker run --name build-server-local --rm -v $(shell pwd):/go/src/${PROJECT_NAME} -w /go/src/${PROJECT_NAME} ${BUILD_IMAGE_SERVER} make build-server-local
 
-#构建web镜像
+#构建 web 镜像
 build-image-web:
-	@cd web/ && docker build -t ${REPOSITORY}/web:${TAGS_OPT} .
+	@cd web/ && docker build -t ${REPOSITORY}/mall-web:${TAGS_OPT} .
 
-#构建server镜像
+#构建 server 镜像
 build-image-server:
-	@cd server/ && docker build -t ${REPOSITORY}/server:${TAGS_OPT} .
+	@cd server/ && docker build -t ${REPOSITORY}/mall-server:${TAGS_OPT} .
 
 #本地环境打包前后端
 build-local:
@@ -55,13 +55,13 @@ build-server-local:
 	&& go env -w CGO_ENABLED=0 && go env  && go mod tidy \
 	&& go build -ldflags "-B 0x$(shell head -c20 /dev/urandom|od -An -tx1|tr -d ' \n') -X main.Version=${TAGS_OPT}" -v
 
-#打包前后端二合一镜像
+#打包前后端二合一镜像（需自行提供 Dockerfile）
 image: build
-	docker build -t ${REPOSITORY}/gin-vue-admin:${TAGS_OPT} -f deploy/docker/Dockerfile .
+	@echo "deploy/ 已移除，请使用 server/ 与 web/ 目录下的 Dockerfile 自行构建"
 
 #尝鲜版
 images: build build-image-web build-image-server
-	docker build -t ${REPOSITORY}/all:${TAGS_OPT} -f deploy/docker/Dockerfile .
+	@echo "deploy/ 已移除，请分别构建 web 与 server 镜像"
 
 #swagger 文档生成
 doc:

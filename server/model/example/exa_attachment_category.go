@@ -2,7 +2,7 @@
 package example
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/global"
 )
 
 // ExaAttachmentCategory 附件分类表模型

@@ -4,8 +4,8 @@ package email
 // main.go 邮件插件入口，支持 v1 插件方式注册路由。
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email/router"
+	"mall-admin/server/plugin/email/global"
+	"mall-admin/server/plugin/email/router"
 	"github.com/gin-gonic/gin"
 )
 

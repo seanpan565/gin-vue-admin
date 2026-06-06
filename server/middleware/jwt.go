@@ -7,13 +7,17 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
-	"github.com/golang-jwt/jwt/v5"
-
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
+	"mall-admin/server/global"
+	"mall-admin/server/model/common/response"
+	"mall-admin/server/model/system"
+	"mall-admin/server/service"
+	"mall-admin/server/utils"
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v5"
 )
+
+var jwtUserService = service.ServiceGroupApp.SystemServiceGroup.UserService
+var jwtService = service.ServiceGroupApp.SystemServiceGroup.JwtService
 
 // JWTAuth 校验 x-token，处理黑名单、过期续签及多点登录状态。
 func JWTAuth() gin.HandlerFunc {
@@ -47,14 +51,13 @@ func JWTAuth() gin.HandlerFunc {
 			return
 		}
 
-		// 已登录用户被管理员禁用 需要使该用户的jwt失效 此处比较消耗性能 如果需要 请自行打开
-		// 用户被删除的逻辑 需要优化 此处比较消耗性能 如果需要 请自行打开
-
-		//if user, err := userService.FindUserByUuid(claims.UUID.String()); err != nil || user.Enable == 2 {
-		//	_ = jwtService.JsonInBlacklist(system.JwtBlacklist{Jwt: token})
-		//	response.FailWithDetailed(gin.H{"reload": true}, err.Error(), c)
-		//	c.Abort()
-		//}
+		if user, err := jwtUserService.FindUserByUuid(claims.UUID.String()); err != nil || user.Enable == 2 {
+			_ = jwtService.JsonInBlacklist(system.JwtBlacklist{Jwt: token})
+			response.FailWithDetailed(gin.H{"reload": true}, "账号已禁用或不存在，请重新登录", c)
+			utils.ClearToken(c)
+			c.Abort()
+			return
+		}
 		c.Set("claims", claims)
 		if claims.ExpiresAt.Unix()-time.Now().Unix() < claims.BufferTime {
 			dr, _ := utils.ParseDuration(global.GVA_CONFIG.JWT.ExpiresTime)

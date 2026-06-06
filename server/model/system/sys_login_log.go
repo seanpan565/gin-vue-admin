@@ -1,7 +1,7 @@
 package system
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/global"
 )
 
 // SysLoginLog 用户登录日志表模型

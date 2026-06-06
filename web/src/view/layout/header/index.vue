@@ -19,7 +19,7 @@
             'min-w-fit'
           "
         >
-          {{ $GIN_VUE_ADMIN.appName }}
+          {{ $MALL_ADMIN.appName }}
         </div>
       </div>
 

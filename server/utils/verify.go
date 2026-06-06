@@ -8,10 +8,10 @@ var (
 	MenuMetaVerify         = Rules{"Title": {NotEmpty()}}
 	LoginVerify            = Rules{"Username": {NotEmpty()}, "Password": {NotEmpty()}}
 	RegisterVerify         = Rules{"Username": {NotEmpty()}, "NickName": {NotEmpty()}, "Password": {NotEmpty()}, "AuthorityId": {NotEmpty()}}
+	MemberRegisterVerify   = Rules{"Mobile": {NotEmpty()}, "Password": {NotEmpty()}}
+	MemberLoginVerify      = Rules{"Mobile": {NotEmpty()}, "Password": {NotEmpty()}}
 	PageInfoVerify         = Rules{"Page": {NotEmpty()}, "PageSize": {NotEmpty()}}
 	CustomerVerify         = Rules{"CustomerName": {NotEmpty()}, "CustomerPhoneData": {NotEmpty()}}
-	AutoCodeVerify         = Rules{"Abbreviation": {NotEmpty()}, "StructName": {NotEmpty()}, "PackageName": {NotEmpty()}}
-	AutoPackageVerify      = Rules{"PackageName": {NotEmpty()}}
 	AuthorityVerify        = Rules{"AuthorityId": {NotEmpty()}, "AuthorityName": {NotEmpty()}}
 	AuthorityIdVerify      = Rules{"AuthorityId": {NotEmpty()}}
 	OldAuthorityVerify     = Rules{"OldAuthorityId": {NotEmpty()}}

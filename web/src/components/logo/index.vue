@@ -66,7 +66,7 @@ function getSize() {
 </script>
 
 <template>
-  <img v-if="!showTextPlaceholder && logoSrc" :src="logoSrc" :alt="$GIN_VUE_ADMIN.appName" class="object-contain"
+  <img v-if="!showTextPlaceholder && logoSrc" :src="logoSrc" :alt="$MALL_ADMIN.appName" class="object-contain"
     :style="{
       ...getSize()
     }" :class="{
@@ -78,6 +78,6 @@ function getSize() {
     :style="{
       ...getSize()
     }">
-    GVA
+    {{ $MALL_ADMIN.appName.slice(0, 2) }}
   </div>
 </template>

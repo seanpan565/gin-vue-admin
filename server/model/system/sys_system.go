@@ -1,7 +1,7 @@
 package system
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/config"
+	"mall-admin/server/config"
 )
 
 // System 系统运行时配置视图模型

@@ -1,0 +1,30 @@
+# 配置模板：复制为 config.yaml 后按需修改。
+# 敏感项请通过环境变量注入，参见 README「安全与监控」章节。
+#
+#   GVA_JWT_SIGNING_KEY
+#   GVA_MYSQL_PASSWORD
+#   GVA_REDIS_PASSWORD
+#   GVA_SECURITY_SWAGGER_ENABLE
+#   GVA_SECURITY_METRICS_AUTH_TOKEN
+#   GVA_SECURITY_ERROR_REPORT_KEY
+
+jwt:
+    signing-key: "请替换为随机 UUID 或通过 GVA_JWT_SIGNING_KEY 注入"
+    expires-time: 7d
+    buffer-time: 1d
+    issuer: mall-admin
+
+security:
+    swagger-enable: false
+    metrics-enable: true
+    metrics-auth-token: "请设置随机令牌"
+    error-report-key: "请设置随机令牌"
+    auth-limit-count: 30
+    auth-limit-time: 60
+    member-captcha-enable: true
+    upload-allowed-exts: []
+
+system:
+    iplimit-count: 3000
+    iplimit-time: 3600
+    disable-auto-migrate: true

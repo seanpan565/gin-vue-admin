@@ -3,9 +3,9 @@ package service
 
 // info.go 公告数据持久化与查询逻辑。
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/model"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/model/request"
+	"mall-admin/server/global"
+	"mall-admin/server/plugin/announcement/model"
+	"mall-admin/server/plugin/announcement/model/request"
 )
 
 var Info = new(info)

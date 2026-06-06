@@ -2,7 +2,7 @@ package utils
 
 // 服务器硬件与运行时信息采集，用于系统监控展示。
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/global"
 	"runtime"
 	"time"
 

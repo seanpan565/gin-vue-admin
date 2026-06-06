@@ -4,8 +4,8 @@ package system
 import (
 	"context"
 
-	sysModel "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
+	sysModel "mall-admin/server/model/system"
+	"mall-admin/server/service/system"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
@@ -65,9 +65,18 @@ func (i *initMenuAuthority) InitializeData(ctx context.Context) (next context.Co
 	// 仅选择部分父级菜单及其子菜单
 	var menu8881 []sysModel.SysBaseMenu
 
-	// 添加仪表盘、关于我们和个人信息菜单
+	// 添加仪表盘、个人信息、服务器状态、商城管理菜单
 	for _, menu := range allMenus {
-		if menu.ParentId == 0 && (menu.Name == "dashboard" || menu.Name == "about" || menu.Name == "person" || menu.Name == "state") {
+		if menu.ParentId == 0 && (menu.Name == "dashboard" || menu.Name == "person" || menu.Name == "state" || menu.Name == "mall") {
+			menu8881 = append(menu8881, menu)
+		}
+	}
+	for _, menu := range allMenus {
+		parentName := ""
+		if menu.ParentId > 0 && menuMap[menu.ParentId].Name != "" {
+			parentName = menuMap[menu.ParentId].Name
+		}
+		if menu.ParentId > 0 && parentName == "mall" {
 			menu8881 = append(menu8881, menu)
 		}
 	}
@@ -93,7 +102,7 @@ func (i *initMenuAuthority) InitializeData(ctx context.Context) (next context.Co
 			parentName = menuMap[menu.ParentId].Name
 		}
 
-		if menu.ParentId > 0 && (parentName == "systemTools" || parentName == "example") {
+		if menu.ParentId > 0 && (parentName == "systemTools" || parentName == "example" || parentName == "mall") {
 			menu9528 = append(menu9528, menu)
 		}
 	}

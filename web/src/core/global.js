@@ -1,4 +1,4 @@
-// 全局注册：Element Plus 图标、本地 SVG 图标及 $GIN_VUE_ADMIN
+// 全局注册：Element Plus 图标、本地 SVG 图标及 $MALL_ADMIN
 import config from './config'
 import { h } from 'vue'
 
@@ -61,5 +61,5 @@ export const register = (app) => {
   }
   app.component('SvgIcon', svgIcon)
   registerIcons(app)
-  app.config.globalProperties.$GIN_VUE_ADMIN = config
+  app.config.globalProperties.$MALL_ADMIN = config
 }

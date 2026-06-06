@@ -4,9 +4,9 @@ package initialize
 import (
 	"fmt"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils/plugin"
+	"mall-admin/server/global"
+	"mall-admin/server/plugin/email"
+	"mall-admin/server/utils/plugin"
 	"github.com/gin-gonic/gin"
 )
 

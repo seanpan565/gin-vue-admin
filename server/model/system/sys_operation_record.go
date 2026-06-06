@@ -4,7 +4,7 @@ package system
 import (
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/global"
 )
 
 // SysOperationRecord 系统操作记录表模型

@@ -51,9 +51,6 @@
         </el-button>
         <el-button icon="Refresh" @click="onFresh"> 刷新缓存 </el-button>
         <el-button icon="Compass" @click="onSync"> 同步API </el-button>
-        <ExportTemplate template-id="api" />
-        <ExportExcel template-id="api" :limit="9999" />
-        <ImportExcel template-id="api" @on-success="getTableData" />
       </div>
       <el-table
         :data="tableData"
@@ -158,12 +155,12 @@
         <div class="flex justify-between items-center">
           <span class="text-lg">同步路由</span>
           <div>
-            <el-button :loading="apiCompletionLoading" @click="closeSyncDialog">
+            <el-button :loading="syncing" @click="closeSyncDialog">
               取 消
             </el-button>
             <el-button
               type="primary"
-              :loading="syncing || apiCompletionLoading"
+              :loading="syncing"
               @click="enterSyncDialog"
             >
               确 定
@@ -177,16 +174,10 @@
         <span class="text-xs text-gray-500 mx-2 font-normal"
           >存在于当前路由中，但是不存在于api表</span
         >
-        <el-button type="primary" size="small" @click="apiCompletion">
-          <el-icon size="18">
-            <ai-gva />
-          </el-icon>
-          自动填充
-        </el-button>
       </h4>
       <el-table
-        v-loading="syncing || apiCompletionLoading"
-        element-loading-text="小淼正在思考..."
+        v-loading="syncing"
+        element-loading-text="加载中..."
         :data="syncApiData.newApis"
       >
         <el-table-column
@@ -457,10 +448,6 @@
   import WarningBar from '@/components/warningBar/warningBar.vue'
   import { ref, nextTick } from 'vue'
   import { ElMessage, ElMessageBox } from 'element-plus'
-  import ExportExcel from '@/components/exportExcel/exportExcel.vue'
-  import ExportTemplate from '@/components/exportExcel/exportTemplate.vue'
-  import ImportExcel from '@/components/exportExcel/importExcel.vue'
-  import { llmAuto } from '@/api/autoCode'
   import { useAppStore } from "@/pinia";
 
   defineOptions({
@@ -833,36 +820,6 @@
         getGroup()
       }
     })
-  }
-  const apiCompletionLoading = ref(false)
-  const apiCompletion = async () => {
-    apiCompletionLoading.value = true
-    const routerPaths = syncApiData.value.newApis
-      .filter((item) => !item.apiGroup || !item.description)
-      .map((item) => item.path)
-    const res = await llmAuto({ data: String(routerPaths), mode: 'apiCompletion' })
-    apiCompletionLoading.value = false
-    if (res.code === 0) {
-      try {
-        const data = JSON.parse(res.data)
-        syncApiData.value.newApis.forEach((item) => {
-          const target = data.find((d) => d.path === item.path)
-          if (target) {
-            if (!item.apiGroup) {
-              item.apiGroup = target.apiGroup
-            }
-            if (!item.description) {
-              item.description = target.description
-            }
-          }
-        })
-      } catch (_) {
-        ElMessage({
-          type: 'error',
-          message: 'AI自动填充失败,请重新生成'
-        })
-      }
-    }
   }
 
   // 分配给角色

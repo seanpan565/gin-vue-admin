@@ -2,10 +2,10 @@ package system
 
 // LoginLogService 登录日志管理
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"mall-admin/server/global"
+	"mall-admin/server/model/common/request"
+	"mall-admin/server/model/system"
+	systemReq "mall-admin/server/model/system/request"
 )
 
 type LoginLogService struct{}

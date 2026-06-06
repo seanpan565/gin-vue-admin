@@ -162,15 +162,6 @@
         >
           <template #default="scope">
             <el-button
-              v-if="scope.row.status !== '处理中'"
-              type="primary"
-              link
-              class="table-button"
-              @click="getSolution(scope.row.ID)"
-            >
-              <el-icon><ai-gva /></el-icon>方案
-            </el-button>
-            <el-button
               type="primary"
               link
               class="table-button"
@@ -245,8 +236,7 @@
     deleteSysError,
     deleteSysErrorByIds,
     findSysError,
-    getSysErrorList,
-    getSysErrorSolution
+    getSysErrorList
   } from '@/api/system/sysError'
 
   import { formatDate } from '@/utils/format'
@@ -277,23 +267,6 @@
     getTableData()
   }
 
-  const getSolution = async (id) => {
-    const confirmed = await ElMessageBox.confirm(
-      '日志将通过 AI-PATH 传输至 GVA AI 用于错误分析，并在 GVA 官方平台短暂存储作为 AI 上下文。是否确认进行 AI 处理？（此功能仅向授权用户开放）',
-      '提示(Beta)',
-      {
-        confirmButtonText: '确认',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }
-    ).catch(() => false)
-    if (!confirmed) return
-    const res = await getSysErrorSolution({ id })
-    if (res.code === 0) {
-      ElMessage({ type: 'success', message: res.msg || '处理已提交，1分钟后完成' })
-      getTableData()
-    }
-  }
   // 搜索
   const onSubmit = () => {
     elSearchFormRef.value?.validate(async (valid) => {

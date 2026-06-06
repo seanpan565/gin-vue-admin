@@ -2,8 +2,8 @@
 package initialize
 
 import (
-	_ "github.com/flipped-aurora/gin-vue-admin/server/source/example"
-	_ "github.com/flipped-aurora/gin-vue-admin/server/source/system"
+	_ "mall-admin/server/source/example"
+	_ "mall-admin/server/source/system"
 )
 
 func init() {

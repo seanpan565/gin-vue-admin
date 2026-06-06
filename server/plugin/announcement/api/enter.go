@@ -2,7 +2,7 @@
 package api
 
 // enter.go 聚合公告 API 及 Service 引用。
-import "github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/service"
+import "mall-admin/server/plugin/announcement/service"
 
 var (
 	Api         = new(api)

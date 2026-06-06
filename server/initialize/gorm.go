@@ -4,9 +4,9 @@ package initialize
 import (
 	"os"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/example"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
+	"mall-admin/server/global"
+	"mall-admin/server/model/example"
+	"mall-admin/server/model/system"
 
 	"go.uber.org/zap"
 	"gorm.io/gorm"
@@ -54,15 +54,10 @@ func RegisterTables() {
 		system.SysAuthority{},
 		system.SysDictionary{},
 		system.SysOperationRecord{},
-		system.SysAutoCodeHistory{},
 		system.SysDictionaryDetail{},
 		system.SysBaseMenuParameter{},
 		system.SysBaseMenuBtn{},
 		system.SysAuthorityBtn{},
-		system.SysAutoCodePackage{},
-		system.SysExportTemplate{},
-		system.Condition{},
-		system.JoinTemplate{},
 		system.SysParams{},
 		system.SysVersion{},
 		system.SysError{},

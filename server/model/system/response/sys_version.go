@@ -1,8 +1,8 @@
 package response
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"mall-admin/server/model/system"
+	"mall-admin/server/model/system/request"
 )
 
 // 版本管理相关响应结构

@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	systemRes "github.com/flipped-aurora/gin-vue-admin/server/model/system/response"
+	"mall-admin/server/global"
+	"mall-admin/server/model/common/request"
+	"mall-admin/server/model/system"
+	systemRes "mall-admin/server/model/system/response"
 	"gorm.io/gorm"
 )
 

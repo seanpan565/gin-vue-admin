@@ -3,7 +3,7 @@ package captcha
 import (
 	"context"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/global"
 	"github.com/mojocn/base64Captcha"
 )
 

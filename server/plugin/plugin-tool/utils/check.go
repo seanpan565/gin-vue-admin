@@ -12,8 +12,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
 )
 
 // 插件安装时缓存的 API、菜单、字典映射。

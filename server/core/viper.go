@@ -5,10 +5,9 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"path/filepath"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/core/internal"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/core/internal"
+	"mall-admin/server/global"
 	"github.com/fsnotify/fsnotify"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -31,14 +30,15 @@ func Viper() *viper.Viper {
 		fmt.Println("config file changed:", e.Name)
 		if err = v.Unmarshal(&global.GVA_CONFIG); err != nil {
 			fmt.Println(err)
+			return
 		}
+		ApplyEnvOverrides()
 	})
 	if err = v.Unmarshal(&global.GVA_CONFIG); err != nil {
 		panic(fmt.Errorf("fatal error unmarshal config: %w", err))
 	}
+	ApplyEnvOverrides()
 
-	// root 适配性 根据root位置去找到对应迁移位置,保证root路径有效
-	global.GVA_CONFIG.AutoCode.Root, _ = filepath.Abs("..")
 	return v
 }
 

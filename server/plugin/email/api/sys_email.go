@@ -4,10 +4,10 @@ package api
 // sys_email.go 邮件发送与测试接口。
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-	email_response "github.com/flipped-aurora/gin-vue-admin/server/plugin/email/model/response"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email/service"
+	"mall-admin/server/global"
+	"mall-admin/server/model/common/response"
+	email_response "mall-admin/server/plugin/email/model/response"
+	"mall-admin/server/plugin/email/service"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )

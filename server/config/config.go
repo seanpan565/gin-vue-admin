@@ -12,8 +12,6 @@ type Server struct {
 	Email   Email   `mapstructure:"email" json:"email" yaml:"email"`
 	System  System  `mapstructure:"system" json:"system" yaml:"system"`
 	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
-	// 代码生成
-	AutoCode Autocode `mapstructure:"autocode" json:"autocode" yaml:"autocode"`
 	// 关系型数据库
 	Mysql  Mysql           `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
 	Mssql  Mssql           `mapstructure:"mssql" json:"mssql" yaml:"mssql"`
@@ -30,10 +28,10 @@ type Server struct {
 	AwsS3        AwsS3        `mapstructure:"aws-s3" json:"aws-s3" yaml:"aws-s3"`
 	CloudflareR2 CloudflareR2 `mapstructure:"cloudflare-r2" json:"cloudflare-r2" yaml:"cloudflare-r2"`
 	Minio        Minio        `mapstructure:"minio" json:"minio" yaml:"minio"`
-	// 导出与监控
-	Excel    Excel      `mapstructure:"excel" json:"excel" yaml:"excel"`
+	// 监控
 	DiskList []DiskList `mapstructure:"disk-list" json:"disk-list" yaml:"disk-list"`
-	// 跨域与 MCP
+	// 跨域
 	Cors CORS `mapstructure:"cors" json:"cors" yaml:"cors"`
-	MCP  MCP  `mapstructure:"mcp" json:"mcp" yaml:"mcp"`
+	// 安全加固
+	Security Security `mapstructure:"security" json:"security" yaml:"security"`
 }

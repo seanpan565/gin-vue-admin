@@ -4,8 +4,8 @@ package system
 import (
 	"context"
 
-	sysModel "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
+	sysModel "mall-admin/server/model/system"
+	"mall-admin/server/service/system"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
@@ -75,6 +75,7 @@ func (i *initApi) InitializeData(ctx context.Context) (context.Context, error) {
 		{ApiGroup: "api", Method: "POST", Path: "/api/getAllApis", Description: "获取所有api"},
 		{ApiGroup: "api", Method: "POST", Path: "/api/getApiById", Description: "获取api详细信息"},
 		{ApiGroup: "api", Method: "DELETE", Path: "/api/deleteApisByIds", Description: "批量删除api"},
+		{ApiGroup: "api", Method: "GET", Path: "/api/freshCasbin", Description: "刷新casbin权限缓存"},
 		{ApiGroup: "api", Method: "GET", Path: "/api/syncApi", Description: "获取待同步API"},
 		{ApiGroup: "api", Method: "GET", Path: "/api/getApiGroups", Description: "获取路由组"},
 		{ApiGroup: "api", Method: "POST", Path: "/api/enterSyncApi", Description: "确认同步API"},
@@ -121,65 +122,11 @@ func (i *initApi) InitializeData(ctx context.Context) (context.Context, error) {
 		{ApiGroup: "系统服务", Method: "POST", Path: "/system/getSystemConfig", Description: "获取配置文件内容"},
 		{ApiGroup: "系统服务", Method: "POST", Path: "/system/setSystemConfig", Description: "设置配置文件内容"},
 
-		{ApiGroup: "skills", Method: "GET", Path: "/skills/getTools", Description: "获取技能工具列表"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/getSkillList", Description: "获取技能列表"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/getSkillDetail", Description: "获取技能详情"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/saveSkill", Description: "保存技能定义"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/deleteSkill", Description: "删除技能"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/createScript", Description: "创建技能脚本"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/getScript", Description: "读取技能脚本"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/saveScript", Description: "保存技能脚本"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/createResource", Description: "创建技能资源"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/getResource", Description: "读取技能资源"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/saveResource", Description: "保存技能资源"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/createReference", Description: "创建技能参考"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/getReference", Description: "读取技能参考"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/saveReference", Description: "保存技能参考"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/createTemplate", Description: "创建技能模板"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/getTemplate", Description: "读取技能模板"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/saveTemplate", Description: "保存技能模板"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/getGlobalConstraint", Description: "读取全局约束"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/saveGlobalConstraint", Description: "保存全局约束"},
-		{ApiGroup: "skills", Method: "POST", Path: "/skills/packageSkill", Description: "打包技能"},
-
 		{ApiGroup: "客户", Method: "PUT", Path: "/customer/customer", Description: "更新客户"},
 		{ApiGroup: "客户", Method: "POST", Path: "/customer/customer", Description: "创建客户"},
 		{ApiGroup: "客户", Method: "DELETE", Path: "/customer/customer", Description: "删除客户"},
 		{ApiGroup: "客户", Method: "GET", Path: "/customer/customer", Description: "获取单一客户"},
 		{ApiGroup: "客户", Method: "GET", Path: "/customer/customerList", Description: "获取客户列表"},
-
-		{ApiGroup: "代码生成器", Method: "GET", Path: "/autoCode/getDB", Description: "获取所有数据库"},
-		{ApiGroup: "代码生成器", Method: "GET", Path: "/autoCode/getTables", Description: "获取数据库表"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/createTemp", Description: "自动化代码"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/preview", Description: "预览自动化代码"},
-		{ApiGroup: "代码生成器", Method: "GET", Path: "/autoCode/getColumn", Description: "获取所选table的所有字段"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/installPlugin", Description: "安装插件"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/pubPlug", Description: "打包插件"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/removePlugin", Description: "卸载插件"},
-		{ApiGroup: "代码生成器", Method: "GET", Path: "/autoCode/getPluginList", Description: "获取已安装插件"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcp", Description: "自动生成 MCP Tool 模板"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcpStatus", Description: "获取 MCP 独立服务状态"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcpStart", Description: "启动 MCP 独立服务"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcpStop", Description: "停用 MCP 独立服务"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcpRoutes", Description: "获取 MCP 路由列表"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcpTest", Description: "MCP Tool 管理"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/mcpList", Description: "获取 MCP ToolList"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/saveAIWorkflowSession", Description: "保存AI需求工作流会话"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/getAIWorkflowSessionList", Description: "获取AI需求工作流会话列表"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/getAIWorkflowSessionDetail", Description: "获取AI需求工作流会话详情"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/deleteAIWorkflowSession", Description: "删除AI需求工作流会话"},
-		{ApiGroup: "代码生成器", Method: "POST", Path: "/autoCode/dumpAIWorkflowMarkdown", Description: "AI需求工作流Markdown落盘"},
-
-		{ApiGroup: "模板配置", Method: "POST", Path: "/autoCode/createPackage", Description: "配置模板"},
-		{ApiGroup: "模板配置", Method: "GET", Path: "/autoCode/getTemplates", Description: "获取模板文件"},
-		{ApiGroup: "模板配置", Method: "POST", Path: "/autoCode/getPackage", Description: "获取所有模板"},
-		{ApiGroup: "模板配置", Method: "POST", Path: "/autoCode/delPackage", Description: "删除模板"},
-
-		{ApiGroup: "代码生成器历史", Method: "POST", Path: "/autoCode/getMeta", Description: "获取meta信息"},
-		{ApiGroup: "代码生成器历史", Method: "POST", Path: "/autoCode/rollback", Description: "回滚自动生成代码"},
-		{ApiGroup: "代码生成器历史", Method: "POST", Path: "/autoCode/getSysHistory", Description: "查询回滚记录"},
-		{ApiGroup: "代码生成器历史", Method: "POST", Path: "/autoCode/delSysHistory", Description: "删除回滚记录"},
-		{ApiGroup: "代码生成器历史", Method: "POST", Path: "/autoCode/addFunc", Description: "增加模板方法"},
 
 		{ApiGroup: "系统字典详情", Method: "PUT", Path: "/sysDictionaryDetail/updateSysDictionaryDetail", Description: "更新字典内容"},
 		{ApiGroup: "系统字典详情", Method: "POST", Path: "/sysDictionaryDetail/createSysDictionaryDetail", Description: "新增字典内容"},
@@ -200,15 +147,10 @@ func (i *initApi) InitializeData(ctx context.Context) (context.Context, error) {
 		{ApiGroup: "系统字典", Method: "POST", Path: "/sysDictionary/importSysDictionary", Description: "导入字典JSON"},
 		{ApiGroup: "系统字典", Method: "GET", Path: "/sysDictionary/exportSysDictionary", Description: "导出字典JSON"},
 
-		{ApiGroup: "操作记录", Method: "POST", Path: "/sysOperationRecord/createSysOperationRecord", Description: "新增操作记录"},
 		{ApiGroup: "操作记录", Method: "GET", Path: "/sysOperationRecord/findSysOperationRecord", Description: "根据ID获取操作记录"},
 		{ApiGroup: "操作记录", Method: "GET", Path: "/sysOperationRecord/getSysOperationRecordList", Description: "获取操作记录列表"},
 		{ApiGroup: "操作记录", Method: "DELETE", Path: "/sysOperationRecord/deleteSysOperationRecord", Description: "删除操作记录"},
 		{ApiGroup: "操作记录", Method: "DELETE", Path: "/sysOperationRecord/deleteSysOperationRecordByIds", Description: "批量删除操作历史"},
-
-		{ApiGroup: "断点续传(插件版)", Method: "POST", Path: "/simpleUploader/upload", Description: "插件版分片上传"},
-		{ApiGroup: "断点续传(插件版)", Method: "GET", Path: "/simpleUploader/checkFileMd5", Description: "文件完整度验证"},
-		{ApiGroup: "断点续传(插件版)", Method: "GET", Path: "/simpleUploader/mergeFileMd5", Description: "上传完成合并文件"},
 
 		{ApiGroup: "email", Method: "POST", Path: "/email/emailTest", Description: "发送测试邮件"},
 		{ApiGroup: "email", Method: "POST", Path: "/email/sendEmail", Description: "发送邮件"},
@@ -216,17 +158,6 @@ func (i *initApi) InitializeData(ctx context.Context) (context.Context, error) {
 		{ApiGroup: "按钮权限", Method: "POST", Path: "/authorityBtn/setAuthorityBtn", Description: "设置按钮权限"},
 		{ApiGroup: "按钮权限", Method: "POST", Path: "/authorityBtn/getAuthorityBtn", Description: "获取已有按钮权限"},
 		{ApiGroup: "按钮权限", Method: "POST", Path: "/authorityBtn/canRemoveAuthorityBtn", Description: "删除按钮"},
-
-		{ApiGroup: "导出模板", Method: "POST", Path: "/sysExportTemplate/createSysExportTemplate", Description: "新增导出模板"},
-		{ApiGroup: "导出模板", Method: "DELETE", Path: "/sysExportTemplate/deleteSysExportTemplate", Description: "删除导出模板"},
-		{ApiGroup: "导出模板", Method: "DELETE", Path: "/sysExportTemplate/deleteSysExportTemplateByIds", Description: "批量删除导出模板"},
-		{ApiGroup: "导出模板", Method: "PUT", Path: "/sysExportTemplate/updateSysExportTemplate", Description: "更新导出模板"},
-		{ApiGroup: "导出模板", Method: "GET", Path: "/sysExportTemplate/findSysExportTemplate", Description: "根据ID获取导出模板"},
-		{ApiGroup: "导出模板", Method: "GET", Path: "/sysExportTemplate/getSysExportTemplateList", Description: "获取导出模板列表"},
-		{ApiGroup: "导出模板", Method: "GET", Path: "/sysExportTemplate/exportExcel", Description: "导出Excel"},
-		{ApiGroup: "导出模板", Method: "GET", Path: "/sysExportTemplate/exportTemplate", Description: "下载模板"},
-		{ApiGroup: "导出模板", Method: "GET", Path: "/sysExportTemplate/previewSQL", Description: "预览SQL"},
-		{ApiGroup: "导出模板", Method: "POST", Path: "/sysExportTemplate/importExcel", Description: "导入Excel"},
 
 		{ApiGroup: "错误日志", Method: "POST", Path: "/sysError/createSysError", Description: "新建错误日志"},
 		{ApiGroup: "错误日志", Method: "DELETE", Path: "/sysError/deleteSysError", Description: "删除错误日志"},
@@ -261,6 +192,9 @@ func (i *initApi) InitializeData(ctx context.Context) (context.Context, error) {
 		{ApiGroup: "版本控制", Method: "POST", Path: "/sysVersion/importVersion", Description: "同步版本"},
 		{ApiGroup: "版本控制", Method: "DELETE", Path: "/sysVersion/deleteSysVersion", Description: "删除版本"},
 		{ApiGroup: "版本控制", Method: "DELETE", Path: "/sysVersion/deleteSysVersionByIds", Description: "批量删除版本"},
+
+		{ApiGroup: "商城会员", Method: "POST", Path: "/mall/member/list", Description: "会员列表"},
+		{ApiGroup: "商城会员", Method: "POST", Path: "/mall/member/detail", Description: "会员详情"},
 	}
 	if err := db.Create(&entities).Error; err != nil {
 		return ctx, errors.Wrap(err, sysModel.SysApi{}.TableName()+"表数据初始化失败!")

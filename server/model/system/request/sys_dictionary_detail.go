@@ -1,8 +1,8 @@
 package request
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
+	"mall-admin/server/model/common/request"
+	"mall-admin/server/model/system"
 )
 
 // 字典明细相关请求参数

@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"mall-admin/server/model/system/request"
 	"github.com/gin-gonic/gin"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
 	"gorm.io/gorm"
 )
 

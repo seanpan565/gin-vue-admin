@@ -4,15 +4,14 @@ package system
 import (
 	"context"
 	"errors"
-	"github.com/flipped-aurora/gin-vue-admin/server/config"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"mall-admin/server/config"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system/request"
+	"mall-admin/server/utils"
 	"github.com/google/uuid"
 	"github.com/gookit/color"
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
-	"path/filepath"
 )
 
 type MssqlInitHandler struct{}
@@ -63,7 +62,6 @@ func (h MssqlInitHandler) EnsureDB(ctx context.Context, conf *request.InitDB) (n
 		return nil, err
 	}
 
-	global.GVA_CONFIG.AutoCode.Root, _ = filepath.Abs("..")
 	next = context.WithValue(next, "db", db)
 	return next, err
 }

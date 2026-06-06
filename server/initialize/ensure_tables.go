@@ -4,10 +4,11 @@ package initialize
 import (
 	"context"
 	adapter "github.com/casbin/gorm-adapter/v3"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/example"
-	sysModel "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/model"
-	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
+	"mall-admin/server/model/example"
+	"mall-admin/server/model/mall"
+	sysModel "mall-admin/server/model/system"
+	"mall-admin/server/plugin/announcement/model"
+	"mall-admin/server/service/system"
 	"gorm.io/gorm"
 )
 
@@ -43,17 +44,11 @@ func (e *ensureTables) MigrateTable(ctx context.Context) (context.Context, error
 		sysModel.SysAuthority{},
 		sysModel.JwtBlacklist{},
 		sysModel.SysDictionary{},
-		sysModel.SysAutoCodeHistory{},
-		sysModel.SysAIWorkflowSession{},
 		sysModel.SysOperationRecord{},
 		sysModel.SysDictionaryDetail{},
 		sysModel.SysBaseMenuParameter{},
 		sysModel.SysBaseMenuBtn{},
 		sysModel.SysAuthorityBtn{},
-		sysModel.SysAutoCodePackage{},
-		sysModel.SysExportTemplate{},
-		sysModel.Condition{},
-		sysModel.JoinTemplate{},
 		sysModel.SysParams{},
 		sysModel.SysVersion{},
 		sysModel.SysError{},
@@ -68,6 +63,12 @@ func (e *ensureTables) MigrateTable(ctx context.Context) (context.Context, error
 		example.ExaAttachmentCategory{},
 
 		model.Info{},
+
+		mall.MallMember{},
+		mall.MallMemberProfile{},
+		mall.MallMemberLevel{},
+		mall.MallMemberOauth{},
+		mall.MallMemberLoginLog{},
 	}
 	for _, t := range tables {
 		_ = db.AutoMigrate(&t)
@@ -89,17 +90,11 @@ func (e *ensureTables) TableCreated(ctx context.Context) bool {
 		sysModel.SysAuthority{},
 		sysModel.JwtBlacklist{},
 		sysModel.SysDictionary{},
-		sysModel.SysAutoCodeHistory{},
-		sysModel.SysAIWorkflowSession{},
 		sysModel.SysOperationRecord{},
 		sysModel.SysDictionaryDetail{},
 		sysModel.SysBaseMenuParameter{},
 		sysModel.SysBaseMenuBtn{},
 		sysModel.SysAuthorityBtn{},
-		sysModel.SysAutoCodePackage{},
-		sysModel.SysExportTemplate{},
-		sysModel.Condition{},
-		sysModel.JoinTemplate{},
 
 		adapter.CasbinRule{},
 
@@ -110,6 +105,12 @@ func (e *ensureTables) TableCreated(ctx context.Context) bool {
 		example.ExaAttachmentCategory{},
 
 		model.Info{},
+
+		mall.MallMember{},
+		mall.MallMemberProfile{},
+		mall.MallMemberLevel{},
+		mall.MallMemberOauth{},
+		mall.MallMemberLoginLog{},
 	}
 	yes := true
 	for _, t := range tables {

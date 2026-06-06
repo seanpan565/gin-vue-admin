@@ -9,8 +9,8 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
+	"mall-admin/server/global"
+	"mall-admin/server/model/common/response"
 	"github.com/gin-gonic/gin"
 )
 
@@ -43,14 +43,29 @@ func DefaultGenerationKey(c *gin.Context) string {
 }
 
 func DefaultCheckOrMark(key string, expire int, limit int) (err error) {
-	// 判断是否开启redis
-	if global.GVA_REDIS == nil {
+	expiration := time.Duration(expire) * time.Second
+	if global.GVA_REDIS != nil {
+		if err = SetLimitWithTime(key, limit, expiration); err != nil {
+			global.GVA_LOG.Error("limit", zap.Error(err))
+		}
 		return err
 	}
-	if err = SetLimitWithTime(key, limit, time.Duration(expire)*time.Second); err != nil {
-		global.GVA_LOG.Error("limit", zap.Error(err))
+	return memoryLimitWithTime(key, limit, expiration)
+}
+
+// memoryLimitWithTime Redis 不可用时使用进程内缓存限流。
+func memoryLimitWithTime(key string, limit int, expiration time.Duration) error {
+	v, ok := global.BlackCache.Get(key)
+	if !ok {
+		global.BlackCache.Set(key, 1, expiration)
+		return nil
 	}
-	return err
+	count, _ := v.(int)
+	if count >= limit {
+		return errors.New("请求太过频繁，请稍后再试")
+	}
+	global.BlackCache.Increment(key, 1)
+	return nil
 }
 
 // DefaultLimit 按客户端 IP 限制单位时间内的请求次数。
@@ -60,6 +75,26 @@ func DefaultLimit() gin.HandlerFunc {
 		CheckOrMark:   DefaultCheckOrMark,
 		Expire:        global.GVA_CONFIG.System.LimitTimeIP,
 		Limit:         global.GVA_CONFIG.System.LimitCountIP,
+	}.LimitWithTime()
+}
+
+// AuthRateLimit 登录/注册等认证接口的更严格限流。
+func AuthRateLimit() gin.HandlerFunc {
+	limit := global.GVA_CONFIG.Security.AuthLimitCount
+	expire := global.GVA_CONFIG.Security.AuthLimitTime
+	if limit <= 0 {
+		limit = 30
+	}
+	if expire <= 0 {
+		expire = 60
+	}
+	return LimitConfig{
+		GenerationKey: func(c *gin.Context) string {
+			return "GVA_AuthLimit:" + c.ClientIP() + ":" + c.FullPath()
+		},
+		CheckOrMark: DefaultCheckOrMark,
+		Expire:      expire,
+		Limit:       limit,
 	}.LimitWithTime()
 }
 

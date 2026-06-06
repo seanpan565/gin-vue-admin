@@ -4,8 +4,8 @@ package router
 // sys_email.go 邮件 HTTP 路由注册。
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/middleware"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email/api"
+	"mall-admin/server/middleware"
+	"mall-admin/server/plugin/email/api"
 	"github.com/gin-gonic/gin"
 )
 

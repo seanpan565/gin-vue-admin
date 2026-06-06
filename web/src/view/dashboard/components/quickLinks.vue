@@ -22,10 +22,10 @@
     </div>
 
     <div>
-      <div class="mb-2 text-xs tracking-wide text-black/55 dark:text-white/55">学习参考</div>
+      <div class="mb-2 text-xs tracking-wide text-black/55 dark:text-white/55">商城业务</div>
       <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
         <button
-          v-for="(item, index) in learningLinks"
+          v-for="(item, index) in mallLinks"
           :key="index"
           class="group flex w-full items-center gap-3 rounded-lg border border-black/10 bg-white/70 p-2.5 text-left transition-all duration-200 hover:border-[var(--el-color-primary)] hover:shadow-sm dark:border-white/10 dark:bg-white/[0.02]"
           type="button"
@@ -42,18 +42,16 @@
     </div>
 
     <div>
-      <div class="mb-2 text-xs tracking-wide text-black/55 dark:text-white/55">常用外链</div>
+      <div class="mb-2 text-xs tracking-wide text-black/55 dark:text-white/55">开发工具</div>
       <div class="space-y-2">
         <button
-          v-for="(item, index) in externalShortcuts"
-          :key="index"
           class="flex w-full items-center justify-between rounded-lg border border-black/10 bg-white/70 px-3 py-2 text-left transition-all duration-200 hover:border-[var(--el-color-primary)] hover:shadow-sm dark:border-white/10 dark:bg-white/[0.02]"
           type="button"
-          @click="openLink(item)"
+          @click="openSwagger"
         >
           <span class="flex items-center gap-2 text-sm text-black/75 dark:text-white/75">
-            <el-icon><component :is="item.icon" /></el-icon>
-            {{ item.title }}
+            <el-icon><Document /></el-icon>
+            Swagger API
           </span>
           <span class="text-xs text-black/45 dark:text-white/45">打开</span>
         </button>
@@ -63,9 +61,9 @@
 </template>
 
 <script setup>
-  import { Menu, Link, User, Service, Document, Reading, Avatar, Upload } from '@element-plus/icons-vue'
+  import { Menu, Link, User, Service, Document, ShoppingCart } from '@element-plus/icons-vue'
   import { useRouter } from 'vue-router'
-  import { externalLinks, siteFeatures } from '@/core/site'
+  import { externalLinks } from '@/core/site'
 
   const router = useRouter()
 
@@ -73,8 +71,8 @@
     router.push({ name: item.path })
   }
 
-  const openLink = (item) => {
-    window.open(item.path, '_blank', 'noopener,noreferrer')
+  const openSwagger = () => {
+    window.open(externalLinks.swagger(import.meta.env.VITE_SERVER_PORT), '_blank', 'noopener,noreferrer')
   }
 
   const shortcuts = [
@@ -84,24 +82,9 @@
     { icon: Link, title: 'API 管理', path: 'api' }
   ]
 
-  const learningLinks = [
-    { icon: Avatar, title: '客户示例 CRUD', path: 'customer' },
-    { icon: Upload, title: '文件上传示例', path: 'upload' }
+  const mallLinks = [
+    { icon: ShoppingCart, title: '会员管理', path: 'mallMember' }
   ]
-
-  const externalShortcuts = [
-    { icon: Reading, title: 'GVA 官方文档', path: externalLinks.gvaDocs },
-    { icon: Document, title: 'Swagger API', path: externalLinks.swagger(import.meta.env.VITE_SERVER_PORT) },
-    { icon: Link, title: 'GitHub 仓库', path: externalLinks.github }
-  ]
-
-  if (siteFeatures.pluginMarket) {
-    externalShortcuts.push({
-      icon: Link,
-      title: '插件市场',
-      path: 'https://plugin.gin-vue-admin.com/#/layout/home'
-    })
-  }
 </script>
 
 <style scoped lang="scss"></style>

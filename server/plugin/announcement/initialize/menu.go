@@ -5,8 +5,8 @@ package initialize
 
 import (
 	"context"
-	model "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/plugin-tool/utils"
+	model "mall-admin/server/model/system"
+	"mall-admin/server/plugin/plugin-tool/utils"
 )
 
 // Menu 注册公告菜单项。

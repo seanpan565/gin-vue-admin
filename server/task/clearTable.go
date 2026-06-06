@@ -6,7 +6,7 @@ package task
 import (
 	"errors"
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common"
+	"mall-admin/server/model/common"
 	"time"
 
 	"gorm.io/gorm"

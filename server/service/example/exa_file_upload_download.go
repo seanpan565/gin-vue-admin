@@ -6,10 +6,10 @@ import (
 	"mime/multipart"
 	"strings"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/example"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/example/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils/upload"
+	"mall-admin/server/global"
+	"mall-admin/server/model/example"
+	"mall-admin/server/model/example/request"
+	"mall-admin/server/utils/upload"
 	"gorm.io/gorm"
 )
 
@@ -95,6 +95,9 @@ func (e *FileUploadAndDownloadService) GetFileRecordInfoList(info request.ExaAtt
 //@return: file model.ExaFileUploadAndDownload, err error
 
 func (e *FileUploadAndDownloadService) UploadFile(header *multipart.FileHeader, noSave string, classId int) (file example.ExaFileUploadAndDownload, err error) {
+	if err = upload.ValidateUploadFile(header); err != nil {
+		return file, err
+	}
 	oss := upload.NewOss()
 	filePath, key, uploadErr := oss.UploadFile(header)
 	if uploadErr != nil {

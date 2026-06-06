@@ -6,12 +6,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common"
-	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"mall-admin/server/model/common"
+	systemReq "mall-admin/server/model/system/request"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
+	"mall-admin/server/utils"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 )

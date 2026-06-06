@@ -1,4 +1,4 @@
-# github.com/flipped-aurora/gin-vue-admin/server Global Configuration
+# mall-admin/server Global Configuration
 
 # jwt configuration
 jwt:
@@ -10,7 +10,7 @@ jwt:
 zap:
     level: info
     format: console
-    prefix: "[github.com/flipped-aurora/gin-vue-admin/server]"
+    prefix: "[mall-admin/server]"
     director: log
     show-line: true
     encode-level: LowercaseColorLevelEncoder
@@ -88,6 +88,16 @@ system:
     #  严格角色模式 打开后权限将会存在上下级关系
     use-strict-auth: false
 
+security:
+    swagger-enable: false
+    metrics-enable: true
+    metrics-auth-token: ""
+    error-report-key: ""
+    auth-limit-count: 30
+    auth-limit-time: 60
+    member-captcha-enable: true
+    upload-allowed-exts: []
+
 # captcha configuration
 captcha:
     key-long: 6
@@ -97,7 +107,7 @@ captcha:
     open-captcha-timeout: 3600 # open-captcha大于0时才生效
 
 # mysql connect configuration
-# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
+# 未初始化之前请勿手动修改数据库信息
 mysql:
     path: ""
     port: ""
@@ -111,7 +121,7 @@ mysql:
     log-zap: false
 
 # pgsql connect configuration
-# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
+# 未初始化之前请勿手动修改数据库信息
 pgsql:
     path: ""
     port: ""
@@ -176,14 +186,6 @@ local:
     path: uploads/file
     store-path: uploads/file
 
-# autocode configuration
-autocode:
-    web: web/src
-    root: "" # root 自动适配项目根目录, 请不要手动配置,他会在项目加载的时候识别出根路径
-    server: server
-    module: 'github.com/flipped-aurora/gin-vue-admin/server'
-    ai-path: ""  # AI服务路径
-
 # qiniu configuration (请自行七牛申请对应的 公钥 私钥 bucket 和 域名地址)
 qiniu:
     zone: ZoneHuaDong
@@ -220,7 +222,7 @@ tencent-cos:
     secret-id: your-secret-id
     secret-key: your-secret-key
     base-url: https://gin.vue.admin
-    path-prefix: github.com/flipped-aurora/gin-vue-admin/server
+    path-prefix: mall-admin/server
 
 # aws s3 configuration (minio compatible)
 aws-s3:
@@ -232,7 +234,7 @@ aws-s3:
     secret-id: your-secret-id
     secret-key: your-secret-key
     base-url: https://gin.vue.admin
-    path-prefix: github.com/flipped-aurora/gin-vue-admin/server
+    path-prefix: mall-admin/server
 
 # cloudflare r2 configuration
 cloudflare-r2:
@@ -250,10 +252,6 @@ hua-wei-obs:
     endpoint: you-endpoint
     access-key: you-access-key
     secret-key: you-secret-key
-
-# excel configuration
-excel:
-    dir: ./resource/excel/
 
 # disk usage configuration
 disk-list:
@@ -275,8 +273,3 @@ cors:
           allow-methods: GET, POST
           expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type
           allow-credentials: true # 布尔值
-mcp:
-    name: GVA_MCP
-    version: v1.0.0
-    addr: 8889
-    separate: false

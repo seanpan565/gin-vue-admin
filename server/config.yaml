@@ -6,14 +6,6 @@ aliyun-oss:
     bucket-url: yourBucketUrl       # 存储桶外网访问地址
     base-path: yourBasePath         # 文件在桶内的基础路径前缀
 
-# 代码生成器配置（使用「自动化代码」功能时需要）
-autocode:
-    web: web/src                    # 前端代码根目录（相对 root）
-    root: /Users/admin/Documents/xuexi/gin-vue-admin # 项目根目录绝对路径
-    server: server                  # 后端代码目录（相对 root）
-    module: github.com/flipped-aurora/gin-vue-admin/server # Go module 名称
-    ai-path: ""                     # AI 辅助生成代码时的服务路径（按需）
-
 # AWS S3 对象存储（仅当 system.oss-type 设为 aws-s3 时生效）
 aws-s3:
     bucket: xxxxx-10005608          # S3 存储桶名称
@@ -22,7 +14,7 @@ aws-s3:
     secret-id: your-secret-id       # Access Key ID
     secret-key: your-secret-key     # Secret Access Key
     base-url: https://gin.vue.admin # 文件访问基础 URL
-    path-prefix: github.com/flipped-aurora/gin-vue-admin/server # 对象键前缀
+    path-prefix: mall-admin/server # 对象键前缀
     s3-force-path-style: false      # 是否强制路径风格访问
     disable-ssl: false              # 是否禁用 SSL
 
@@ -93,10 +85,6 @@ email:
     is-ssl: true                    # 是否启用 SSL
     is-loginauth: false             # 是否使用 LOGIN 认证（IBM/微软邮箱等）
 
-# Excel 导入导出默认目录
-excel:
-    dir: ./resource/excel/
-
 # 华为云 OBS 对象存储（仅当 system.oss-type 设为 huawei-obs 时生效）
 hua-wei-obs:
     path: you-path                  # 对象键路径前缀
@@ -116,21 +104,6 @@ jwt:
 local:
     path: uploads/file              # 文件对外访问路径（路由静态资源映射）
     store-path: uploads/file        # 文件实际保存目录
-
-# MCP（Model Context Protocol）AI 工具服务配置
-mcp:
-    name: GVA_MCP                   # MCP 服务名称
-    version: v1.0.0                 # MCP 服务版本
-    path: ""                        # MCP 工具路径
-    addr: 8889                      # MCP 独立服务端口（go run ./cmd/mcp 启动）
-    base_url: ""                    # MCP 服务对外基础 URL
-    upstream_base_url: ""           # 上游 MCP 服务地址
-    auth_header: ""                 # 鉴权 Header 名称
-    request_timeout: 0              # 请求超时（秒），0 为默认
-    sse_path: ""                    # [已废弃] SSE 路径，保留兼容
-    message_path: ""                # [已废弃] 消息路径，保留兼容
-    url_prefix: ""                  # [已废弃] URL 前缀，保留兼容
-    separate: false                 # [已废弃] 是否独立部署，保留兼容
 
 # MinIO 对象存储（仅当 system.oss-type 设为 minio 时生效；配置错误会导致启动 panic）
 minio:
@@ -299,12 +272,23 @@ tencent-cos:
     secret-id: your-secret-id       # SecretId
     secret-key: your-secret-key     # SecretKey
     base-url: https://gin.vue.admin # 文件访问基础 URL
-    path-prefix: github.com/flipped-aurora/gin-vue-admin/server # 对象键前缀
+    path-prefix: mall-admin/server # 对象键前缀
+
+# 安全加固（详见 README 安全章节）
+security:
+    swagger-enable: true            # 是否暴露 Swagger 文档（生产环境请设为 false）
+    metrics-enable: true            # 是否暴露 Prometheus 指标 /metrics
+    metrics-auth-token: ""          # /metrics 访问令牌，留空则不鉴权（生产建议设置）
+    error-report-key: ""            # 前端错误上报密钥，留空则仅依赖限流
+    auth-limit-count: 30            # 登录/注册等认证接口单 IP 限流次数
+    auth-limit-time: 60             # 认证接口限流窗口（秒）
+    member-captcha-enable: true     # C 端会员登录/注册是否强制验证码
+    upload-allowed-exts: []         # 上传白名单扩展名，留空使用内置默认列表
 
 # Zap 日志配置
 zap:
     level: info                     # 日志级别：debug / info / warn / error / dpanic / panic / fatal
-    prefix: '[github.com/flipped-aurora/gin-vue-admin/server]' # 日志时间戳前缀
+    prefix: '[mall-admin/server]' # 日志时间戳前缀
     format: console                 # 输出格式：console / json
     director: log                   # 日志文件目录
     encode-level: LowercaseColorLevelEncoder # 级别编码：LowercaseLevelEncoder / LowercaseColorLevelEncoder 等

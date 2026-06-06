@@ -3,10 +3,10 @@ package system
 // ApiTokenService API令牌管理
 import (
 	"errors"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	sysReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
+	sysReq "mall-admin/server/model/system/request"
+	"mall-admin/server/utils"
 	"github.com/golang-jwt/jwt/v5"
 	"time"
 )

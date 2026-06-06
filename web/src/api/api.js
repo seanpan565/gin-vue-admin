@@ -70,22 +70,6 @@ export const updateApi = (data) => {
 }
 
 // @Tags Api
-// @Summary 更新api
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Param data body api.CreateApiParams true "更新api"
-// @Success 200 {string} json "{"success":true,"data":{},"msg":"更新成功"}"
-// @Router /api/setAuthApi [post]
-export const setAuthApi = (data) => {
-  return service({
-    url: '/api/setAuthApi',
-    method: 'post',
-    data
-  })
-}
-
-// @Tags Api
 // @Summary 获取所有的Api 不分页
 // @Security ApiKeyAuth
 // @accept application/json

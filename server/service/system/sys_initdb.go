@@ -6,8 +6,8 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"mall-admin/server/global"
+	"mall-admin/server/model/system/request"
 	"gorm.io/gorm"
 	"sort"
 )

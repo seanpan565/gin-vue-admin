@@ -5,27 +5,27 @@
       <el-col :span="12">
         <el-card v-if="state.os" class="card_item">
           <template #header>
-            <div>Runtime</div>
+            <div>运行环境</div>
           </template>
           <div>
             <el-row :gutter="10">
-              <el-col :span="12">os:</el-col>
+              <el-col :span="12">操作系统:</el-col>
               <el-col :span="12">{{ state.os.goos }}</el-col>
             </el-row>
             <el-row :gutter="10">
-              <el-col :span="12">cpu nums:</el-col>
+              <el-col :span="12">CPU 核心数:</el-col>
               <el-col :span="12">{{ state.os.numCpu }}</el-col>
             </el-row>
             <el-row :gutter="10">
-              <el-col :span="12">compiler:</el-col>
+              <el-col :span="12">编译器:</el-col>
               <el-col :span="12">{{ state.os.compiler }}</el-col>
             </el-row>
             <el-row :gutter="10">
-              <el-col :span="12">go version:</el-col>
+              <el-col :span="12">Go 版本:</el-col>
               <el-col :span="12">{{ state.os.goVersion }}</el-col>
             </el-row>
             <el-row :gutter="10">
-              <el-col :span="12">goroutine nums:</el-col>
+              <el-col :span="12">协程数量:</el-col>
               <el-col :span="12">{{ state.os.numGoroutine }}</el-col>
             </el-row>
           </div>
@@ -38,7 +38,7 @@
           :body-style="{ height: '180px', 'overflow-y': 'scroll' }"
         >
           <template #header>
-            <div>Disk</div>
+            <div>磁盘</div>
           </template>
           <div>
             <el-row
@@ -49,23 +49,23 @@
             >
               <el-col :span="12">
                 <el-row :gutter="10">
-                  <el-col :span="12">MountPoint</el-col>
+                  <el-col :span="12">挂载点</el-col>
                   <el-col :span="12">{{ item.mountPoint }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
-                  <el-col :span="12">total (MB)</el-col>
+                  <el-col :span="12">总容量 (MB)</el-col>
                   <el-col :span="12">{{ item.totalMb }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
-                  <el-col :span="12">used (MB)</el-col>
+                  <el-col :span="12">已用 (MB)</el-col>
                   <el-col :span="12">{{ item.usedMb }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
-                  <el-col :span="12">total (GB)</el-col>
+                  <el-col :span="12">总容量 (GB)</el-col>
                   <el-col :span="12">{{ item.totalGb }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
-                  <el-col :span="12">used (GB)</el-col>
+                  <el-col :span="12">已用 (GB)</el-col>
                   <el-col :span="12">{{ item.usedGb }}</el-col>
                 </el-row>
               </el-col>
@@ -93,7 +93,7 @@
           </template>
           <div>
             <el-row :gutter="10">
-              <el-col :span="12">physical number of cores:</el-col>
+              <el-col :span="12">物理核心数:</el-col>
               <el-col :span="12">{{ state.cpu.cores }}</el-col>
             </el-row>
             <el-row
@@ -101,7 +101,7 @@
               :key="index"
               :gutter="10"
             >
-              <el-col :span="12">core {{ index }}:</el-col>
+              <el-col :span="12">核心 {{ index }}:</el-col>
               <el-col :span="12">
                 <el-progress
                   type="line"
@@ -116,25 +116,25 @@
       <el-col :span="12">
         <el-card v-if="state.ram" class="card_item">
           <template #header>
-            <div>Ram</div>
+            <div>内存</div>
           </template>
           <div>
             <el-row :gutter="10">
               <el-col :span="12">
                 <el-row :gutter="10">
-                  <el-col :span="12">total (MB)</el-col>
+                  <el-col :span="12">总容量 (MB)</el-col>
                   <el-col :span="12">{{ state.ram.totalMb }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
-                  <el-col :span="12">used (MB)</el-col>
+                  <el-col :span="12">已用 (MB)</el-col>
                   <el-col :span="12">{{ state.ram.usedMb }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
-                  <el-col :span="12">total (GB)</el-col>
+                  <el-col :span="12">总容量 (GB)</el-col>
                   <el-col :span="12">{{ state.ram.totalMb / 1024 }}</el-col>
                 </el-row>
                 <el-row :gutter="10">
-                  <el-col :span="12">used (GB)</el-col>
+                  <el-col :span="12">已用 (GB)</el-col>
                   <el-col :span="12">{{
                     (state.ram.usedMb / 1024).toFixed(2)
                   }}</el-col>

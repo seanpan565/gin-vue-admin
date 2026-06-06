@@ -6,7 +6,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"mall-admin/server/global"
 	"go.uber.org/zap"
 )
 

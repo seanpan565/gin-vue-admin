@@ -10,7 +10,7 @@ import (
 	"gorm.io/gen"
 	"path/filepath"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/model"
+	"mall-admin/server/plugin/announcement/model"
 )
 
 // main 执行 GORM Gen 生成。

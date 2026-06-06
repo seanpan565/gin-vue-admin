@@ -69,10 +69,10 @@ export default ({ mode }) => {
     },
     plugins: [
       env.VITE_POSITION === 'open' &&
-      vueDevTools({ launchEditor: env.VITE_EDITOR }),
+        vueDevTools({ launchEditor: env.VITE_EDITOR || 'code' }),
       vuePlugin(),
       svgBuilder(['./src/plugin/', './src/assets/icons/'], base, outDir, 'assets', mode),
-      [Banner(`\n Build based on gin-vue-admin \n Time : ${timestamp}`)],
+      [Banner(`\n Build ${timestamp}`)],
       VueFilePathPlugin('./src/pathInfo.json'),
       UnoCSS(),
       vueRootValidator()

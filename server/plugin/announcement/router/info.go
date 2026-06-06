@@ -3,7 +3,7 @@ package router
 
 // info.go 公告 HTTP 路由注册。
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/middleware"
+	"mall-admin/server/middleware"
 	"github.com/gin-gonic/gin"
 )
 

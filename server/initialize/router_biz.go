@@ -2,7 +2,7 @@
 package initialize
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/router"
+	"mall-admin/server/router"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,6 +16,11 @@ func holder(routers ...*gin.RouterGroup) {
 func initBizRouter(routers ...*gin.RouterGroup) {
 	privateGroup := routers[0]
 	publicGroup := routers[1]
+
+	siteAPIRouter := router.RouterGroupApp.SiteAPI
+
+	// 商城 C 端 API：/site/auth/*（会员 token 走 x-member-token）
+	siteAPIRouter.InitMemberAuthRouter(publicGroup.Group("site"))
 
 	holder(publicGroup, privateGroup)
 }

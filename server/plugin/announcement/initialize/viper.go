@@ -5,8 +5,8 @@ package initialize
 
 import (
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/plugin"
+	"mall-admin/server/global"
+	"mall-admin/server/plugin/announcement/plugin"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )

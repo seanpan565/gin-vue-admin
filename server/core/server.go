@@ -1,15 +1,13 @@
 // Package core 服务端核心层，负责启动 HTTP 服务及配置/日志等基础设施初始化。
-// server.go 服务启动入口，串联 Redis、MongoDB、路由注册与 HTTP 监听。
 package core
 
 import (
 	"fmt"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/initialize"
-	mcpTool "github.com/flipped-aurora/gin-vue-admin/server/mcp"
-	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
+	"mall-admin/server/global"
+	"mall-admin/server/initialize"
+	"mall-admin/server/service/system"
 	"go.uber.org/zap"
 )
 
@@ -34,18 +32,13 @@ func RunServer() {
 
 	Router := initialize.Routers()
 	address := fmt.Sprintf(":%d", global.GVA_CONFIG.System.Addr)
-	mcpBaseURL := mcpTool.ResolveMCPServiceURL()
 
 	fmt.Printf(`
-	欢迎使用 gin-vue-admin
+	商城管理后台
 	当前版本:%s
-	项目地址:https://github.com/flipped-aurora/gin-vue-admin
-	插件市场:https://plugin.gin-vue-admin.com
-	默认自动化文档地址:http://127.0.0.1%s/swagger/index.html
-	MCP 独立服务请手动启动: go run ./cmd/mcp -config ./cmd/mcp/config.yaml
-	默认MCP StreamHTTP地址:%s
-	默认前端文件运行地址:http://127.0.0.1:8080
-`, global.Version, address, mcpBaseURL)
+	Swagger 文档:http://127.0.0.1%s/swagger/index.html
+	前端地址:http://127.0.0.1:8080
+`, global.Version, address)
 
 	initServer(address, Router, 10*time.Minute, 10*time.Minute)
 }
