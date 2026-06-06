@@ -111,12 +111,9 @@ onMounted(() => {
 const router = useRouter()
 router.isReady().then(() => {
   let query = router.currentRoute.value.query
-  //console.log(query)
   classId.value = query.id
   token.value = query.token
-}).catch((err) => {
-  console.log(err)
-})
+}).catch(() => {})
 
 const uploadRef = ref(null)
 // 响应式数据

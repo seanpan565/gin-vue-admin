@@ -18,10 +18,11 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { onMounted, ref } from 'vue'
   import { ElMessage } from 'element-plus'
   import { isVideoMime, isImageMime } from '@/utils/image'
   import { getBaseUrl } from '@/utils/format'
+  import { getUploadLimits } from '@/utils/uploadLimit'
   import { Upload } from "@element-plus/icons-vue";
   import { useUserStore } from "@/pinia";
 
@@ -43,11 +44,17 @@
   const emit = defineEmits(['on-success'])
 
   const fullscreenLoading = ref(false)
+  const uploadLimits = ref({ maxImageMB: 0.5, maxVideoMB: 5 })
+
+  onMounted(async () => {
+    uploadLimits.value = await getUploadLimits()
+  })
 
   const checkFile = (file) => {
     fullscreenLoading.value = true
-    const isLt500K = file.size / 1024 / 1024 < 0.5 // 500K, @todo 应支持在项目中设置
-    const isLt5M = file.size / 1024 / 1024 < 5 // 5MB, @todo 应支持项目中设置
+    const { maxImageMB, maxVideoMB } = uploadLimits.value
+    const isLtImage = file.size / 1024 / 1024 < maxImageMB
+    const isLtVideo = file.size / 1024 / 1024 < maxVideoMB
     const isVideo = isVideoMime(file.type)
     const isImage = isImageMime(file.type)
     let pass = true
@@ -58,18 +65,16 @@
       fullscreenLoading.value = false
       pass = false
     }
-    if (!isLt5M && isVideo) {
-      ElMessage.error('上传视频大小不能超过 5MB')
+    if (!isLtVideo && isVideo) {
+      ElMessage.error(`上传视频大小不能超过 ${maxVideoMB}MB`)
       fullscreenLoading.value = false
       pass = false
     }
-    if (!isLt500K && isImage) {
-      ElMessage.error('未压缩的上传图片大小不能超过 500KB，请使用压缩上传')
+    if (!isLtImage && isImage) {
+      ElMessage.error(`未压缩的上传图片大小不能超过 ${maxImageMB}MB，请使用压缩上传`)
       fullscreenLoading.value = false
       pass = false
     }
-
-    console.log('upload file check result: ', pass)
 
     return pass
   }
@@ -79,13 +84,11 @@
     if (data.file) {
       emit('on-success', data.file.url)
     }
+    fullscreenLoading.value = false
   }
 
   const uploadError = () => {
-    ElMessage({
-      type: 'error',
-      message: '上传失败'
-    })
+    ElMessage.error('上传失败')
     fullscreenLoading.value = false
   }
 </script>

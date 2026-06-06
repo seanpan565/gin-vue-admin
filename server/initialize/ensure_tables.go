@@ -7,7 +7,6 @@ import (
 	"mall-admin/server/model/example"
 	"mall-admin/server/model/mall"
 	sysModel "mall-admin/server/model/system"
-	"mall-admin/server/plugin/announcement/model"
 	"mall-admin/server/service/system"
 	"gorm.io/gorm"
 )
@@ -56,13 +55,8 @@ func (e *ensureTables) MigrateTable(ctx context.Context) (context.Context, error
 		sysModel.SysApiToken{},
 		adapter.CasbinRule{},
 
-		example.ExaFile{},
-		example.ExaCustomer{},
-		example.ExaFileChunk{},
 		example.ExaFileUploadAndDownload{},
 		example.ExaAttachmentCategory{},
-
-		model.Info{},
 
 		mall.MallMember{},
 		mall.MallMemberProfile{},
@@ -98,13 +92,8 @@ func (e *ensureTables) TableCreated(ctx context.Context) bool {
 
 		adapter.CasbinRule{},
 
-		example.ExaFile{},
-		example.ExaCustomer{},
-		example.ExaFileChunk{},
 		example.ExaFileUploadAndDownload{},
 		example.ExaAttachmentCategory{},
-
-		model.Info{},
 
 		mall.MallMember{},
 		mall.MallMemberProfile{},

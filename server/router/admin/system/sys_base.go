@@ -14,6 +14,7 @@ func (s *BaseRouter) InitBaseRouter(Router *gin.RouterGroup) (R gin.IRoutes) {
 	baseRouter := Router.Group("base")
 	{
 		baseRouter.POST("captcha", baseApi.Captcha)
+		baseRouter.GET("uploadConfig", baseApi.UploadConfig)
 		baseRouter.POST("login", middleware.AuthRateLimit(), baseApi.Login)
 	}
 	return baseRouter

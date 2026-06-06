@@ -143,6 +143,6 @@ go test ./...
 ## 插件
 
 - `plugin/email`：邮件发送
-- `plugin/announcement`：公告示例（`/info/*`）
+- 内置插件仅保留 `plugin/email`（邮件发送）
 
 插件在 `initialize/plugin.go` 中安装，路由挂载到与管理端相同的 Gin 引擎。

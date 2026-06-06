@@ -2,20 +2,20 @@
 package initialize
 
 import (
-	"fmt"
-
 	"mall-admin/server/global"
 	"mall-admin/server/plugin/email"
 	"mall-admin/server/utils/plugin"
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 func PluginInit(group *gin.RouterGroup, Plugin ...plugin.Plugin) {
 	for i := range Plugin {
-		fmt.Println(Plugin[i].RouterPath(), "注册开始!")
-		PluginGroup := group.Group(Plugin[i].RouterPath())
+		path := Plugin[i].RouterPath()
+		global.GVA_LOG.Info("插件注册开始", zap.String("path", path))
+		PluginGroup := group.Group(path)
 		Plugin[i].Register(PluginGroup)
-		fmt.Println(Plugin[i].RouterPath(), "注册成功!")
+		global.GVA_LOG.Info("插件注册成功", zap.String("path", path))
 	}
 }
 
@@ -33,5 +33,5 @@ func bizPluginV1(group ...*gin.RouterGroup) {
 		global.GVA_CONFIG.Email.IsSSL,
 		global.GVA_CONFIG.Email.IsLoginAuth,
 	))
-	holder(public, private)
+	_ = public
 }

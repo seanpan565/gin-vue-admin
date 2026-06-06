@@ -1,23 +1,30 @@
-// member_token_blacklist.go C 端会员 Token 黑名单（内存缓存，登出后失效）。
+// member_token_blacklist.go C 端会员 Token 黑名单，复用 jwt_blacklists 表与 BlackCache。
 package utils
 
-import "mall-admin/server/global"
+import (
+	"mall-admin/server/global"
+	"mall-admin/server/model/system"
+	"go.uber.org/zap"
+)
 
-const memberTokenBlacklistPrefix = "member_jwt:"
-
-// BlacklistMemberToken 将会员 token 加入黑名单。
+// BlacklistMemberToken 将会员 token 写入黑名单（持久化 + 内存缓存）。
 func BlacklistMemberToken(token string) {
 	if token == "" {
 		return
 	}
-	global.BlackCache.SetDefault(memberTokenBlacklistPrefix+token, struct{}{})
+	record := system.JwtBlacklist{Jwt: token}
+	if err := global.GVA_DB.Create(&record).Error; err != nil {
+		global.GVA_LOG.Error("会员 token 拉黑失败", zap.Error(err))
+		return
+	}
+	global.BlackCache.SetDefault(token, struct{}{})
 }
 
-// IsMemberTokenBlacklisted 判断会员 token 是否已登出失效。
+// IsMemberTokenBlacklisted 判断会员 token 是否已失效。
 func IsMemberTokenBlacklisted(token string) bool {
 	if token == "" {
 		return false
 	}
-	_, ok := global.BlackCache.Get(memberTokenBlacklistPrefix + token)
+	_, ok := global.BlackCache.Get(token)
 	return ok
 }

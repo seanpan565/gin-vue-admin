@@ -1,14 +1,12 @@
 package auth
 
 import (
-	"mall-admin/server/global"
 	"mall-admin/server/model/common/response"
 	"mall-admin/server/model/mall"
 	mallReq "mall-admin/server/model/mall/request"
 	mallRes "mall-admin/server/model/mall/response"
 	"mall-admin/server/utils"
 	"github.com/gin-gonic/gin"
-	"go.uber.org/zap"
 )
 
 // AuthApi C 端会员认证接口。
@@ -32,51 +30,16 @@ func (a *AuthApi) Register(c *gin.Context) {
 		return
 	}
 	if !utils.VerifyMemberCaptcha(c, req.CaptchaId, req.Captcha) {
-		response.FailWithMessage("验证码错误", c)
+		respondMemberLogin(c, mall.MallMember{}, "", false, req.Mobile, "验证码错误")
 		return
 	}
 
 	member, err := memberService.Register(req, c.ClientIP())
 	if err != nil {
-		_ = memberService.CreateLoginLog(mall.MallMemberLoginLog{
-			Mobile:       req.Mobile,
-			IP:           c.ClientIP(),
-			UserAgent:    c.Request.UserAgent(),
-			Status:       false,
-			ErrorMessage: err.Error(),
-		})
-		response.FailWithMessage(err.Error(), c)
+		respondMemberLogin(c, member, "", false, req.Mobile, err.Error())
 		return
 	}
-
-	token, claims, err := utils.MemberLoginToken(mallReq.MemberBaseClaims{
-		UUID:     member.UUID,
-		ID:       member.ID,
-		Mobile:   member.Mobile,
-		Nickname: member.Nickname,
-	})
-	if err != nil {
-		global.GVA_LOG.Error("会员 token 生成失败", zap.Error(err))
-		response.FailWithMessage("注册成功但登录失败，请重新登录", c)
-		return
-	}
-
-	_ = memberService.UpdateLastLogin(member.ID, c.ClientIP())
-	_ = memberService.CreateLoginLog(mall.MallMemberLoginLog{
-		MemberID:  member.ID,
-		Mobile:    member.Mobile,
-		IP:        c.ClientIP(),
-		UserAgent: c.Request.UserAgent(),
-		Status:    true,
-	})
-
-	utils.SetMemberToken(c, token)
-	member.Password = ""
-	response.OkWithDetailed(mallRes.MemberLoginResponse{
-		Member:    member,
-		Token:     token,
-		ExpiresAt: claims.ExpiresAt.Unix(),
-	}, "注册成功", c)
+	respondMemberLogin(c, member, "注册成功", true, req.Mobile, "")
 }
 
 // Login
@@ -97,57 +60,16 @@ func (a *AuthApi) Login(c *gin.Context) {
 		return
 	}
 	if !utils.VerifyMemberCaptcha(c, req.CaptchaId, req.Captcha) {
-		response.FailWithMessage("验证码错误", c)
+		respondMemberLogin(c, mall.MallMember{}, "", false, req.Mobile, "验证码错误")
 		return
 	}
 
 	member, err := memberService.Login(req.Mobile, req.Password)
 	if err != nil {
-		_ = memberService.CreateLoginLog(mall.MallMemberLoginLog{
-			Mobile:       req.Mobile,
-			IP:           c.ClientIP(),
-			UserAgent:    c.Request.UserAgent(),
-			Status:       false,
-			ErrorMessage: err.Error(),
-		})
-		response.FailWithMessage(err.Error(), c)
+		respondMemberLogin(c, mall.MallMember{}, "", false, req.Mobile, err.Error())
 		return
 	}
-
-	fullMember, err := memberService.GetMemberByID(member.ID)
-	if err != nil {
-		response.FailWithMessage("获取会员信息失败", c)
-		return
-	}
-
-	token, claims, err := utils.MemberLoginToken(mallReq.MemberBaseClaims{
-		UUID:     fullMember.UUID,
-		ID:       fullMember.ID,
-		Mobile:   fullMember.Mobile,
-		Nickname: fullMember.Nickname,
-	})
-	if err != nil {
-		global.GVA_LOG.Error("会员 token 生成失败", zap.Error(err))
-		response.FailWithMessage("登录失败", c)
-		return
-	}
-
-	_ = memberService.UpdateLastLogin(fullMember.ID, c.ClientIP())
-	_ = memberService.CreateLoginLog(mall.MallMemberLoginLog{
-		MemberID:  fullMember.ID,
-		Mobile:    fullMember.Mobile,
-		IP:        c.ClientIP(),
-		UserAgent: c.Request.UserAgent(),
-		Status:    true,
-	})
-
-	utils.SetMemberToken(c, token)
-	fullMember.Password = ""
-	response.OkWithDetailed(mallRes.MemberLoginResponse{
-		Member:    fullMember,
-		Token:     token,
-		ExpiresAt: claims.ExpiresAt.Unix(),
-	}, "登录成功", c)
+	respondMemberLogin(c, *member, "登录成功", true, req.Mobile, "")
 }
 
 // Profile

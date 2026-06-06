@@ -6,21 +6,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
-func holder(routers ...*gin.RouterGroup) {
-	_ = routers
-	_ = router.RouterGroupApp
-}
-
 // initBizRouter 注册业务路由，开发者在此追加自定义 RouterGroup。
 func initBizRouter(routers ...*gin.RouterGroup) {
-	privateGroup := routers[0]
 	publicGroup := routers[1]
 
 	siteAPIRouter := router.RouterGroupApp.SiteAPI
 
 	// 商城 C 端 API：/site/auth/*（会员 token 走 x-member-token）
 	siteAPIRouter.InitMemberAuthRouter(publicGroup.Group("site"))
-
-	holder(publicGroup, privateGroup)
 }

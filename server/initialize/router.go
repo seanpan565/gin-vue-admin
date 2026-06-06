@@ -26,8 +26,8 @@ func Routers() *gin.Engine {
 
 	adminRouter := router.RouterGroupApp.Admin
 	systemRouter := adminRouter.System
-	exampleRouter := adminRouter.Example
 	mallRouter := adminRouter.Mall
+	fileUploadRouter := adminRouter.Example
 
 	RegisterSecureStatic(Router)
 
@@ -73,9 +73,8 @@ func Routers() *gin.Engine {
 		systemRouter.InitSysErrorRouter(PrivateGroup, PublicGroup)
 		systemRouter.InitLoginLogRouter(PrivateGroup)
 		systemRouter.InitApiTokenRouter(PrivateGroup)
-		exampleRouter.InitCustomerRouter(PrivateGroup)
-		exampleRouter.InitFileUploadAndDownloadRouter(PrivateGroup)
-		exampleRouter.InitAttachmentCategoryRouterRouter(PrivateGroup)
+		fileUploadRouter.InitFileUploadAndDownloadRouter(PrivateGroup)
+		fileUploadRouter.InitAttachmentCategoryRouterRouter(PrivateGroup)
 		mallRouter.InitMemberRouter(PrivateGroup)
 	}
 

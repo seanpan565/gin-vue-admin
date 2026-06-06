@@ -55,6 +55,32 @@ func (b *BaseApi) Captcha(c *gin.Context) {
 	}, "验证码获取成功", c)
 }
 
+// UploadConfig
+// @Tags      Base
+// @Summary   获取前端上传大小限制（与 security 配置一致）
+// @Produce   application/json
+// @Success   200  {object}  response.Response{data=map[string]float64,msg=string}
+// @Router    /base/uploadConfig [get]
+func (b *BaseApi) UploadConfig(c *gin.Context) {
+	imageMB, videoMB := uploadSizeLimits()
+	response.OkWithDetailed(gin.H{
+		"maxImageMB": imageMB,
+		"maxVideoMB": videoMB,
+	}, "获取成功", c)
+}
+
+func uploadSizeLimits() (imageMB, videoMB float64) {
+	imageMB = global.GVA_CONFIG.Security.UploadMaxImageMB
+	if imageMB <= 0 {
+		imageMB = 0.5
+	}
+	videoMB = global.GVA_CONFIG.Security.UploadMaxVideoMB
+	if videoMB <= 0 {
+		videoMB = 5
+	}
+	return imageMB, videoMB
+}
+
 // 类型转换
 func interfaceToInt(v interface{}) (i int) {
 	switch v := v.(type) {

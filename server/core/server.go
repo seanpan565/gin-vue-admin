@@ -40,5 +40,19 @@ func RunServer() {
 	前端地址:http://127.0.0.1:8080
 `, global.Version, address)
 
-	initServer(address, Router, 10*time.Minute, 10*time.Minute)
+	readTimeout := parseServerTimeout(global.GVA_CONFIG.System.ReadTimeout, 10*time.Minute)
+	writeTimeout := parseServerTimeout(global.GVA_CONFIG.System.WriteTimeout, 10*time.Minute)
+	initServer(address, Router, readTimeout, writeTimeout)
+}
+
+func parseServerTimeout(raw string, fallback time.Duration) time.Duration {
+	if raw == "" {
+		return fallback
+	}
+	d, err := time.ParseDuration(raw)
+	if err != nil {
+		zap.L().Warn("无效的 HTTP 超时配置，使用默认值", zap.String("value", raw), zap.Error(err))
+		return fallback
+	}
+	return d
 }

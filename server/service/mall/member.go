@@ -3,6 +3,7 @@ package mall
 import (
 	"errors"
 	"regexp"
+	"sync"
 	"time"
 
 	"mall-admin/server/global"
@@ -15,8 +16,21 @@ import (
 
 var mobilePattern = regexp.MustCompile(`^1[3-9]\d{9}$`)
 
+var (
+	cachedDefaultLevelID uint
+	defaultLevelOnce     sync.Once
+	defaultLevelErr      error
+)
+
 // MemberService 商城会员业务逻辑。
 type MemberService struct{}
+
+// ResetDefaultLevelCache 等级数据变更后可调用以刷新缓存。
+func (s *MemberService) ResetDefaultLevelCache() {
+	cachedDefaultLevelID = 0
+	defaultLevelOnce = sync.Once{}
+	defaultLevelErr = nil
+}
 
 // EnsureDefaultLevels 初始化默认会员等级。
 func (s *MemberService) EnsureDefaultLevels() error {
@@ -36,12 +50,17 @@ func (s *MemberService) EnsureDefaultLevels() error {
 }
 
 func (s *MemberService) defaultLevelID() (uint, error) {
-	var level mall.MallMemberLevel
-	err := global.GVA_DB.Where("level = ? AND status = ?", 1, 1).First(&level).Error
-	if err != nil {
-		return 0, err
+	defaultLevelOnce.Do(func() {
+		var level mall.MallMemberLevel
+		defaultLevelErr = global.GVA_DB.Where("level = ? AND status = ?", 1, 1).First(&level).Error
+		if defaultLevelErr == nil {
+			cachedDefaultLevelID = level.ID
+		}
+	})
+	if defaultLevelErr != nil {
+		return 0, defaultLevelErr
 	}
-	return level.ID, nil
+	return cachedDefaultLevelID, nil
 }
 
 // Register 会员注册：创建账号 + 扩展资料。
@@ -98,10 +117,10 @@ func (s *MemberService) Register(req mallReq.MemberRegister, clientIP string) (m
 	return s.GetMemberByID(member.ID)
 }
 
-// Login 会员密码登录。
+// Login 会员密码登录，返回含扩展资料与等级的完整信息。
 func (s *MemberService) Login(mobile, password string) (*mall.MallMember, error) {
 	var member mall.MallMember
-	if err := global.GVA_DB.Where("mobile = ?", mobile).First(&member).Error; err != nil {
+	if err := global.GVA_DB.Preload("Profile.Level").Where("mobile = ?", mobile).First(&member).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errors.New("手机号或密码错误")
 		}

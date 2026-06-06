@@ -5,6 +5,7 @@ import (
 	"mall-admin/server/core"
 	"mall-admin/server/global"
 	"mall-admin/server/initialize"
+
 	_ "go.uber.org/automaxprocs"
 	"go.uber.org/zap"
 )
@@ -21,9 +22,9 @@ import (
 // @Tag.Name        SysUser
 // @Tag.Description 用户
 
-// @title                       Gin-Vue-Admin Swagger API接口文档
-// @version                     v2.9.2
-// @description                 使用gin+vue进行极速开发的全栈开发基础平台
+// @title                       商城管理后台 Swagger API 文档
+// @version                     v1.0.0
+// @description                 商城管理后台 REST API（管理端 admin + C 端 siteapi）
 // @securityDefinitions.apikey  ApiKeyAuth
 // @in                          header
 // @name                        x-token

@@ -264,6 +264,8 @@ system:
     use-mongo: false                # 是否启用 MongoDB
     use-strict-auth: false          # 严格角色模式：开启后角色权限存在上下级继承关系
     disable-auto-migrate: false     # 是否禁用 Gorm 自动迁移表结构（生产环境建议 true，改用手动迁移）
+    read-timeout: 10m                 # HTTP 读超时
+    write-timeout: 10m                # HTTP 写超时
 
 # 腾讯云 COS 对象存储（仅当 system.oss-type 设为 tencent-cos 时生效）
 tencent-cos:
@@ -284,6 +286,8 @@ security:
     auth-limit-time: 60             # 认证接口限流窗口（秒）
     member-captcha-enable: true     # C 端会员登录/注册是否强制验证码
     upload-allowed-exts: []         # 上传白名单扩展名，留空使用内置默认列表
+    upload-max-image-mb: 0.5        # 前端普通上传图片大小上限（MB）
+    upload-max-video-mb: 5          # 前端普通上传视频大小上限（MB）
 
 # Zap 日志配置
 zap:

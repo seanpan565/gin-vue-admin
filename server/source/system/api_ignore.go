@@ -58,8 +58,7 @@ func (i *initApiIgnore) InitializeData(ctx context.Context) (context.Context, er
 		{Method: "POST", Path: "/site/auth/logout"},
 		{Method: "GET", Path: "/site/auth/profile"},
 		{Method: "POST", Path: "/sysError/createSysError"},
-		{Method: "GET", Path: "/info/getInfoDataSource"},
-		{Method: "GET", Path: "/info/getInfoPublic"},
+		{Method: "GET", Path: "/base/uploadConfig"},
 	}
 	if err := db.Create(&entities).Error; err != nil {
 		return ctx, errors.Wrap(err, sysModel.SysIgnoreApi{}.TableName()+"表数据初始化失败!")

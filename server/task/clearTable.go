@@ -34,6 +34,12 @@ func ClearTable(db *gorm.DB) error {
 		Interval:     "168h",
 	})
 
+	ClearTableDetail = append(ClearTableDetail, common.ClearDB{
+		TableName:    "mall_member_login_logs",
+		CompareField: "created_at",
+		Interval:     "2160h",
+	})
+
 	if db == nil {
 		return errors.New("db Cannot be empty")
 	}
@@ -46,7 +52,7 @@ func ClearTable(db *gorm.DB) error {
 		if duration < 0 {
 			return errors.New("parse duration < 0")
 		}
-		err = db.Debug().Exec(fmt.Sprintf("DELETE FROM %s WHERE %s < ?", detail.TableName, detail.CompareField), time.Now().Add(-duration)).Error
+		err = db.Exec(fmt.Sprintf("DELETE FROM %s WHERE %s < ?", detail.TableName, detail.CompareField), time.Now().Add(-duration)).Error
 		if err != nil {
 			return err
 		}

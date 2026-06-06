@@ -23,8 +23,12 @@ security:
     auth-limit-time: 60
     member-captcha-enable: true
     upload-allowed-exts: []
+    upload-max-image-mb: 0.5
+    upload-max-video-mb: 5
 
 system:
-    iplimit-count: 3000
+    iplimit-count: 15000
     iplimit-time: 3600
+    read-timeout: 10m
+    write-timeout: 10m
     disable-auto-migrate: true

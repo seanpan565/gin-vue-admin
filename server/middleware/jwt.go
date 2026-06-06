@@ -51,7 +51,7 @@ func JWTAuth() gin.HandlerFunc {
 			return
 		}
 
-		if user, err := jwtUserService.FindUserByUuid(claims.UUID.String()); err != nil || user.Enable == 2 {
+		if !isUserEnabled(claims.UUID.String()) {
 			_ = jwtService.JsonInBlacklist(system.JwtBlacklist{Jwt: token})
 			response.FailWithDetailed(gin.H{"reload": true}, "账号已禁用或不存在，请重新登录", c)
 			utils.ClearToken(c)
@@ -92,4 +92,19 @@ func JWTAuth() gin.HandlerFunc {
 func isBlacklist(jwt string) bool {
 	_, ok := global.BlackCache.Get(jwt)
 	return ok
+}
+
+const userEnableCachePrefix = "user_enable:"
+
+// isUserEnabled 校验用户是否可用，结果缓存 5 分钟以降低 DB 压力。
+func isUserEnabled(uuid string) bool {
+	cacheKey := userEnableCachePrefix + uuid
+	if v, ok := global.BlackCache.Get(cacheKey); ok {
+		enabled, _ := v.(bool)
+		return enabled
+	}
+	user, err := jwtUserService.FindUserByUuid(uuid)
+	enabled := err == nil && user.Enable != 2
+	global.BlackCache.Set(cacheKey, enabled, 5*time.Minute)
+	return enabled
 }

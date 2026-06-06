@@ -104,11 +104,6 @@ func (i *initCasbin) InitializeData(ctx context.Context) (context.Context, error
 		{Ptype: "p", V0: "888", V1: "/user/resetPassword", V2: "POST"},
 		{Ptype: "p", V0: "888", V1: "/user/setSelfSetting", V2: "PUT"},
 
-		{Ptype: "p", V0: "888", V1: "/fileUploadAndDownload/findFile", V2: "GET"},
-		{Ptype: "p", V0: "888", V1: "/fileUploadAndDownload/breakpointContinueFinish", V2: "POST"},
-		{Ptype: "p", V0: "888", V1: "/fileUploadAndDownload/breakpointContinue", V2: "POST"},
-		{Ptype: "p", V0: "888", V1: "/fileUploadAndDownload/removeChunk", V2: "POST"},
-
 		{Ptype: "p", V0: "888", V1: "/fileUploadAndDownload/upload", V2: "POST"},
 		{Ptype: "p", V0: "888", V1: "/fileUploadAndDownload/deleteFile", V2: "POST"},
 		{Ptype: "p", V0: "888", V1: "/fileUploadAndDownload/editFileName", V2: "POST"},
@@ -126,12 +121,6 @@ func (i *initCasbin) InitializeData(ctx context.Context) (context.Context, error
 
 		{Ptype: "p", V0: "888", V1: "/mall/member/list", V2: "POST"},
 		{Ptype: "p", V0: "888", V1: "/mall/member/detail", V2: "POST"},
-
-		{Ptype: "p", V0: "888", V1: "/customer/customer", V2: "GET"},
-		{Ptype: "p", V0: "888", V1: "/customer/customer", V2: "PUT"},
-		{Ptype: "p", V0: "888", V1: "/customer/customer", V2: "POST"},
-		{Ptype: "p", V0: "888", V1: "/customer/customer", V2: "DELETE"},
-		{Ptype: "p", V0: "888", V1: "/customer/customerList", V2: "GET"},
 
 		{Ptype: "p", V0: "888", V1: "/sysDictionaryDetail/findSysDictionaryDetail", V2: "GET"},
 		{Ptype: "p", V0: "888", V1: "/sysDictionaryDetail/updateSysDictionaryDetail", V2: "PUT"},
@@ -170,13 +159,6 @@ func (i *initCasbin) InitializeData(ctx context.Context) (context.Context, error
 		{Ptype: "p", V0: "888", V1: "/sysError/findSysError", V2: "GET"},
 		{Ptype: "p", V0: "888", V1: "/sysError/getSysErrorList", V2: "GET"},
 		{Ptype: "p", V0: "888", V1: "/sysError/getSysErrorSolution", V2: "GET"},
-
-		{Ptype: "p", V0: "888", V1: "/info/createInfo", V2: "POST"},
-		{Ptype: "p", V0: "888", V1: "/info/deleteInfo", V2: "DELETE"},
-		{Ptype: "p", V0: "888", V1: "/info/deleteInfoByIds", V2: "DELETE"},
-		{Ptype: "p", V0: "888", V1: "/info/updateInfo", V2: "PUT"},
-		{Ptype: "p", V0: "888", V1: "/info/findInfo", V2: "GET"},
-		{Ptype: "p", V0: "888", V1: "/info/getInfoList", V2: "GET"},
 
 		{Ptype: "p", V0: "888", V1: "/sysParams/createSysParams", V2: "POST"},
 		{Ptype: "p", V0: "888", V1: "/sysParams/deleteSysParams", V2: "DELETE"},
@@ -236,11 +218,6 @@ func (i *initCasbin) InitializeData(ctx context.Context) (context.Context, error
 		{Ptype: "p", V0: "8881", V1: "/jwt/jsonInBlacklist", V2: "POST"},
 		{Ptype: "p", V0: "8881", V1: "/system/getSystemConfig", V2: "POST"},
 		{Ptype: "p", V0: "8881", V1: "/system/setSystemConfig", V2: "POST"},
-		{Ptype: "p", V0: "8881", V1: "/customer/customer", V2: "POST"},
-		{Ptype: "p", V0: "8881", V1: "/customer/customer", V2: "PUT"},
-		{Ptype: "p", V0: "8881", V1: "/customer/customer", V2: "DELETE"},
-		{Ptype: "p", V0: "8881", V1: "/customer/customer", V2: "GET"},
-		{Ptype: "p", V0: "8881", V1: "/customer/customerList", V2: "GET"},
 		{Ptype: "p", V0: "8881", V1: "/user/getUserInfo", V2: "GET"},
 		{Ptype: "p", V0: "8881", V1: "/mall/member/list", V2: "POST"},
 		{Ptype: "p", V0: "8881", V1: "/mall/member/detail", V2: "POST"},
@@ -286,11 +263,6 @@ func (i *initCasbin) InitializeData(ctx context.Context) (context.Context, error
 		{Ptype: "p", V0: "9528", V1: "/jwt/jsonInBlacklist", V2: "POST"},
 		{Ptype: "p", V0: "9528", V1: "/system/getSystemConfig", V2: "POST"},
 		{Ptype: "p", V0: "9528", V1: "/system/setSystemConfig", V2: "POST"},
-		{Ptype: "p", V0: "9528", V1: "/customer/customer", V2: "PUT"},
-		{Ptype: "p", V0: "9528", V1: "/customer/customer", V2: "GET"},
-		{Ptype: "p", V0: "9528", V1: "/customer/customer", V2: "POST"},
-		{Ptype: "p", V0: "9528", V1: "/customer/customer", V2: "DELETE"},
-		{Ptype: "p", V0: "9528", V1: "/customer/customerList", V2: "GET"},
 		{Ptype: "p", V0: "9528", V1: "/mall/member/list", V2: "POST"},
 		{Ptype: "p", V0: "9528", V1: "/mall/member/detail", V2: "POST"},
 		{Ptype: "p", V0: "9528", V1: "/user/getUserInfo", V2: "GET"},

@@ -10,5 +10,7 @@ type Security struct {
 	AuthLimitCount      int      `mapstructure:"auth-limit-count" json:"auth-limit-count" yaml:"auth-limit-count"`
 	AuthLimitTime       int      `mapstructure:"auth-limit-time" json:"auth-limit-time" yaml:"auth-limit-time"`
 	MemberCaptchaEnable bool     `mapstructure:"member-captcha-enable" json:"member-captcha-enable" yaml:"member-captcha-enable"`
-	UploadAllowedExts   []string `mapstructure:"upload-allowed-exts" json:"upload-allowed-exts" yaml:"upload-allowed-exts"`
+	UploadAllowedExts   []string  `mapstructure:"upload-allowed-exts" json:"upload-allowed-exts" yaml:"upload-allowed-exts"`
+	UploadMaxImageMB    float64   `mapstructure:"upload-max-image-mb" json:"upload-max-image-mb" yaml:"upload-max-image-mb"`
+	UploadMaxVideoMB    float64   `mapstructure:"upload-max-video-mb" json:"upload-max-video-mb" yaml:"upload-max-video-mb"`
 }
