@@ -6,7 +6,7 @@
 <script setup>
   import Chart from '@/components/charts/index.vue'
   import useChartOption from '@/hooks/charts'
-  import { graphic } from 'echarts'
+  import { graphic } from '@/utils/echarts-graphic'
   import { ref } from 'vue'
   import { storeToRefs } from 'pinia'
   import { useAppStore } from '@/pinia'

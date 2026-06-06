@@ -1,7 +1,8 @@
-<!-- ECharts 图表封装组件，支持窗口自适应 -->
+<!-- ECharts 图表封装组件，懒加载 vue-echarts，支持窗口自适应 -->
 <template>
-  <VCharts
-    v-if="renderChart"
+  <component
+    :is="VCharts"
+    v-if="renderChart && VCharts"
     :option="options"
     :autoresize="autoResize"
     :style="{ width, height }"
@@ -9,8 +10,8 @@
 </template>
 
 <script setup>
-  import { ref, nextTick } from 'vue'
-  import VCharts from 'vue-echarts'
+  import { nextTick, onMounted, ref, shallowRef } from 'vue'
+  import { loadChartComponent } from '@/utils/echarts'
   import { useWindowResize } from '@/hooks/use-windows-resize'
 
   defineProps({
@@ -33,16 +34,24 @@
       default: '100%'
     }
   })
+
+  const VCharts = shallowRef(null)
   const renderChart = ref(false)
-  nextTick(() => {
-    renderChart.value = true
-  })
-  useWindowResize(() => {
+
+  const mountChart = async () => {
+    if (!VCharts.value) {
+      VCharts.value = await loadChartComponent()
+    }
     renderChart.value = false
-    nextTick(() => {
-      renderChart.value = true
-    })
+    await nextTick()
+    renderChart.value = true
+  }
+
+  onMounted(mountChart)
+
+  useWindowResize(() => {
+    if (VCharts.value) {
+      mountChart()
+    }
   })
 </script>
-
-<style scoped lang="less"></style>

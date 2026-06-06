@@ -9,6 +9,9 @@ import { svgBuilder } from 'vite-auto-import-svg'
 import vueRootValidator from 'vite-check-multiple-dom'
 import { AddSecret } from './vitePlugin/secret'
 import UnoCSS from '@unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // @see https://cn.vitejs.dev/config/
 export default ({ mode }) => {
@@ -68,10 +71,6 @@ export default ({ mode }) => {
           codeSplitting: {
             groups: [
               {
-                name: 'element-plus',
-                test: /[\\/]node_modules[\\/]element-plus[\\/]/
-              },
-              {
                 name: 'echarts',
                 test: /[\\/]node_modules[\\/](echarts|vue-echarts|zrender)[\\/]/
               },
@@ -89,6 +88,12 @@ export default ({ mode }) => {
       }
     },
     plugins: [
+      AutoImport({
+        resolvers: [ElementPlusResolver()]
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()]
+      }),
       env.VITE_POSITION === 'open' &&
         vueDevTools({ launchEditor: env.VITE_EDITOR || 'code' }),
       vuePlugin(),

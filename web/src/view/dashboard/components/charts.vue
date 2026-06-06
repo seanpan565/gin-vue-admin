@@ -27,6 +27,7 @@
 </template>
 
 <script setup>
+  import { TopRight } from '@element-plus/icons-vue'
   import chartsPeopleNumber from './charts-people-numbers.vue'
   import chartsContentNumber from './charts-content-numbers.vue'
   defineProps({
